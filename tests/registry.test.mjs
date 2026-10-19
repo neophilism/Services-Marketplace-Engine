@@ -1,0 +1,1 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{readFileSync}from'node:fs';const r=JSON.parse(readFileSync('registry/prs.json','utf8'));test('planned unit IDs are unique',()=>assert.equal(new Set(r.units.map(u=>u.id)).size,r.units.length));test('uncreated PRs are never invented',()=>assert.ok(r.units.every(u=>Array.isArray(u.prs))));

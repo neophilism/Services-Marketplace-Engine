@@ -1,5 +1,5 @@
 # Services Marketplace Engine
 
-Independent, reusable services-marketplace platform. The repository is being initialized; the foundational pull request introduces the canonical development registry, architecture, contributor rules, and working skeleton.
+Standalone, industry-agnostic services marketplace engine supporting providers, identity, marketplace discovery, Job Rooms, payments, subscriptions, advertising, AI assistants, podcasts, trust and analytics. **Only active development target until engine complete.**
 
-**Development priority:** complete the engine's entire accepted roadmap and release/production verification before dependent applications begin feature development. See `AGENTS.md` and `registry/prs.json` after the foundation PR merges.
+Read `AGENTS.md`, `docs/DEVELOPMENT_PLAN.md`, `registry/prs.json`, and `docs/ENGINE_COMPLETION_CONTRACT.md`.
