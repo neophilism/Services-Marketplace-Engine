@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "id": "ADR-001",
+      "title": "Standalone domain-neutral engine boundaries",
+      "status": "accepted",
+      "document": "docs/adr/0001-engine-boundaries.md",
+      "invariants": [
+        "Engine packages cannot import dependent applications",
+        "Core contracts cannot contain marine-specific terms",
+        "HTTP, worker, and persistence adapters depend inward on domain contracts"
+      ],
+      "negativeTests": [
+        "dependent-application import is rejected",
+        "domain-specific contract term is rejected"
+      ]
+    },
+    {
+      "id": "ADR-002",
+      "title": "Fail-closed tenant authorization",
+      "status": "accepted",
+      "document": "docs/adr/0002-tenant-authorization.md",
+      "invariants": [
+        "Every tenant resource is addressed by organization ID",
+        "Authorization requires authenticated subject, active membership, and explicit permission",
+        "Missing, revoked, or cross-tenant context is denied before resource lookup"
+      ],
+      "negativeTests": [
+        "missing tenant context is denied",
+        "inactive membership is denied",
+        "cross-tenant identifier is denied",
+        "missing permission is denied"
+      ]
+    },
+    {
+      "id": "ADR-003",
+      "title": "Versioned contracts and idempotent side effects",
+      "status": "accepted",
+      "document": "docs/adr/0003-contracts-and-idempotency.md",
+      "invariants": [
+        "External request and event contracts are versioned",
+        "Retried commands use tenant-scoped idempotency keys",
+        "Committed side effects publish through a transactional outbox"
+      ],
+      "negativeTests": [
+        "unsupported contract version is rejected",
+        "idempotency key reuse with different input is rejected",
+        "uncommitted outbox event is not published"
+      ]
+    }
+  ]
+}

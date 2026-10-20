@@ -1,0 +1,1498 @@
+{
+  "schemaVersion": 1,
+  "repository": "neophilism/Services-Marketplace-Engine",
+  "title": "Services Marketplace Engine",
+  "roadmapVersion": 1,
+  "planVerified": true,
+  "plannedPrCount": 67,
+  "observedAt": "2026-10-19T18:19:00Z",
+  "sourceFiles": [
+    "docs/DEVELOPMENT_PLAN.md",
+    "AGENTS.md",
+    "architecture/decisions.json"
+  ],
+  "units": [
+    {
+      "id": "SME-001",
+      "title": "Architecture ADRs",
+      "origin": "original",
+      "prs": [
+        1
+      ],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [],
+      "scope": [
+        "Architecture ADRs"
+      ],
+      "acceptanceCriteria": "Complete architecture adrs functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Registry validation enforces the accepted boundary, fail-closed tenant authorization, and versioned idempotency ADR contracts.",
+        "Node architecture tests verify required documents and missing-tenant, inactive-membership, cross-tenant, and missing-permission negative cases."
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-002",
+      "title": "TypeScript workspaces API worker bootstrap",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-001"
+      ],
+      "scope": [
+        "TypeScript workspaces API worker bootstrap"
+      ],
+      "acceptanceCriteria": "Complete typescript workspaces api worker bootstrap functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-003",
+      "title": "CI static checks registry validation",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-002"
+      ],
+      "scope": [
+        "CI static checks registry validation"
+      ],
+      "acceptanceCriteria": "Complete ci static checks registry validation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-004",
+      "title": "Postgres migrations and rollback",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-003"
+      ],
+      "scope": [
+        "Postgres migrations and rollback"
+      ],
+      "acceptanceCriteria": "Complete postgres migrations and rollback functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-005",
+      "title": "OpenAPI contracts SDK generation",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-004"
+      ],
+      "scope": [
+        "OpenAPI contracts SDK generation"
+      ],
+      "acceptanceCriteria": "Complete openapi contracts sdk generation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-006",
+      "title": "Identity sessions MFA passkeys",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-005"
+      ],
+      "scope": [
+        "Identity sessions MFA passkeys"
+      ],
+      "acceptanceCriteria": "Complete identity sessions mfa passkeys functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-007",
+      "title": "Organizations memberships RBAC",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-006"
+      ],
+      "scope": [
+        "Organizations memberships RBAC"
+      ],
+      "acceptanceCriteria": "Complete organizations memberships rbac functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-008",
+      "title": "Tenancy boundary audit logs",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-007"
+      ],
+      "scope": [
+        "Tenancy boundary audit logs"
+      ],
+      "acceptanceCriteria": "Complete tenancy boundary audit logs functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-009",
+      "title": "Outbox queues idempotency",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-008"
+      ],
+      "scope": [
+        "Outbox queues idempotency"
+      ],
+      "acceptanceCriteria": "Complete outbox queues idempotency functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-010",
+      "title": "Object storage attachment scanning",
+      "origin": "original",
+      "prs": [],
+      "priority": "P0",
+      "phase": "Foundation",
+      "dependsOn": [
+        "SME-009"
+      ],
+      "scope": [
+        "Object storage attachment scanning"
+      ],
+      "acceptanceCriteria": "Complete object storage attachment scanning functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-011",
+      "title": "Customer profiles and saved assets",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-010"
+      ],
+      "scope": [
+        "Customer profiles and saved assets"
+      ],
+      "acceptanceCriteria": "Complete customer profiles and saved assets functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-012",
+      "title": "Provider organizations and locations",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-011"
+      ],
+      "scope": [
+        "Provider organizations and locations"
+      ],
+      "acceptanceCriteria": "Complete provider organizations and locations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-013",
+      "title": "Provider employees and permissions",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-012"
+      ],
+      "scope": [
+        "Provider employees and permissions"
+      ],
+      "acceptanceCriteria": "Complete provider employees and permissions functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-014",
+      "title": "Service taxonomy dynamic intake schemas",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-013"
+      ],
+      "scope": [
+        "Service taxonomy dynamic intake schemas"
+      ],
+      "acceptanceCriteria": "Complete service taxonomy dynamic intake schemas functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-015",
+      "title": "Provider onboarding and attestation",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-014"
+      ],
+      "scope": [
+        "Provider onboarding and attestation"
+      ],
+      "acceptanceCriteria": "Complete provider onboarding and attestation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-016",
+      "title": "Insurance uploads review expiration",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-015"
+      ],
+      "scope": [
+        "Insurance uploads review expiration"
+      ],
+      "acceptanceCriteria": "Complete insurance uploads review expiration functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-017",
+      "title": "Credential evidence background check adapter",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-016"
+      ],
+      "scope": [
+        "Credential evidence background check adapter"
+      ],
+      "acceptanceCriteria": "Complete credential evidence background check adapter functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-018",
+      "title": "Geospatial territories and travel rules",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-017"
+      ],
+      "scope": [
+        "Geospatial territories and travel rules"
+      ],
+      "acceptanceCriteria": "Complete geospatial territories and travel rules functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-019",
+      "title": "Search indexes ranking",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-018"
+      ],
+      "scope": [
+        "Search indexes ranking"
+      ],
+      "acceptanceCriteria": "Complete search indexes ranking functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-020",
+      "title": "Availability and appointment slots",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-019"
+      ],
+      "scope": [
+        "Availability and appointment slots"
+      ],
+      "acceptanceCriteria": "Complete availability and appointment slots functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-021",
+      "title": "Lead creation matching notifications",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-020"
+      ],
+      "scope": [
+        "Lead creation matching notifications"
+      ],
+      "acceptanceCriteria": "Complete lead creation matching notifications functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-022",
+      "title": "Lead triage and quotes",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-021"
+      ],
+      "scope": [
+        "Lead triage and quotes"
+      ],
+      "acceptanceCriteria": "Complete lead triage and quotes functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-023",
+      "title": "Reviews dispute responses",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-022"
+      ],
+      "scope": [
+        "Reviews dispute responses"
+      ],
+      "acceptanceCriteria": "Complete reviews dispute responses functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-024",
+      "title": "Saved providers and repeat requests",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Marketplace",
+      "dependsOn": [
+        "SME-023"
+      ],
+      "scope": [
+        "Saved providers and repeat requests"
+      ],
+      "acceptanceCriteria": "Complete saved providers and repeat requests functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-025",
+      "title": "Job Room membership and invitations",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-024"
+      ],
+      "scope": [
+        "Job Room membership and invitations"
+      ],
+      "acceptanceCriteria": "Complete job room membership and invitations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-026",
+      "title": "Realtime chat receipts notifications",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-025"
+      ],
+      "scope": [
+        "Realtime chat receipts notifications"
+      ],
+      "acceptanceCriteria": "Complete realtime chat receipts notifications functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-027",
+      "title": "Attachment sharing private media",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-026"
+      ],
+      "scope": [
+        "Attachment sharing private media"
+      ],
+      "acceptanceCriteria": "Complete attachment sharing private media functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-028",
+      "title": "Immutable estimate versions approval",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-027"
+      ],
+      "scope": [
+        "Immutable estimate versions approval"
+      ],
+      "acceptanceCriteria": "Complete immutable estimate versions approval functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-029",
+      "title": "Contracts e-sign adapter",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-028"
+      ],
+      "scope": [
+        "Contracts e-sign adapter"
+      ],
+      "acceptanceCriteria": "Complete contracts e-sign adapter functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-030",
+      "title": "Scheduling holds conflicts ICS",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-029"
+      ],
+      "scope": [
+        "Scheduling holds conflicts ICS"
+      ],
+      "acceptanceCriteria": "Complete scheduling holds conflicts ics functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-031",
+      "title": "Technician tasks and checklists",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-030"
+      ],
+      "scope": [
+        "Technician tasks and checklists"
+      ],
+      "acceptanceCriteria": "Complete technician tasks and checklists functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-032",
+      "title": "Timesheets materials inventory",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-031"
+      ],
+      "scope": [
+        "Timesheets materials inventory"
+      ],
+      "acceptanceCriteria": "Complete timesheets materials inventory functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-033",
+      "title": "Change orders milestone acceptance",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-032"
+      ],
+      "scope": [
+        "Change orders milestone acceptance"
+      ],
+      "acceptanceCriteria": "Complete change orders milestone acceptance functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-034",
+      "title": "Subcontractor permissions",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-033"
+      ],
+      "scope": [
+        "Subcontractor permissions"
+      ],
+      "acceptanceCriteria": "Complete subcontractor permissions functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-035",
+      "title": "Completion warranties follow-up",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-034"
+      ],
+      "scope": [
+        "Completion warranties follow-up"
+      ],
+      "acceptanceCriteria": "Complete completion warranties follow-up functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-036",
+      "title": "Disputes reversals human oversight",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-035"
+      ],
+      "scope": [
+        "Disputes reversals human oversight"
+      ],
+      "acceptanceCriteria": "Complete disputes reversals human oversight functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-037",
+      "title": "Accessibility offline drafts",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Job Room",
+      "dependsOn": [
+        "SME-036"
+      ],
+      "scope": [
+        "Accessibility offline drafts"
+      ],
+      "acceptanceCriteria": "Complete accessibility offline drafts functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-038",
+      "title": "Payment abstraction Stripe Connect",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-037"
+      ],
+      "scope": [
+        "Payment abstraction Stripe Connect"
+      ],
+      "acceptanceCriteria": "Complete payment abstraction stripe connect functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-039",
+      "title": "Pricing fee caps",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-038"
+      ],
+      "scope": [
+        "Pricing fee caps"
+      ],
+      "acceptanceCriteria": "Complete pricing fee caps functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-040",
+      "title": "Deposits milestone charges",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-039"
+      ],
+      "scope": [
+        "Deposits milestone charges"
+      ],
+      "acceptanceCriteria": "Complete deposits milestone charges functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-041",
+      "title": "External payment records",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-040"
+      ],
+      "scope": [
+        "External payment records"
+      ],
+      "acceptanceCriteria": "Complete external payment records functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-042",
+      "title": "Refund disputes payout reconciliation",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-041"
+      ],
+      "scope": [
+        "Refund disputes payout reconciliation"
+      ],
+      "acceptanceCriteria": "Complete refund disputes payout reconciliation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-043",
+      "title": "Plans entitlements",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-042"
+      ],
+      "scope": [
+        "Plans entitlements"
+      ],
+      "acceptanceCriteria": "Complete plans entitlements functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-044",
+      "title": "Ad inventory and sponsors",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-043"
+      ],
+      "scope": [
+        "Ad inventory and sponsors"
+      ],
+      "acceptanceCriteria": "Complete ad inventory and sponsors functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-045",
+      "title": "Coupons redemption control",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-044"
+      ],
+      "scope": [
+        "Coupons redemption control"
+      ],
+      "acceptanceCriteria": "Complete coupons redemption control functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-046",
+      "title": "Referrals affiliate fraud controls",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-045"
+      ],
+      "scope": [
+        "Referrals affiliate fraud controls"
+      ],
+      "acceptanceCriteria": "Complete referrals affiliate fraud controls functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-047",
+      "title": "Gift cards loyalty credits",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-046"
+      ],
+      "scope": [
+        "Gift cards loyalty credits"
+      ],
+      "acceptanceCriteria": "Complete gift cards loyalty credits functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-048",
+      "title": "Subscriptions dunning",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-047"
+      ],
+      "scope": [
+        "Subscriptions dunning"
+      ],
+      "acceptanceCriteria": "Complete subscriptions dunning functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-049",
+      "title": "Invoices tax accounting exports",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Commerce",
+      "dependsOn": [
+        "SME-048"
+      ],
+      "scope": [
+        "Invoices tax accounting exports"
+      ],
+      "acceptanceCriteria": "Complete invoices tax accounting exports functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-050",
+      "title": "Provider CRM",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-049"
+      ],
+      "scope": [
+        "Provider CRM"
+      ],
+      "acceptanceCriteria": "Complete provider crm functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-051",
+      "title": "Funnel analytics attribution",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-050"
+      ],
+      "scope": [
+        "Funnel analytics attribution"
+      ],
+      "acceptanceCriteria": "Complete funnel analytics attribution functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-052",
+      "title": "Admin RBAC moderation support",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-051"
+      ],
+      "scope": [
+        "Admin RBAC moderation support"
+      ],
+      "acceptanceCriteria": "Complete admin rbac moderation support functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-053",
+      "title": "Feature flags configuration",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-052"
+      ],
+      "scope": [
+        "Feature flags configuration"
+      ],
+      "acceptanceCriteria": "Complete feature flags configuration functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-054",
+      "title": "Email push SMS adapters",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-053"
+      ],
+      "scope": [
+        "Email push SMS adapters"
+      ],
+      "acceptanceCriteria": "Complete email push sms adapters functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-055",
+      "title": "Knowledge base content CMS",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-054"
+      ],
+      "scope": [
+        "Knowledge base content CMS"
+      ],
+      "acceptanceCriteria": "Complete knowledge base content cms functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-056",
+      "title": "AI gateway quotas tools",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-055"
+      ],
+      "scope": [
+        "AI gateway quotas tools"
+      ],
+      "acceptanceCriteria": "Complete ai gateway quotas tools functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-057",
+      "title": "Assistant registry configurations",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-056"
+      ],
+      "scope": [
+        "Assistant registry configurations"
+      ],
+      "acceptanceCriteria": "Complete assistant registry configurations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-058",
+      "title": "Public professional research sourcing",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-057"
+      ],
+      "scope": [
+        "Public professional research sourcing"
+      ],
+      "acceptanceCriteria": "Complete public professional research sourcing functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-059",
+      "title": "Retrieval grounding corrections",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-058"
+      ],
+      "scope": [
+        "Retrieval grounding corrections"
+      ],
+      "acceptanceCriteria": "Complete retrieval grounding corrections functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-060",
+      "title": "Conversational request drafts approvals",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-059"
+      ],
+      "scope": [
+        "Conversational request drafts approvals"
+      ],
+      "acceptanceCriteria": "Complete conversational request drafts approvals functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-061",
+      "title": "Multi-agent turn director disabled",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-060"
+      ],
+      "scope": [
+        "Multi-agent turn director disabled"
+      ],
+      "acceptanceCriteria": "Complete multi-agent turn director disabled functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-062",
+      "title": "Rights consent ledger",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-061"
+      ],
+      "scope": [
+        "Rights consent ledger"
+      ],
+      "acceptanceCriteria": "Complete rights consent ledger functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-063",
+      "title": "Data privacy exports retention deletion",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-062"
+      ],
+      "scope": [
+        "Data privacy exports retention deletion"
+      ],
+      "acceptanceCriteria": "Complete data privacy exports retention deletion functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-064",
+      "title": "Monitoring alerts incidents",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-063"
+      ],
+      "scope": [
+        "Monitoring alerts incidents"
+      ],
+      "acceptanceCriteria": "Complete monitoring alerts incidents functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-065",
+      "title": "Threat modeling security tests",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-064"
+      ],
+      "scope": [
+        "Threat modeling security tests"
+      ],
+      "acceptanceCriteria": "Complete threat modeling security tests functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-066",
+      "title": "Load accessibility contract tests",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-065"
+      ],
+      "scope": [
+        "Load accessibility contract tests"
+      ],
+      "acceptanceCriteria": "Complete load accessibility contract tests functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    },
+    {
+      "id": "SME-067",
+      "title": "Production rollout DR release certification",
+      "origin": "original",
+      "prs": [],
+      "priority": "P1",
+      "phase": "Operations",
+      "dependsOn": [
+        "SME-066"
+      ],
+      "scope": [
+        "Production rollout DR release certification"
+      ],
+      "acceptanceCriteria": "Complete production rollout dr release certification functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "verification": [
+        "Automated tests and acceptance evidence",
+        "Regression tests"
+      ],
+      "contributingPrs": [],
+      "externalDependencies": [],
+      "externalPrerequisites": []
+    }
+  ],
+  "pullRequests": [
+    {
+      "number": 1,
+      "unitId": "SME-001",
+      "state": "open",
+      "merged": false
+    }
+  ]
+}
