@@ -8,7 +8,8 @@
   "observedAt": "2026-10-19T18:19:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
-    "AGENTS.md"
+    "AGENTS.md",
+    "architecture/decisions.json"
   ],
   "units": [
     {
@@ -26,8 +27,8 @@
       ],
       "acceptanceCriteria": "Complete architecture adrs functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Registry validation enforces the accepted boundary, fail-closed tenant authorization, and versioned idempotency ADR contracts.",
+        "Node architecture tests verify required documents and missing-tenant, inactive-membership, cross-tenant, and missing-permission negative cases."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
