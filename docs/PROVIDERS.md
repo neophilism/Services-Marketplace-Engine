@@ -1,0 +1,7 @@
+# Provider organizations and locations
+
+SME-012 defines tenant-owned provider organizations and reusable service locations without assuming an industry, geography provider, or onboarding vendor. Provider creation produces a `draft` record only. Later plan units own employee permissions, intake schemas, onboarding attestations, insurance, credentials, territories, and ranking; this contract does not claim any of those states.
+
+Provider reads and writes require exact `provider:read` or `provider:write` authority. Location reads and writes use separate `provider-location:read` and `provider-location:write` permissions. Every decision passes through the fail-closed tenant audit boundary. Cross-tenant identifiers, missing permissions, stale versions, closed or suspended parents, malformed addresses, unexpected adapter results, and audit or persistence failures return the same non-disclosing `provider_rejected` result.
+
+Locations record bounded postal fields, an IANA-style time zone, and one or more enumerated service modes. They intentionally omit coordinates and territories, which belong to SME-018. Adapters must enforce organization predicates and atomically compare the supplied record when replacing a provider or location. A downstream onboarding process may transition the provider lifecycle; the SME-012 mutation functions preserve that status and cannot activate a draft provider.
