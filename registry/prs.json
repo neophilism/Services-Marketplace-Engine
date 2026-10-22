@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:04:00Z",
+  "observedAt": "2026-10-22T18:14:20Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -138,7 +138,9 @@
       "id": "SME-005",
       "title": "OpenAPI contracts SDK generation",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        6
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -149,12 +151,13 @@
       ],
       "acceptanceCriteria": "Complete openapi contracts sdk generation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "OpenAPI 3.1 validation and deterministic generation keep the committed TypeScript client synchronized with the versioned bearer-authenticated resource contract.",
+        "SDK regression tests cover encoded request construction, invalid configuration and identifiers before transport, generic authorization denial without resource disclosure, and malformed response failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "active"
     },
     {
       "id": "SME-006",
@@ -1545,6 +1548,12 @@
       "unitId": "SME-004",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 6,
+      "unitId": "SME-005",
+      "state": "open",
+      "merged": false
     }
   ]
 }
