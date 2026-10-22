@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:17:13Z",
+  "observedAt": "2026-10-22T18:20:47Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -169,7 +169,9 @@
       "id": "SME-006",
       "title": "Identity sessions MFA passkeys",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        7
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -180,12 +182,13 @@
       ],
       "acceptanceCriteria": "Complete identity sessions mfa passkeys functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "One-time expiring passkey challenges are bound to HTTPS origin and relying-party ID; successful assertions require verified user presence, exact binding, and monotonic authenticator counters.",
+        "Identity tests deny unknown, expired, mismatched, replayed and revoked input uniformly before session issuance and verify bounded MFA session expiry and revocation."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "active"
     },
     {
       "id": "SME-007",
@@ -1560,6 +1563,12 @@
       "unitId": "SME-005",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 7,
+      "unitId": "SME-006",
+      "state": "open",
+      "merged": false
     }
   ]
 }
