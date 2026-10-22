@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T19:04:26Z",
+  "observedAt": "2026-10-22T19:08:32Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -359,7 +359,9 @@
       "id": "SME-012",
       "title": "Provider organizations and locations",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        13
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -370,12 +372,14 @@
       ],
       "acceptanceCriteria": "Complete provider organizations and locations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tenant-owned provider creation produces draft records only; exact provider read/write permissions and optimistic versions protect profile access and mutation.",
+        "Locations require an existing non-suspended provider, bounded postal fields, an IANA-style time zone and enumerated service modes without territory or coordinate claims.",
+        "Authorization-negative tests cover cross-tenant resources, wrong permissions, malformed inputs, stale writes, parent lifecycle, adapter contamination and audit failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-013",
@@ -1654,6 +1658,12 @@
       "unitId": "SME-011",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 13,
+      "unitId": "SME-012",
+      "state": "open",
+      "merged": false
     }
   ]
 }
