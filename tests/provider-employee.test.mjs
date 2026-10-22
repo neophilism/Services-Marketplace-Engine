@@ -110,18 +110,22 @@ test('employee reads require exact authority and reject contaminated adapters', 
   const value = fixture();
   const employee = (await inviteEmployee(value)).value;
   assert.deepEqual(await getProviderEmployee(
-    auth('provider-employee:read'), state, employee.providerEmployeeId, value.options,
+    auth('provider-employee:read'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, value.options,
   ), {accepted: true, value: employee});
   assert.deepEqual(await getProviderEmployee(
-    auth('provider-employee:write'), state, employee.providerEmployeeId, value.options,
+    auth('provider-employee:write'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
   for (const contaminated of [
     {...employee, organizationId: 'org-2'},
     {...employee, providerEmployeeId: 'other'},
+    {...employee, providerOrganizationId: 'provider-2'},
   ]) {
     value.options.store.getEmployee = async () => contaminated;
     assert.deepEqual(await getProviderEmployee(
-      auth('provider-employee:read'), state, employee.providerEmployeeId, value.options,
+      auth('provider-employee:read'), state, employee.providerOrganizationId,
+      employee.providerEmployeeId, value.options,
     ), {accepted: false, code: 'provider_employee_rejected'});
   }
 });
@@ -131,18 +135,21 @@ test('permission replacement needs separate grant authority and current version'
   const employee = (await inviteEmployee(value)).value;
   value.setNow(2_000);
   const updated = await replaceProviderEmployeePermissions(
-    auth('provider-permission:grant'), state, employee.providerEmployeeId, 1,
+    auth('provider-permission:grant'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, 1,
     ['job:write', 'job:read'], value.options,
   );
   assert.equal(updated.accepted, true);
   assert.equal(updated.value.version, 2);
   assert.deepEqual(updated.value.permissions, ['job:read', 'job:write']);
   assert.deepEqual(await replaceProviderEmployeePermissions(
-    auth('provider-employee:write'), state, employee.providerEmployeeId, 2,
+    auth('provider-employee:write'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, 2,
     ['job:read'], value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
   assert.deepEqual(await replaceProviderEmployeePermissions(
-    auth('provider-permission:grant'), state, employee.providerEmployeeId, 1,
+    auth('provider-permission:grant'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, 1,
     ['job:read'], value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
 });
@@ -153,18 +160,21 @@ test('lifecycle transitions are explicit and revocation is terminal', async () =
   for (const status of ['active', 'suspended', 'active', 'revoked']) {
     value.setNow(value.options.now() + 1);
     const result = await transitionProviderEmployee(
-      auth('provider-employee:write'), state, employee.providerEmployeeId,
+      auth('provider-employee:write'), state, employee.providerOrganizationId,
+      employee.providerEmployeeId,
       employee.version, status, value.options,
     );
     assert.equal(result.accepted, true);
     employee = result.value;
   }
   assert.deepEqual(await transitionProviderEmployee(
-    auth('provider-employee:write'), state, employee.providerEmployeeId,
+    auth('provider-employee:write'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId,
     employee.version, 'active', value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
   assert.deepEqual(await getProviderEmployee(
-    auth('provider-employee:read'), state, employee.providerEmployeeId, value.options,
+    auth('provider-employee:read'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
 });
 
@@ -174,14 +184,17 @@ test('inactive providers block invitations, grants and activation but permit rev
   value.options.store.getProvider = async () => ({...value.provider, status: 'suspended'});
   value.setNow(2_000);
   assert.deepEqual(await replaceProviderEmployeePermissions(
-    auth('provider-permission:grant'), state, employee.providerEmployeeId, 1,
+    auth('provider-permission:grant'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, 1,
     ['job:read'], value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
   assert.deepEqual(await transitionProviderEmployee(
-    auth('provider-employee:write'), state, employee.providerEmployeeId, 1, 'active', value.options,
+    auth('provider-employee:write'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, 1, 'active', value.options,
   ), {accepted: false, code: 'provider_employee_rejected'});
   const revoked = await transitionProviderEmployee(
-    auth('provider-employee:write'), state, employee.providerEmployeeId, 1, 'revoked', value.options,
+    auth('provider-employee:write'), state, employee.providerOrganizationId,
+    employee.providerEmployeeId, 1, 'revoked', value.options,
   );
   assert.equal(revoked.accepted, true);
 });

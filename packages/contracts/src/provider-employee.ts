@@ -142,16 +142,19 @@ export async function inviteProviderEmployee(
 export async function getProviderEmployee(
   request: OrganizationAuthorizationRequest,
   state: OrganizationAuthorizationState,
+  providerOrganizationId: string,
   providerEmployeeId: string,
   options: ProviderEmployeeOptions,
 ): Promise<ProviderEmployeeResult<ProviderEmployee>> {
   const organizationId = await authorize(
     request, state, 'provider-employee:read', 'provider-employee.read', options,
   );
-  if (!organizationId || !IDENTIFIER.test(providerEmployeeId)) return rejected();
+  if (!organizationId || !IDENTIFIER.test(providerOrganizationId) ||
+    !IDENTIFIER.test(providerEmployeeId)) return rejected();
   try {
     const employee = await options.store.getEmployee(organizationId, providerEmployeeId);
-    return isBoundEmployee(employee, organizationId, providerEmployeeId) && employee.status !== 'revoked'
+    return isBoundEmployee(employee, organizationId, providerEmployeeId) &&
+      employee.providerOrganizationId === providerOrganizationId && employee.status !== 'revoked'
       ? {accepted: true, value: employee} : rejected();
   } catch {
     return rejected();
@@ -169,7 +172,9 @@ export async function listProviderEmployees(
   );
   if (!organizationId || !IDENTIFIER.test(providerOrganizationId)) return rejected();
   try {
-    if (!await activeProvider(organizationId, providerOrganizationId, options)) return rejected();
+    const provider = await options.store.getProvider(organizationId, providerOrganizationId);
+    if (!isBoundProvider(provider, organizationId, providerOrganizationId) ||
+      provider.status === 'closed') return rejected();
     const employees = await options.store.listEmployees(organizationId, providerOrganizationId);
     if (employees.some(employee => employee.organizationId !== organizationId ||
       employee.providerOrganizationId !== providerOrganizationId)) return rejected();
@@ -182,6 +187,7 @@ export async function listProviderEmployees(
 export async function replaceProviderEmployeePermissions(
   request: OrganizationAuthorizationRequest,
   state: OrganizationAuthorizationState,
+  providerOrganizationId: string,
   providerEmployeeId: string,
   expectedVersion: number,
   permissionsInput: readonly string[],
@@ -192,14 +198,16 @@ export async function replaceProviderEmployeePermissions(
   );
   const now = options.now();
   const permissions = normalizePermissions(permissionsInput, options.permissionCatalog);
-  if (!organizationId || !IDENTIFIER.test(providerEmployeeId) ||
+  if (!organizationId || !IDENTIFIER.test(providerOrganizationId) ||
+    !IDENTIFIER.test(providerEmployeeId) ||
     !Number.isSafeInteger(expectedVersion) || expectedVersion < 1 ||
     !permissions || !validTimestamp(now)) return rejected();
   try {
     const current = await options.store.getEmployee(organizationId, providerEmployeeId);
     if (!isBoundEmployee(current, organizationId, providerEmployeeId) ||
-      current.status === 'revoked' || current.version !== expectedVersion || now < current.updatedAt ||
-      !await activeProvider(organizationId, current.providerOrganizationId, options)) return rejected();
+      current.providerOrganizationId !== providerOrganizationId || current.status === 'revoked' ||
+      current.version !== expectedVersion || now < current.updatedAt ||
+      !await activeProvider(organizationId, providerOrganizationId, options)) return rejected();
     const replacement = Object.freeze({
       ...current, permissions, version: current.version + 1, updatedAt: now,
     });
@@ -220,6 +228,7 @@ const TRANSITIONS: Readonly<Record<ProviderEmployee['status'], readonly Provider
 export async function transitionProviderEmployee(
   request: OrganizationAuthorizationRequest,
   state: OrganizationAuthorizationState,
+  providerOrganizationId: string,
   providerEmployeeId: string,
   expectedVersion: number,
   status: ProviderEmployee['status'],
@@ -229,15 +238,17 @@ export async function transitionProviderEmployee(
     request, state, 'provider-employee:write', 'provider-employee.transition', options,
   );
   const now = options.now();
-  if (!organizationId || !IDENTIFIER.test(providerEmployeeId) ||
+  if (!organizationId || !IDENTIFIER.test(providerOrganizationId) ||
+    !IDENTIFIER.test(providerEmployeeId) ||
     !Number.isSafeInteger(expectedVersion) || expectedVersion < 1 || !validTimestamp(now)) return rejected();
   try {
     const current = await options.store.getEmployee(organizationId, providerEmployeeId);
     if (!isBoundEmployee(current, organizationId, providerEmployeeId) ||
+      current.providerOrganizationId !== providerOrganizationId ||
       current.version !== expectedVersion || now < current.updatedAt ||
       !TRANSITIONS[current.status].includes(status)) return rejected();
     if (status === 'active' && !await activeProvider(
-      organizationId, current.providerOrganizationId, options,
+      organizationId, providerOrganizationId, options,
     )) return rejected();
     const replacement = Object.freeze({...current, status, version: current.version + 1, updatedAt: now});
     return await options.store.replaceEmployee(current, replacement)
