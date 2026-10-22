@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:32:20Z",
+  "observedAt": "2026-10-22T18:35:01Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -231,7 +231,9 @@
       "id": "SME-008",
       "title": "Tenancy boundary audit logs",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        9
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -242,12 +244,13 @@
       ],
       "acceptanceCriteria": "Complete tenancy boundary audit logs functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Every organization authorization decision appends a structured immutable event with opaque ID, integer timestamp, action, tenant context, resource tenant and outcome.",
+        "Audit tests cover allowed, denied and missing-context events and verify fail-closed behavior for invalid metadata or unavailable durable sinks."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "active"
     },
     {
       "id": "SME-009",
@@ -1590,6 +1593,12 @@
       "unitId": "SME-007",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 9,
+      "unitId": "SME-008",
+      "state": "open",
+      "merged": false
     }
   ]
 }
