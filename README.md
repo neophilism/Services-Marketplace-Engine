@@ -17,3 +17,5 @@ The canonical OpenAPI document and deterministic generated TypeScript SDK are de
 The fail-closed passkey MFA and bounded session contract is documented in `docs/IDENTITY.md`.
 
 Organization membership and role authorization is documented in `docs/RBAC.md`.
+
+Fail-closed tenancy authorization audit events are documented in `docs/AUDIT_LOGS.md`.
