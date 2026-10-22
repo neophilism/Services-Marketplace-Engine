@@ -44,7 +44,7 @@ function fixture(overrides = {}) {
     executeCommand: async (message, operation) => {
       const key = message.organizationId + ':' + message.idempotencyKey;
       const existing = commands.get(key);
-      if (existing?.digest !== message.requestDigest) return {status: 'conflict'};
+      if (existing && existing.digest !== message.requestDigest) return {status: 'conflict'};
       if (existing) {
         return {
           status: 'replayed',
