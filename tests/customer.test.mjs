@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   archiveCustomerAsset,
   createCustomerProfile,
+  getCustomerProfile,
   listCustomerAssets,
   saveCustomerAsset,
   updateCustomerProfile,
@@ -13,7 +14,7 @@ const state = {
   memberships: [{subjectId: 'operator-1', organizationId: 'org-1', status: 'active', roleIds: ['agent']}],
   roles: [{
     roleId: 'agent', organizationId: 'org-1',
-    permissions: ['customer-profile:write', 'saved-asset:write', 'saved-asset:read'],
+    permissions: ['customer-profile:write', 'customer-profile:read', 'saved-asset:write', 'saved-asset:read'],
   }],
 };
 const auth = requiredPermission => ({
@@ -121,6 +122,24 @@ test('profile updates require the current version and preserve immutable identit
   assert.equal(updated.value.createdAt, profile.createdAt);
   assert.deepEqual(await updateCustomerProfile(
     auth('customer-profile:write'), state, profile.customerProfileId, 1, profileInput, value.options,
+  ), {accepted: false, code: 'customer_rejected'});
+  assert.deepEqual(await updateCustomerProfile(
+    auth('customer-profile:write'), state, profile.customerProfileId, 2,
+    {...profileInput, customerSubjectId: 'customer-2'}, value.options,
+  ), {accepted: false, code: 'customer_rejected'});
+});
+
+test('profile reads require exact permission and tenant binding', async () => {
+  const value = fixture();
+  const profile = (await createProfile(value)).value;
+  assert.deepEqual(await getCustomerProfile(
+    auth('customer-profile:read'), state, profile.customerProfileId, value.options,
+  ), {accepted: true, value: profile});
+  for (const authorization of [
+    auth('customer-profile:write'),
+    {...auth('customer-profile:read'), resourceOrganizationId: 'org-2'},
+  ]) assert.deepEqual(await getCustomerProfile(
+    authorization, state, profile.customerProfileId, value.options,
   ), {accepted: false, code: 'customer_rejected'});
 });
 

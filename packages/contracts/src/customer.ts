@@ -154,14 +154,31 @@ export async function updateCustomerProfile(
   try {
     const current = await options.store.getProfile(organizationId, customerProfileId);
     if (!current || current.status !== 'active' || current.version !== expectedVersion ||
-      now < current.updatedAt) return rejected();
+      input.customerSubjectId !== current.customerSubjectId || now < current.updatedAt) return rejected();
     const replacement = Object.freeze({
-      ...current, customerSubjectId: input.customerSubjectId, displayName: input.displayName,
-      email: input.email ?? null, phone: input.phone ?? null,
+      ...current, displayName: input.displayName, email: input.email ?? null, phone: input.phone ?? null,
       version: current.version + 1, updatedAt: now,
     });
     return await options.store.replaceProfile(current, replacement)
       ? {accepted: true, value: replacement} : rejected();
+  } catch {
+    return rejected();
+  }
+}
+
+export async function getCustomerProfile(
+  request: OrganizationAuthorizationRequest,
+  state: OrganizationAuthorizationState,
+  customerProfileId: string,
+  options: CustomerOptions,
+): Promise<CustomerResult<CustomerProfile>> {
+  const organizationId = await authorize(
+    request, state, 'customer-profile:read', 'customer-profile.read', options,
+  );
+  if (!organizationId || !IDENTIFIER.test(customerProfileId)) return rejected();
+  try {
+    const profile = await options.store.getProfile(organizationId, customerProfileId);
+    return profile?.status === 'active' ? {accepted: true, value: profile} : rejected();
   } catch {
     return rejected();
   }
