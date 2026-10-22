@@ -34,6 +34,7 @@ const input = {
     {key: 'priority', label: 'Priority', kind: 'choice', required: true, options: ['normal', 'urgent']},
     {key: 'units', label: 'Units', kind: 'integer', required: false, minimum: 1, maximum: 100},
     {key: 'flexible', label: 'Flexible date', kind: 'boolean', required: false},
+    {key: 'visit-date', label: 'Visit date', kind: 'date', required: false},
   ],
 };
 
@@ -127,6 +128,14 @@ test('requires exact contract, tenant, permission and bounded schema vocabulary'
     }],
     [1, auth('service-taxonomy:write'), {
       ...input,
+      fields: [{key: 'summary', label: 'Summary', kind: 'text', required: 'yes'}],
+    }],
+    [1, auth('service-taxonomy:write'), {
+      ...input,
+      fields: [{key: 'units', label: 'Units', kind: 'integer', required: false, minimum: 1.5}],
+    }],
+    [1, auth('service-taxonomy:write'), {
+      ...input,
       fields: [
         {key: 'duplicate', label: 'First', kind: 'text', required: true},
         {key: 'duplicate', label: 'Second', kind: 'text', required: true},
@@ -165,6 +174,28 @@ test('requires a published prior revision and an active published parent', async
   assert.equal((await create(value, {...input, revision: 2})).accepted, true);
 });
 
+test('children remain retireable after their parent is retired', async () => {
+  const value = fixture();
+  const parent = {...input, serviceKey: 'parent', title: 'Parent'};
+  await create(value, parent);
+  value.setNow(1_001);
+  await publishServiceDefinition(
+    auth('service-taxonomy:write'), state, 'parent', 1, 1, value.options,
+  );
+  value.setNow(1_002);
+  await create(value, {...input, parentServiceKey: 'parent'});
+  value.setNow(1_003);
+  await publish(value);
+  value.setNow(1_004);
+  assert.equal((await retireServiceDefinition(
+    auth('service-taxonomy:write'), state, 'parent', 1, 2, value.options,
+  )).accepted, true);
+  value.setNow(1_005);
+  assert.equal((await retireServiceDefinition(
+    auth('service-taxonomy:write'), state, input.serviceKey, 1, 2, value.options,
+  )).accepted, true);
+});
+
 test('validates answers against an exact published revision', async () => {
   const value = fixture();
   await create(value);
@@ -199,6 +230,7 @@ test('rejects draft, missing, additional, mistyped and out-of-bounds answers', a
     {summary: 'Fix it', priority: 'invalid'},
     {summary: 'Fix it', priority: 'normal', units: 1.5},
     {summary: 'Fix it', priority: 'normal', flexible: 'yes'},
+    {summary: 'Fix it', priority: 'normal', 'visit-date': '2026-02-31'},
   ]) {
     assert.deepEqual(await validateServiceIntake(
       auth('service-intake:submit'), state, input.serviceKey, 1, answers, value.options,
