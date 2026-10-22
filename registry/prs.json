@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:48:00Z",
+  "observedAt": "2026-10-22T18:50:20Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -295,7 +295,9 @@
       "id": "SME-010",
       "title": "Object storage attachment scanning",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        11
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -306,12 +308,17 @@
       ],
       "acceptanceCriteria": "Complete object storage attachment scanning functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Authorized uploads use engine-owned organization quarantine keys and reject unsupported versions, disallowed types, oversized objects, malformed digests and cross-tenant context before persistence.",
+        "Verified scanner results are bound to organization, attachment, object key and SHA-256 digest; errors remain quarantined, clean objects become downloadable and infected objects are deleted.",
+        "Download authorization and tests prove quarantined, infected, cross-tenant and wrong-permission requests never receive an object URL."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress",
+      "acceptanceEvidence": [
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/11"
+      ]
     },
     {
       "id": "SME-011",
@@ -1622,6 +1629,12 @@
       "unitId": "SME-009",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 11,
+      "unitId": "SME-010",
+      "state": "open",
+      "merged": false
     }
   ]
 }
