@@ -49,3 +49,4 @@ export * from './outbox.js';
 export * from './attachment.js';
 export * from './customer.js';
 export * from './provider.js';
+export * from './provider-employee.js';
