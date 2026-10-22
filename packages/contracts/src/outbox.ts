@@ -7,12 +7,17 @@ import type {
   OrganizationAuthorizationState,
 } from './rbac.js';
 
+export const OUTBOX_CONTRACT_VERSION = 1 as const;
 export const OUTBOX_REJECTED = 'outbox_rejected' as const;
 
+type CommandResponse = Readonly<Record<string, unknown>>;
+
 export interface OutboxMessage {
+  readonly contractVersion: typeof OUTBOX_CONTRACT_VERSION;
   readonly messageId: string;
   readonly organizationId: string;
   readonly idempotencyKey: string;
+  readonly requestDigest: string;
   readonly topic: string;
   readonly payload: Readonly<Record<string, unknown>>;
   readonly createdAt: number;
@@ -24,23 +29,39 @@ export interface LeasedOutboxMessage extends OutboxMessage {
   readonly leaseExpiresAt: number;
 }
 
+export type CommandCommit<T extends CommandResponse> =
+  | {
+      readonly status: 'committed' | 'replayed';
+      readonly messageId: string;
+      readonly response: T;
+    }
+  | {readonly status: 'conflict'};
+
 export interface OutboxStore {
-  enqueueUnique(message: OutboxMessage): Promise<{
-    readonly created: boolean;
-    readonly messageId: string;
-  }>;
+  executeCommand<T extends CommandResponse>(
+    message: OutboxMessage,
+    operation: () => Promise<T>,
+  ): Promise<CommandCommit<T>>;
   claimNext(now: number, leaseExpiresAt: number): Promise<LeasedOutboxMessage | null>;
+  consume(
+    consumerId: string,
+    message: LeasedOutboxMessage,
+    handler: (message: OutboxMessage) => Promise<void>,
+  ): Promise<'processed' | 'duplicate'>;
   acknowledge(messageId: string, leaseToken: string): Promise<boolean>;
   retry(messageId: string, leaseToken: string, availableAt: number): Promise<boolean>;
   deadLetter(messageId: string, leaseToken: string): Promise<boolean>;
 }
 
-export interface EnqueueOutboxRequest {
+export interface EnqueueOutboxRequest<T extends CommandResponse> {
+  readonly contractVersion: number;
   readonly authorization: OrganizationAuthorizationRequest;
   readonly state: OrganizationAuthorizationState;
   readonly idempotencyKey: string;
+  readonly requestDigest: string;
   readonly topic: string;
   readonly payload: Readonly<Record<string, unknown>>;
+  readonly operation: () => Promise<T>;
 }
 
 export interface OutboxOptions {
@@ -60,6 +81,7 @@ export type OutboxResult<T> =
 export type DispatchResult =
   | {readonly status: 'idle'}
   | {readonly status: 'acknowledged'; readonly messageId: string}
+  | {readonly status: 'duplicate'; readonly messageId: string}
   | {readonly status: 'retry_scheduled'; readonly messageId: string}
   | {readonly status: 'dead_lettered'; readonly messageId: string}
   | {readonly status: 'failed'; readonly code: typeof OUTBOX_REJECTED};
@@ -67,14 +89,16 @@ export type DispatchResult =
 const DEFAULT_LEASE_MS = 30_000;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
 const DEFAULT_MAX_ATTEMPTS = 10;
+const IDENTIFIER = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/;
+const SHA256_DIGEST = /^sha256:[0-9a-f]{64}$/;
 
 const rejected = <T>(): OutboxResult<T> => ({
   accepted: false,
   code: OUTBOX_REJECTED,
 });
 
-function isNonEmpty(value: string): boolean {
-  return value.trim().length > 0;
+function isIdentifier(value: string): boolean {
+  return IDENTIFIER.test(value);
 }
 
 function isTimestamp(value: number): boolean {
@@ -83,11 +107,13 @@ function isTimestamp(value: number): boolean {
 
 function isValidLease(message: LeasedOutboxMessage): boolean {
   return (
-    isNonEmpty(message.messageId) &&
-    isNonEmpty(message.organizationId) &&
-    isNonEmpty(message.idempotencyKey) &&
-    isNonEmpty(message.topic) &&
-    isNonEmpty(message.leaseToken) &&
+    message.contractVersion === OUTBOX_CONTRACT_VERSION &&
+    isIdentifier(message.messageId) &&
+    isIdentifier(message.organizationId) &&
+    isIdentifier(message.idempotencyKey) &&
+    SHA256_DIGEST.test(message.requestDigest) &&
+    isIdentifier(message.topic) &&
+    isIdentifier(message.leaseToken) &&
     isTimestamp(message.createdAt) &&
     isTimestamp(message.leaseExpiresAt) &&
     Number.isSafeInteger(message.attempt) &&
@@ -95,10 +121,14 @@ function isValidLease(message: LeasedOutboxMessage): boolean {
   );
 }
 
-export async function enqueueOutboxMessage(
-  request: EnqueueOutboxRequest,
+export async function enqueueOutboxMessage<T extends CommandResponse>(
+  request: EnqueueOutboxRequest<T>,
   options: OutboxOptions,
-): Promise<OutboxResult<{messageId: string; created: boolean}>> {
+): Promise<OutboxResult<{
+  messageId: string;
+  created: boolean;
+  response: T;
+}>> {
   const authorization = await authorizeAndAuditOrganizationAction(
     request.authorization,
     request.state,
@@ -110,34 +140,46 @@ export async function enqueueOutboxMessage(
   const createdAt = options.now();
   const messageId = options.createOpaqueId();
   if (
+    request.contractVersion !== OUTBOX_CONTRACT_VERSION ||
     request.authorization.requiredPermission !== 'outbox:enqueue' ||
-    !isNonEmpty(request.idempotencyKey) ||
-    !isNonEmpty(request.topic) ||
-    !isNonEmpty(messageId) ||
+    !isIdentifier(request.idempotencyKey) ||
+    !SHA256_DIGEST.test(request.requestDigest) ||
+    !isIdentifier(request.topic) ||
+    !isIdentifier(messageId) ||
     !isTimestamp(createdAt)
   ) {
     return rejected();
   }
 
   const message = Object.freeze({
+    contractVersion: OUTBOX_CONTRACT_VERSION,
     messageId,
     organizationId: authorization.organizationId,
     idempotencyKey: request.idempotencyKey,
+    requestDigest: request.requestDigest,
     topic: request.topic,
     payload: Object.freeze({...request.payload}),
     createdAt,
   });
 
   try {
-    const result = await options.store.enqueueUnique(message);
-    if (!isNonEmpty(result.messageId)) return rejected();
-    return {accepted: true, value: {messageId: result.messageId, created: result.created}};
+    const result = await options.store.executeCommand(message, request.operation);
+    if (result.status === 'conflict' || !isIdentifier(result.messageId)) return rejected();
+    return {
+      accepted: true,
+      value: {
+        messageId: result.messageId,
+        created: result.status === 'committed',
+        response: result.response,
+      },
+    };
   } catch {
     return rejected();
   }
 }
 
 export async function dispatchNextOutboxMessage(
+  consumerId: string,
   handler: (message: OutboxMessage) => Promise<void>,
   options: OutboxOptions,
 ): Promise<DispatchResult> {
@@ -146,6 +188,7 @@ export async function dispatchNextOutboxMessage(
   const retryDelayMs = options.retryDelayMs ?? DEFAULT_RETRY_DELAY_MS;
   const maxAttempts = options.maxAttempts ?? DEFAULT_MAX_ATTEMPTS;
   if (
+    !isIdentifier(consumerId) ||
     !isTimestamp(now) ||
     !Number.isSafeInteger(leaseMs) ||
     leaseMs <= 0 ||
@@ -169,11 +212,14 @@ export async function dispatchNextOutboxMessage(
   }
 
   try {
-    await handler(message);
+    const delivery = await options.store.consume(consumerId, message, handler);
     if (!await options.store.acknowledge(message.messageId, message.leaseToken)) {
       return {status: 'failed', code: OUTBOX_REJECTED};
     }
-    return {status: 'acknowledged', messageId: message.messageId};
+    return {
+      status: delivery === 'duplicate' ? 'duplicate' : 'acknowledged',
+      messageId: message.messageId,
+    };
   } catch {
     try {
       if (message.attempt >= maxAttempts) {
