@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T19:13:30Z",
+  "observedAt": "2026-10-22T19:17:49Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -391,7 +391,9 @@
       "id": "SME-013",
       "title": "Provider employees and permissions",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        14
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -402,12 +404,14 @@
       ],
       "acceptanceCriteria": "Complete provider employees and permissions functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Provider employee invitations, reads and listings are tenant/provider bound and require exact employee administration permissions.",
+        "Permission replacement requires separate grant authority, validates the full de-duplicated set against an injected catalog and uses optimistic record versions.",
+        "Lifecycle tests prove explicit invitation, activation, suspension and terminal revocation behavior plus inactive-parent, cross-tenant, contaminated-adapter and audit-failure denial."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-014",
@@ -1670,6 +1674,12 @@
       "unitId": "SME-012",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 14,
+      "unitId": "SME-013",
+      "state": "open",
+      "merged": false
     }
   ]
 }
