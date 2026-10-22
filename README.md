@@ -11,3 +11,5 @@ The strict TypeScript project is split into an industry-neutral contract package
 CI runs registry/static policy separately from the compiled test suite. See `docs/CI.md` for the enforced dependency, evidence, source-boundary, and text-hygiene contract.
 
 PostgreSQL schema changes use paired transactional SQL migrations with real apply, row-level authorization, and rollback validation. See `docs/DATABASE.md`.
+
+The canonical OpenAPI document and deterministic generated TypeScript SDK are described in `docs/OPENAPI.md`. CI rejects stale generated output.
