@@ -52,3 +52,4 @@ export * from './provider.js';
 export * from './provider-employee.js';
 export * from './service-taxonomy.js';
 export * from './provider-onboarding.js';
+export * from './insurance.js';
