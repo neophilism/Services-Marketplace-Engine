@@ -15,3 +15,5 @@ PostgreSQL schema changes use paired transactional SQL migrations with real appl
 The canonical OpenAPI document and deterministic generated TypeScript SDK are described in `docs/OPENAPI.md`. CI rejects stale generated output.
 
 The fail-closed passkey MFA and bounded session contract is documented in `docs/IDENTITY.md`.
+
+Organization membership and role authorization is documented in `docs/RBAC.md`.
