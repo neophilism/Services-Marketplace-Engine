@@ -42,3 +42,5 @@ export function authorizeTenantAccess(
     subjectId: context.subjectId,
   };
 }
+
+export * from './identity.js';
