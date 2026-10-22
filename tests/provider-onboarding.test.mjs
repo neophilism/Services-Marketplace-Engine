@@ -200,6 +200,20 @@ test('rejects duplicated or malformed adapter attestation snapshots', async () =
     accepted: false, code: 'provider_onboarding_rejected',
   });
 
+  const missingExpiry = fixture();
+  const second = await create(missingExpiry);
+  const secondKey = 'org-1:' + second.value.providerOnboardingId;
+  missingExpiry.applications.set(secondKey, {
+    ...second.value,
+    attestations: [
+      {...second.value.attestations[0], expiresAt: undefined},
+      second.value.attestations[1],
+    ],
+  });
+  assert.deepEqual(await submit(missingExpiry, second.value.providerOnboardingId, 1), {
+    accepted: false, code: 'provider_onboarding_rejected',
+  });
+
   const malformed = fixture();
   malformed.options.attestationCatalog.set('mismatched-map-key', {
     key: 'different-key', statementVersion: 1, statement: 'Invalid catalog entry.',
