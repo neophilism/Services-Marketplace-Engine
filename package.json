@@ -2,9 +2,21 @@
   "name": "services-marketplace-engine",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
     "validate:plan": "node scripts/validate-plan.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "npm run validate:plan && npm test"
+    "check": "npm run validate:plan && npm run build && npm test"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3"
   }
 }
