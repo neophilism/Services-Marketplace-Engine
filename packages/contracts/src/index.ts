@@ -25,7 +25,6 @@ export function authorizeTenantAccess(
   if (!context.subjectId || !context.organizationId || context.organizationId !== resourceOrganizationId) {
     return {authorized: false, code: AUTHORIZATION_DENIED};
   }
-
   const membership = context.memberships.find(
     candidate => candidate.organizationId === context.organizationId,
   );
@@ -48,3 +47,4 @@ export * from './rbac.js';
 export * from './audit.js';
 export * from './outbox.js';
 export * from './attachment.js';
+export * from './customer.js';

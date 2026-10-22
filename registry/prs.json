@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:52:30Z",
+  "observedAt": "2026-10-22T18:59:25Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -327,7 +327,9 @@
       "id": "SME-011",
       "title": "Customer profiles and saved assets",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        12
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -338,12 +340,14 @@
       ],
       "acceptanceCriteria": "Complete customer profiles and saved assets functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tenant-scoped profile creation and optimistic updates require exact customer-profile write authority and reject invalid contract versions, malformed fields, stale versions and cross-tenant context.",
+        "Saved-asset creation, active listing and archival require exact permissions, active tenant profiles, bounded industry-neutral metadata and organization-clean adapter results.",
+        "Focused authorization-negative tests cover missing profiles, wrong permissions, cross-tenant resources, stale writes, adapter contamination and fail-closed audit persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-012",
@@ -1638,6 +1642,12 @@
       "unitId": "SME-010",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 12,
+      "unitId": "SME-011",
+      "state": "open",
+      "merged": false
     }
   ]
 }
