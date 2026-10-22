@@ -1,7 +1,7 @@
 name: Registry validation
 on: [push, pull_request]
 jobs:
-  registry:
+  static:
     runs-on: ubuntu-latest
     permissions: {contents: read}
     steps:
@@ -9,4 +9,15 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: '22', cache: 'npm'}
       - run: npm ci
-      - run: npm run check
+      - run: npm run validate:plan
+      - run: npm run validate:static
+  test:
+    runs-on: ubuntu-latest
+    permissions: {contents: read}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: 'npm'}
+      - run: npm ci
+      - run: npm run build
+      - run: npm test

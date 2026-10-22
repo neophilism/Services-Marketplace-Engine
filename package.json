@@ -13,8 +13,9 @@
     "build": "tsc -b",
     "clean": "tsc -b --clean",
     "validate:plan": "node scripts/validate-plan.mjs",
+    "validate:static": "node scripts/check-static.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "npm run validate:plan && npm run build && npm test"
+    "check": "npm run validate:plan && npm run validate:static && npm run build && npm test"
   },
   "devDependencies": {
     "typescript": "5.7.3"
