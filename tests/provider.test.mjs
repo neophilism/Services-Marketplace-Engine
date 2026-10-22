@@ -205,6 +205,24 @@ test('location status changes use compare-and-swap and preserve identity', async
   ), {accepted: false, code: 'provider_rejected'});
 });
 
+test('suspension permits location deactivation but blocks reactivation', async () => {
+  const value = fixture();
+  const provider = (await createProvider(value)).value;
+  const location = (await createProviderLocation(
+    1, auth('provider-location:write'), state,
+    locationInput(provider.providerOrganizationId), value.options,
+  )).value;
+  value.providers.set(provider.providerOrganizationId, {...provider, status: 'suspended'});
+  value.setNow(2_000);
+  const inactive = await setProviderLocationStatus(
+    auth('provider-location:write'), state, location.providerLocationId, 1, 'inactive', value.options,
+  );
+  assert.equal(inactive.accepted, true);
+  assert.deepEqual(await setProviderLocationStatus(
+    auth('provider-location:write'), state, location.providerLocationId, 2, 'active', value.options,
+  ), {accepted: false, code: 'provider_rejected'});
+});
+
 test('audit persistence failure prevents provider writes', async () => {
   const value = fixture();
   value.options.audit.sink.append = async () => { throw Error('unavailable'); };

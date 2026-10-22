@@ -254,6 +254,10 @@ export async function setProviderLocationStatus(
   try {
     const current = await options.store.getLocation(organizationId, providerLocationId);
     if (!current || current.version !== expectedVersion || now < current.updatedAt) return rejected();
+    if (status === 'active') {
+      const provider = await options.store.getProvider(organizationId, current.providerOrganizationId);
+      if (!provider || provider.status === 'suspended' || provider.status === 'closed') return rejected();
+    }
     const replacement = Object.freeze({...current, status, version: current.version + 1, updatedAt: now});
     return await options.store.replaceLocation(current, replacement)
       ? {accepted: true, value: replacement} : rejected();
