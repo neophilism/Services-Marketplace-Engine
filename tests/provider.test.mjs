@@ -223,6 +223,71 @@ test('suspension permits location deactivation but blocks reactivation', async (
   ), {accepted: false, code: 'provider_rejected'});
 });
 
+test('single-provider lookups reject foreign tenants and mismatched record identities', async () => {
+  const value = fixture();
+  const provider = (await createProvider(value)).value;
+  for (const contaminated of [
+    {...provider, organizationId: 'org-2'},
+    {...provider, providerOrganizationId: 'provider-other'},
+  ]) {
+    value.options.store.getProvider = async () => contaminated;
+    assert.deepEqual(await getProviderOrganization(
+      auth('provider:read'), state, provider.providerOrganizationId, value.options,
+    ), {accepted: false, code: 'provider_rejected'});
+    assert.deepEqual(await updateProviderOrganization(
+      auth('provider:write'), state, provider.providerOrganizationId, 1, providerInput, value.options,
+    ), {accepted: false, code: 'provider_rejected'});
+    assert.deepEqual(await createProviderLocation(
+      1, auth('provider-location:write'), state,
+      locationInput(provider.providerOrganizationId), value.options,
+    ), {accepted: false, code: 'provider_rejected'});
+    assert.deepEqual(await listProviderLocations(
+      auth('provider-location:read'), state, provider.providerOrganizationId, value.options,
+    ), {accepted: false, code: 'provider_rejected'});
+  }
+  assert.equal(value.providers.get(provider.providerOrganizationId), provider);
+  assert.equal(value.locations.size, 0);
+});
+
+test('location mutation rejects foreign tenants and mismatched record identities', async () => {
+  const value = fixture();
+  const provider = (await createProvider(value)).value;
+  const location = (await createProviderLocation(
+    1, auth('provider-location:write'), state,
+    locationInput(provider.providerOrganizationId), value.options,
+  )).value;
+  value.setNow(2_000);
+  for (const contaminated of [
+    {...location, organizationId: 'org-2'},
+    {...location, providerLocationId: 'location-other'},
+  ]) {
+    value.options.store.getLocation = async () => contaminated;
+    assert.deepEqual(await setProviderLocationStatus(
+      auth('provider-location:write'), state, location.providerLocationId, 1, 'inactive', value.options,
+    ), {accepted: false, code: 'provider_rejected'});
+  }
+  assert.equal(value.locations.get(location.providerLocationId), location);
+});
+
+test('location reactivation rejects a contaminated parent lookup', async () => {
+  const value = fixture();
+  const provider = (await createProvider(value)).value;
+  const location = (await createProviderLocation(
+    1, auth('provider-location:write'), state,
+    locationInput(provider.providerOrganizationId), value.options,
+  )).value;
+  value.setNow(2_000);
+  const inactive = (await setProviderLocationStatus(
+    auth('provider-location:write'), state, location.providerLocationId, 1, 'inactive', value.options,
+  )).value;
+  value.setNow(3_000);
+  value.options.store.getProvider = async () => ({...provider, organizationId: 'org-2'});
+  assert.deepEqual(await setProviderLocationStatus(
+    auth('provider-location:write'), state, location.providerLocationId, 2, 'active', value.options,
+  ), {accepted: false, code: 'provider_rejected'});
+  assert.equal(value.locations.get(location.providerLocationId), inactive);
+});
+
 test('audit persistence failure prevents provider writes', async () => {
   const value = fixture();
   value.options.audit.sink.append = async () => { throw Error('unavailable'); };
