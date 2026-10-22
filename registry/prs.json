@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:38:10Z",
+  "observedAt": "2026-10-22T18:42:39Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -262,7 +262,9 @@
       "id": "SME-009",
       "title": "Outbox queues idempotency",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        10
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -273,12 +275,17 @@
       ],
       "acceptanceCriteria": "Complete outbox queues idempotency functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Authorized producer commands use an atomically tenant-scoped idempotency key and repeated commands return the original immutable message without a second insert.",
+        "Leased worker delivery acknowledges only after success, schedules bounded durable retries, dead-letters exhausted messages, and fails closed for malformed claims, stale leases or storage failure.",
+        "Authorization-negative tests cover cross-tenant access, missing permissions and unavailable audit storage before any outbox write."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress",
+      "acceptanceEvidence": [
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/10"
+      ]
     },
     {
       "id": "SME-010",
@@ -1605,6 +1612,12 @@
       "unitId": "SME-008",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 10,
+      "unitId": "SME-009",
+      "state": "open",
+      "merged": false
     }
   ]
 }
