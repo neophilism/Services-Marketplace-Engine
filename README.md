@@ -13,3 +13,5 @@ CI runs registry/static policy separately from the compiled test suite. See `doc
 PostgreSQL schema changes use paired transactional SQL migrations with real apply, row-level authorization, and rollback validation. See `docs/DATABASE.md`.
 
 The canonical OpenAPI document and deterministic generated TypeScript SDK are described in `docs/OPENAPI.md`. CI rejects stale generated output.
+
+The fail-closed passkey MFA and bounded session contract is documented in `docs/IDENTITY.md`.
