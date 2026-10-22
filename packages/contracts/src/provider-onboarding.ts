@@ -120,20 +120,25 @@ function buildAttestations(
   if (catalog.size < 1 || catalog.size > 32 || affirmations.length !== catalog.size ||
     new Set(affirmations.map(value => value.key)).size !== affirmations.length ||
     affirmations.some(value => value.affirmed !== true || !catalog.has(value.key))) return null;
-  const definitions = [...catalog.values()].sort((left, right) => left.key.localeCompare(right.key));
-  if (definitions.some(definition => !KEY.test(definition.key) ||
+  const definitions = [...catalog.entries()]
+    .sort(([left], [right]) => left.localeCompare(right));
+  if (definitions.some(([catalogKey, definition]) => catalogKey !== definition.key ||
+    !KEY.test(definition.key) ||
     !Number.isSafeInteger(definition.statementVersion) || definition.statementVersion < 1 ||
     !validText(definition.statement, 2_000) ||
     (definition.validityMs !== undefined &&
       (!Number.isSafeInteger(definition.validityMs) || definition.validityMs < 1 ||
         definition.validityMs > 366 * 24 * 60 * 60 * 1_000)))) return null;
-  return Object.freeze(definitions.map(definition => Object.freeze({
+  const snapshots = definitions.map(([, definition]) => ({
     key: definition.key,
     statementVersion: definition.statementVersion,
     statement: definition.statement,
     affirmedAt: now,
     ...(definition.validityMs === undefined ? {} : {expiresAt: now + definition.validityMs}),
-  })));
+  }));
+  if (snapshots.some(snapshot =>
+    snapshot.expiresAt !== undefined && !Number.isSafeInteger(snapshot.expiresAt))) return null;
+  return Object.freeze(snapshots.map(snapshot => Object.freeze(snapshot)));
 }
 
 function attestationsCurrent(
@@ -141,12 +146,14 @@ function attestationsCurrent(
   catalog: ReadonlyMap<string, AttestationDefinition>,
   now: number,
 ): boolean {
-  if (attestations.length !== catalog.size) return false;
+  if (attestations.length !== catalog.size ||
+    new Set(attestations.map(attestation => attestation.key)).size !== catalog.size) return false;
   return attestations.every(attestation => {
     const definition = catalog.get(attestation.key);
     return definition !== undefined && definition.statementVersion === attestation.statementVersion &&
-      definition.statement === attestation.statement && attestation.affirmedAt <= now &&
-      (attestation.expiresAt === undefined || attestation.expiresAt > now);
+      definition.statement === attestation.statement && validTimestamp(attestation.affirmedAt) &&
+      attestation.affirmedAt <= now && (attestation.expiresAt === undefined ||
+        (validTimestamp(attestation.expiresAt) && attestation.expiresAt > now));
   });
 }
 
