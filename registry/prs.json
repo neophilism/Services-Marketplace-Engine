@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T19:24:00Z",
+  "observedAt": "2026-10-22T19:28:15Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -423,7 +423,9 @@
       "id": "SME-014",
       "title": "Service taxonomy dynamic intake schemas",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        15
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -434,12 +436,14 @@
       ],
       "acceptanceCriteria": "Complete service taxonomy dynamic intake schemas functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Service definitions use tenant-bound immutable revisions with explicit draft, publish and retire transitions.",
+        "Dynamic intake schemas use a bounded declarative field vocabulary and submissions validate exact published revisions without executing schema-provided code.",
+        "Authorization-negative tests cover missing or cross-tenant authority, invalid schemas and answers, stale writes, contaminated adapters, audit failure and persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-015",
@@ -1686,6 +1690,12 @@
       "unitId": "SME-013",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 15,
+      "unitId": "SME-014",
+      "state": "open",
+      "merged": false
     }
   ]
 }
