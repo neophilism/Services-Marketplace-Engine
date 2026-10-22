@@ -188,6 +188,27 @@ test('blocks changed or expired statements at submission and review', async () =
   assert.equal(expired.providers.get('org-1:provider-1').status, 'draft');
 });
 
+test('rejects duplicated or malformed adapter attestation snapshots', async () => {
+  const value = fixture();
+  const created = await create(value);
+  const key = 'org-1:' + created.value.providerOnboardingId;
+  value.applications.set(key, {
+    ...created.value,
+    attestations: [created.value.attestations[0], created.value.attestations[0]],
+  });
+  assert.deepEqual(await submit(value, created.value.providerOnboardingId, 1), {
+    accepted: false, code: 'provider_onboarding_rejected',
+  });
+
+  const malformed = fixture();
+  malformed.options.attestationCatalog.set('mismatched-map-key', {
+    key: 'different-key', statementVersion: 1, statement: 'Invalid catalog entry.',
+  });
+  assert.deepEqual(await create(malformed, 1, auth('provider-onboarding:write'), [
+    ...affirmations, {key: 'mismatched-map-key', affirmed: true},
+  ]), {accepted: false, code: 'provider_onboarding_rejected'});
+});
+
 test('supports reviewed rejection and applicant withdrawal as terminal transitions', async () => {
   const rejected = fixture();
   const created = await create(rejected);
