@@ -83,7 +83,8 @@ function validTimestamp(value: number): boolean {
 }
 
 function validField(field: IntakeField): boolean {
-  if (!KEY.test(field.key) || !validText(field.label, 120)) return false;
+  if (!KEY.test(field.key) || !validText(field.label, 120) ||
+    typeof field.required !== 'boolean') return false;
   const hasMinimum = field.minimum !== undefined;
   const hasMaximum = field.maximum !== undefined;
   if ((hasMinimum && !Number.isFinite(field.minimum)) ||
@@ -104,7 +105,11 @@ function validField(field: IntakeField): boolean {
       (!hasMaximum || Number.isSafeInteger(field.maximum)) &&
       (field.minimum ?? 0) >= 0 && (field.maximum ?? 4_000) <= 4_000;
   }
-  return field.kind === 'integer' || field.kind === 'decimal';
+  if (field.kind === 'integer') {
+    return (!hasMinimum || Number.isSafeInteger(field.minimum)) &&
+      (!hasMaximum || Number.isSafeInteger(field.maximum));
+  }
+  return field.kind === 'decimal';
 }
 
 function normalizeFields(fields: readonly IntakeField[]): readonly IntakeField[] | null {
@@ -219,9 +224,9 @@ async function transitionDefinition(
     const current = await options.store.getDefinition(organizationId, serviceKey, revision);
     if (!isBoundDefinition(current, organizationId, serviceKey, revision) ||
       current.status !== from || current.recordVersion !== expectedRecordVersion ||
-      now < current.updatedAt || !await validPublishedParent(
+      now < current.updatedAt || (to === 'published' && !await validPublishedParent(
         organizationId, serviceKey, current.parentServiceKey, options,
-      )) return rejected();
+      ))) return rejected();
     const replacement = Object.freeze({
       ...current, status: to, recordVersion: current.recordVersion + 1, updatedAt: now,
     });
@@ -277,6 +282,12 @@ export async function listPublishedServiceDefinitions(
   }
 }
 
+function validDate(value: string): boolean {
+  if (!DATE.test(value)) return false;
+  const date = new Date(value + 'T00:00:00.000Z');
+  return !Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === value;
+}
+
 function validAnswer(field: IntakeField, answer: IntakeAnswer): boolean {
   if (field.kind === 'text') {
     return typeof answer === 'string' && answer === answer.trim() &&
@@ -285,7 +296,7 @@ function validAnswer(field: IntakeField, answer: IntakeAnswer): boolean {
   if (field.kind === 'choice') {
     return typeof answer === 'string' && (field.options?.includes(answer) ?? false);
   }
-  if (field.kind === 'date') return typeof answer === 'string' && DATE.test(answer);
+  if (field.kind === 'date') return typeof answer === 'string' && validDate(answer);
   if (field.kind === 'boolean') return typeof answer === 'boolean';
   if (typeof answer !== 'number' || !Number.isFinite(answer) ||
     answer < (field.minimum ?? -Number.MAX_VALUE) ||
