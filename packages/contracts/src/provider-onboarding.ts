@@ -150,10 +150,12 @@ function attestationsCurrent(
     new Set(attestations.map(attestation => attestation.key)).size !== catalog.size) return false;
   return attestations.every(attestation => {
     const definition = catalog.get(attestation.key);
+    const expectedExpiry = definition?.validityMs === undefined
+      ? undefined : attestation.affirmedAt + definition.validityMs;
     return definition !== undefined && definition.statementVersion === attestation.statementVersion &&
       definition.statement === attestation.statement && validTimestamp(attestation.affirmedAt) &&
-      attestation.affirmedAt <= now && (attestation.expiresAt === undefined ||
-        (validTimestamp(attestation.expiresAt) && attestation.expiresAt > now));
+      attestation.affirmedAt <= now && attestation.expiresAt === expectedExpiry &&
+      (expectedExpiry === undefined || (validTimestamp(expectedExpiry) && expectedExpiry > now));
   });
 }
 
