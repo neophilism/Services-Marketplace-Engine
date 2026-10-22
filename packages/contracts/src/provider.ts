@@ -77,6 +77,24 @@ const TIME_ZONE = /^(?:UTC|[A-Za-z_]+\/[A-Za-z0-9_+.-]+(?:\/[A-Za-z0-9_+.-]+)?)$
 const MODES = new Set(['on_site', 'mobile', 'remote']);
 const rejected = <T>(): ProviderResult<T> => ({accepted: false, code: PROVIDER_REJECTED});
 
+function isBoundProvider(
+  provider: ProviderOrganization | null,
+  organizationId: string,
+  providerOrganizationId: string,
+): provider is ProviderOrganization {
+  return provider?.organizationId === organizationId &&
+    provider.providerOrganizationId === providerOrganizationId;
+}
+
+function isBoundLocation(
+  location: ProviderLocation | null,
+  organizationId: string,
+  providerLocationId: string,
+): location is ProviderLocation {
+  return location?.organizationId === organizationId &&
+    location.providerLocationId === providerLocationId;
+}
+
 function validText(value: string, maximum: number): boolean {
   return value === value.trim() && value.length > 0 && value.length <= maximum;
 }
@@ -156,7 +174,8 @@ export async function getProviderOrganization(
   if (!organizationId || !IDENTIFIER.test(providerOrganizationId)) return rejected();
   try {
     const provider = await options.store.getProvider(organizationId, providerOrganizationId);
-    return provider && provider.status !== 'closed' ? {accepted: true, value: provider} : rejected();
+    return isBoundProvider(provider, organizationId, providerOrganizationId) && provider.status !== 'closed'
+      ? {accepted: true, value: provider} : rejected();
   } catch {
     return rejected();
   }
@@ -177,7 +196,8 @@ export async function updateProviderOrganization(
     !validTimestamp(now) || !validProviderInput(input)) return rejected();
   try {
     const current = await options.store.getProvider(organizationId, providerOrganizationId);
-    if (!current || current.status === 'closed' || current.version !== expectedVersion ||
+    if (!isBoundProvider(current, organizationId, providerOrganizationId) ||
+      current.status === 'closed' || current.version !== expectedVersion ||
       now < current.updatedAt) return rejected();
     const replacement = Object.freeze({
       ...current, legalName: input.legalName, publicName: input.publicName,
@@ -206,7 +226,8 @@ export async function createProviderLocation(
     !validTimestamp(now) || !normalized) return rejected();
   try {
     const provider = await options.store.getProvider(organizationId, input.providerOrganizationId);
-    if (!provider || provider.status === 'closed' || provider.status === 'suspended') return rejected();
+    if (!isBoundProvider(provider, organizationId, input.providerOrganizationId) ||
+      provider.status === 'closed' || provider.status === 'suspended') return rejected();
     const location = Object.freeze({
       providerLocationId, organizationId, providerOrganizationId: provider.providerOrganizationId,
       ...normalized, status: 'active' as const, version: 1, createdAt: now, updatedAt: now,
@@ -228,7 +249,8 @@ export async function listProviderLocations(
   if (!organizationId || !IDENTIFIER.test(providerOrganizationId)) return rejected();
   try {
     const provider = await options.store.getProvider(organizationId, providerOrganizationId);
-    if (!provider || provider.status === 'closed') return rejected();
+    if (!isBoundProvider(provider, organizationId, providerOrganizationId) ||
+      provider.status === 'closed') return rejected();
     const locations = await options.store.listLocations(organizationId, providerOrganizationId);
     if (locations.some(location => location.organizationId !== organizationId ||
       location.providerOrganizationId !== providerOrganizationId)) return rejected();
@@ -253,10 +275,12 @@ export async function setProviderLocationStatus(
     !['active', 'inactive'].includes(status) || !validTimestamp(now)) return rejected();
   try {
     const current = await options.store.getLocation(organizationId, providerLocationId);
-    if (!current || current.version !== expectedVersion || now < current.updatedAt) return rejected();
+    if (!isBoundLocation(current, organizationId, providerLocationId) ||
+      current.version !== expectedVersion || now < current.updatedAt) return rejected();
     if (status === 'active') {
       const provider = await options.store.getProvider(organizationId, current.providerOrganizationId);
-      if (!provider || provider.status === 'suspended' || provider.status === 'closed') return rejected();
+      if (!isBoundProvider(provider, organizationId, current.providerOrganizationId) ||
+        provider.status === 'suspended' || provider.status === 'closed') return rejected();
     }
     const replacement = Object.freeze({...current, status, version: current.version + 1, updatedAt: now});
     return await options.store.replaceLocation(current, replacement)
