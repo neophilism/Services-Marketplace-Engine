@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-19T18:19:00Z",
+  "observedAt": "2026-10-22T17:44:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -45,7 +45,9 @@
       "id": "SME-002",
       "title": "TypeScript workspaces API worker bootstrap",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        3
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -56,12 +58,13 @@
       ],
       "acceptanceCriteria": "Complete typescript workspaces api worker bootstrap functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Strict TypeScript project references compile the shared contracts package before the API and worker adapters.",
+        "API and worker contract tests deny missing tenant, inactive or revoked membership, missing permission, and cross-tenant context before side effects."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-003",
@@ -1498,6 +1501,12 @@
     {
       "number": 1,
       "unitId": "SME-001",
+      "state": "closed",
+      "merged": true
+    },
+    {
+      "number": 3,
+      "unitId": "SME-002",
       "state": "open",
       "merged": false
     }
