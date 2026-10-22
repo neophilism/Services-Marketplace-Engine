@@ -9,3 +9,5 @@ Read `AGENTS.md`, `docs/DEVELOPMENT_PLAN.md`, `registry/prs.json`, `architecture
 The strict TypeScript project is split into an industry-neutral contract package plus API and worker adapters. Install the locked dependencies with `npm ci`, then run `npm run check` to validate the development plan, compile all workspaces, and execute the contract and authorization tests. See `docs/WORKSPACES.md` for ownership and fail-closed boundary rules.
 
 CI runs registry/static policy separately from the compiled test suite. See `docs/CI.md` for the enforced dependency, evidence, source-boundary, and text-hygiene contract.
+
+PostgreSQL schema changes use paired transactional SQL migrations with real apply, row-level authorization, and rollback validation. See `docs/DATABASE.md`.

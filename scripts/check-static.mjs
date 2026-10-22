@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
-const checkedExtensions = new Set(['.json', '.md', '.mjs', '.ts', '.yaml', '.yml']);
+const checkedExtensions = new Set(['.json', '.md', '.mjs', '.sh', '.sql', '.ts', '.yaml', '.yml']);
 const ignoredDirectories = new Set(['.git', 'dist', 'node_modules']);
 
 function listFiles(root, relative = '') {
