@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T17:49:00Z",
+  "observedAt": "2026-10-22T17:53:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -76,7 +76,9 @@
       "id": "SME-003",
       "title": "CI static checks registry validation",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        4
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -87,12 +89,13 @@
       ],
       "acceptanceCriteria": "Complete ci static checks registry validation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "CI runs frozen installs before independent registry/static and compiled test jobs.",
+        "Regression fixtures reject forward dependencies, duplicate PR ownership, mismatched observed PRs, incomplete merge evidence, adapter boundary violations, and non-canonical text."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-004",
@@ -1515,6 +1518,12 @@
       "unitId": "SME-002",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 4,
+      "unitId": "SME-003",
+      "state": "open",
+      "merged": false
     }
   ]
 }
