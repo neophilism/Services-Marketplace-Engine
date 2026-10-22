@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:42:39Z",
+  "observedAt": "2026-10-22T18:46:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -275,9 +275,10 @@
       ],
       "acceptanceCriteria": "Complete outbox queues idempotency functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Authorized producer commands use an atomically tenant-scoped idempotency key and repeated commands return the original immutable message without a second insert.",
-        "Leased worker delivery acknowledges only after success, schedules bounded durable retries, dead-letters exhausted messages, and fails closed for malformed claims, stale leases or storage failure.",
-        "Authorization-negative tests cover cross-tenant access, missing permissions and unavailable audit storage before any outbox write."
+        "Versioned commands bind each tenant-scoped idempotency key to a canonical SHA-256 request digest; identical input replays the original response and different-input key reuse is rejected.",
+        "The transactional adapter atomically commits domain changes, the idempotency result and the outbound event; tests prove a rolled-back command publishes no event.",
+        "Leased delivery uses durable consumer/message deduplication, acknowledges only after successful transactional consumption, schedules bounded retries and dead-letters exhausted messages.",
+        "Authorization-negative and malformed-contract tests cover cross-tenant access, missing permissions, unavailable audit storage, unknown versions, malformed identifiers, stale leases and storage failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
