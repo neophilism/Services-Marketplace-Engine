@@ -11,6 +11,7 @@ jobs:
       - run: npm ci
       - run: npm run validate:plan
       - run: npm run validate:static
+      - run: npm run generate:sdk:check
   test:
     runs-on: ubuntu-latest
     permissions: {contents: read}
