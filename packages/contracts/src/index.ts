@@ -50,3 +50,4 @@ export * from './attachment.js';
 export * from './customer.js';
 export * from './provider.js';
 export * from './provider-employee.js';
+export * from './service-taxonomy.js';
