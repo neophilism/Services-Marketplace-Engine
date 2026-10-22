@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T19:32:00Z",
+  "observedAt": "2026-10-22T19:47:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -455,7 +455,9 @@
       "id": "SME-015",
       "title": "Provider onboarding and attestation",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        16
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -469,7 +471,9 @@
         "Automated tests and acceptance evidence",
         "Regression tests"
       ],
-      "contributingPrs": [],
+      "contributingPrs": [
+        16
+      ],
       "externalDependencies": [],
       "externalPrerequisites": []
     },
@@ -1702,6 +1706,12 @@
       "unitId": "SME-014",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 16,
+      "unitId": "SME-015",
+      "state": "open",
+      "merged": false
     }
   ]
 }
