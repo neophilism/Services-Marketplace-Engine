@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:38:10Z",
+  "observedAt": "2026-10-22T18:46:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -262,7 +262,9 @@
       "id": "SME-009",
       "title": "Outbox queues idempotency",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        10
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -273,12 +275,18 @@
       ],
       "acceptanceCriteria": "Complete outbox queues idempotency functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Versioned commands bind each tenant-scoped idempotency key to a canonical SHA-256 request digest; identical input replays the original response and different-input key reuse is rejected.",
+        "The transactional adapter atomically commits domain changes, the idempotency result and the outbound event; tests prove a rolled-back command publishes no event.",
+        "Leased delivery uses durable consumer/message deduplication, acknowledges only after successful transactional consumption, schedules bounded retries and dead-letters exhausted messages.",
+        "Authorization-negative and malformed-contract tests cover cross-tenant access, missing permissions, unavailable audit storage, unknown versions, malformed identifiers, stale leases and storage failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress",
+      "acceptanceEvidence": [
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/10"
+      ]
     },
     {
       "id": "SME-010",
@@ -1605,6 +1613,12 @@
       "unitId": "SME-008",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 10,
+      "unitId": "SME-009",
+      "state": "open",
+      "merged": false
     }
   ]
 }

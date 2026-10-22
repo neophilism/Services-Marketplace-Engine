@@ -19,3 +19,5 @@ The fail-closed passkey MFA and bounded session contract is documented in `docs/
 Organization membership and role authorization is documented in `docs/RBAC.md`.
 
 Fail-closed tenancy authorization audit events are documented in `docs/AUDIT_LOGS.md`.
+
+Tenant-scoped idempotent outbox delivery and leased retry behavior are documented in `docs/OUTBOX.md`.
