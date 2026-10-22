@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T18:23:00Z",
+  "observedAt": "2026-10-22T18:29:37Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -200,7 +200,9 @@
       "id": "SME-007",
       "title": "Organizations memberships RBAC",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        8
+      ],
       "priority": "P0",
       "phase": "Foundation",
       "dependsOn": [
@@ -211,12 +213,13 @@
       ],
       "acceptanceCriteria": "Complete organizations memberships rbac functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Exact tenant binding requires one active organization and exactly one active membership for the authenticated subject.",
+        "RBAC tests verify permission union and uniform denial for inactive, ambiguous, unknown, duplicate, missing and cross-organization state."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "active"
     },
     {
       "id": "SME-008",
@@ -1575,6 +1578,12 @@
       "unitId": "SME-006",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 8,
+      "unitId": "SME-007",
+      "state": "open",
+      "merged": false
     }
   ]
 }
