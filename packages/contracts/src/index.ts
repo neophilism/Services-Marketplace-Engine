@@ -28,18 +28,10 @@ export function authorizeTenantAccess(
   const membership = context.memberships.find(
     candidate => candidate.organizationId === context.organizationId,
   );
-  if (
-    membership?.status !== 'active' ||
-    !membership.permissions.includes(requiredPermission)
-  ) {
+  if (membership?.status !== 'active' || !membership.permissions.includes(requiredPermission)) {
     return {authorized: false, code: AUTHORIZATION_DENIED};
   }
-
-  return {
-    authorized: true,
-    organizationId: context.organizationId,
-    subjectId: context.subjectId,
-  };
+  return {authorized: true, organizationId: context.organizationId, subjectId: context.subjectId};
 }
 
 export * from './identity.js';
@@ -66,3 +58,4 @@ export * from './job-room-chat.js';
 export * from './job-room-media.js';
 export * from './job-room-estimate.js';
 export * from './esign.js';
+export * from './scheduling.js';
