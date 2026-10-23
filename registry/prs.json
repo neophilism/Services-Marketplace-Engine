@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T18:07:45Z",
+  "observedAt": "2026-10-23T18:13:11Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -569,7 +569,9 @@
       "id": "SME-019",
       "title": "Search indexes ranking",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        20
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -580,12 +582,13 @@
       ],
       "acceptanceCriteria": "Complete search indexes ranking functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tenant-authorized index refreshes derive searchable public fields only from active provider and published-service records, with bounded keywords, quality and optimistic versions.",
+        "Focused tests cover exact authorization, malformed inputs, inactive sources, canonical revision refresh, deterministic ranking and ties, query bounds, tenant contamination, duplicate records, audit and persistence failures."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-020",
@@ -1752,6 +1755,12 @@
       "unitId": "SME-018",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 20,
+      "unitId": "SME-019",
+      "state": "open",
+      "merged": false
     }
   ]
 }
