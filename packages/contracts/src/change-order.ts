@@ -6,7 +6,7 @@ export const CHANGE_ORDER_REJECTED = 'change_order_rejected' as const;
 
 export interface ChangeOrderRoom { readonly organizationId: string; readonly jobRoomId: string; readonly customerSubjectId: string; readonly status: 'active' | 'closed'; }
 export interface ChangeOrderMember { readonly membershipId: string; readonly organizationId: string; readonly jobRoomId: string; readonly subjectId: string; readonly role: 'customer' | 'provider'; readonly status: 'active' | 'inactive'; }
-export interface ApprovedEstimate { readonly estimateId: string; readonly organizationId: string; readonly jobRoomId: string; readonly currency: string; readonly status: 'approved' | 'superseded'; }
+export interface ChangeOrderEstimate { readonly estimateId: string; readonly organizationId: string; readonly jobRoomId: string; readonly currency: string; readonly status: 'approved' | 'superseded'; }
 export interface ChangeOrderMilestone { readonly milestoneId: string; readonly label: string; readonly acceptanceCriteria: string; readonly amountDeltaMinor: number; readonly dueAt: number; }
 export interface ChangeOrder { readonly changeOrderId: string; readonly organizationId: string; readonly requestKey: string; readonly jobRoomId: string; readonly estimateId: string; readonly providerMembershipId: string; readonly currency: string; readonly reason: string; readonly milestones: readonly ChangeOrderMilestone[]; readonly totalDeltaMinor: number; readonly acceptedMilestoneCount: number; readonly revision: number; readonly status: 'proposed' | 'partially_accepted' | 'accepted'; readonly createdAt: number; }
 export interface ChangeOrderMilestoneAcceptance { readonly acceptanceId: string; readonly organizationId: string; readonly requestKey: string; readonly changeOrderId: string; readonly milestoneId: string; readonly milestoneIndex: number; readonly customerMembershipId: string; readonly customerSubjectId: string; readonly changeOrderRevision: number; readonly acceptedAt: number; }
@@ -15,7 +15,7 @@ export interface AcceptChangeOrderMilestoneInput { readonly requestKey: string; 
 export interface ChangeOrderStore {
   getRoom(organizationId: string, jobRoomId: string): Promise<ChangeOrderRoom | null>;
   getMembership(organizationId: string, jobRoomId: string, subjectId: string): Promise<ChangeOrderMember | null>;
-  getApprovedEstimate(organizationId: string, estimateId: string): Promise<ApprovedEstimate | null>;
+  getApprovedEstimate(organizationId: string, estimateId: string): Promise<ChangeOrderEstimate | null>;
   getChangeOrder(organizationId: string, changeOrderId: string): Promise<ChangeOrder | null>;
   getChangeOrderByRequestKey(organizationId: string, requestKey: string): Promise<ChangeOrder | null>;
   createChangeOrder(value: ChangeOrder): Promise<boolean>;
