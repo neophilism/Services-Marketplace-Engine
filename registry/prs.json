@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T20:00:15Z",
+  "observedAt": "2026-10-23T20:04:10Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -755,7 +755,9 @@
       "id": "SME-025",
       "title": "Job Room membership and invitations",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        26
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -766,12 +768,13 @@
       ],
       "acceptanceCriteria": "Complete job room membership and invitations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Invitation tests cover active inviting membership, explicit invite authority, bounded expiry, exact replay, existing-member/pending-invitation rejection and tenant contamination.",
+        "Acceptance tests cover named-subject authorization, provider-operator standing, immutable membership, atomic acceptance, exact replay, expiry, audit outages and failed writes."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_review"
     },
     {
       "id": "SME-026",
@@ -1842,6 +1845,12 @@
       "unitId": "SME-024",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 26,
+      "unitId": "SME-025",
+      "state": "open",
+      "merged": false
     }
   ]
 }
