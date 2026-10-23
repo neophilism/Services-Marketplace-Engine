@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T19:10:25Z",
+  "observedAt": "2026-10-23T19:18:19Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -662,7 +662,9 @@
       "id": "SME-022",
       "title": "Lead triage and quotes",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        23
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -673,12 +675,13 @@
       ],
       "acceptanceCriteria": "Complete lead triage and quotes functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Provider-specific triage requires exact tenant RBAC, active operator binding, a canonical open-lead match, one immutable decision and replay-safe request keys.",
+        "Quote tests cover exact authorization, interested-triage prerequisites, minor-unit totals, bounded validity, immutable revisions, replay conflicts, tenant/provider contamination and audit/storage failures."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-023",
@@ -1797,6 +1800,12 @@
       "unitId": "SME-021",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 23,
+      "unitId": "SME-022",
+      "state": "open",
+      "merged": false
     }
   ]
 }
