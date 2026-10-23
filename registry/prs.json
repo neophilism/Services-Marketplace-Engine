@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T20:48:06Z",
+  "observedAt": "2026-10-23T20:59:05Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -941,23 +941,28 @@
       "id": "SME-031",
       "title": "Technician tasks and checklists",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        32
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
         "SME-030"
       ],
       "scope": [
-        "Technician tasks and checklists"
+        "Create tenant-bound technician tasks only for active Job Rooms with confirmed provider scheduling holds.",
+        "Assign ordered immutable checklists to an exact active provider membership in the same room.",
+        "Complete checklist items through idempotent, revision-fenced atomic updates with immutable actor evidence."
       ],
       "acceptanceCriteria": "Complete technician tasks and checklists functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Creation tests cover tenant authorization, confirmed-schedule and creator binding, exact active-provider assignment, checklist bounds and exact replay.",
+        "Completion tests cover assignment rebinding, stale revisions, changed replay, contaminated stored state, atomic write failure and terminal completion."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "open"
     },
     {
       "id": "SME-032",
@@ -1932,6 +1937,12 @@
       "unitId": "SME-030",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 32,
+      "unitId": "SME-031",
+      "state": "open",
+      "merged": false
     }
   ]
 }

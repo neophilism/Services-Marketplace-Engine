@@ -1,0 +1,7 @@
+# Technician tasks and checklists
+
+SME-031 creates bounded technician tasks only for an active Job Room with a confirmed scheduling hold. The creator must be an active provider member whose membership owns that hold, and the assignee must be a separate or identical active provider membership in the same tenant and room. A task pins the room, confirmed hold, exact assignee, printable title, and an ordered checklist of one to fifty uniquely identified items. Exact creation retries return the stored task; changed retries fail closed.
+
+Only the subject currently bound to the assigned provider membership may complete checklist items. Every completion uses an idempotency key and expected task revision. The store must atomically append the immutable completion record and replace the task only when the expected revision still matches. A stale revision, changed retry, lost race, closed room, inactive or rebound membership, contaminated stored value, or persistence failure is rejected. The final item moves the task to `completed`; completed item identity, actor, and timestamp remain immutable.
+
+The contract contains operational task text only. Customer identity, contract documents, attachment contents, location data, timesheets, material usage, and inventory are excluded. Database adapters should enforce tenant-scoped uniqueness for request keys and task/item identities and perform each compare-and-set in one transaction. Notifications, offline editing, subcontractor delegation, and work acceptance belong to later units.
