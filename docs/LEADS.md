@@ -11,7 +11,7 @@ reserve appointments, or expose customer request text in notification metadata.
 authorization decision before reading or writing tenant data. A request binds an active
 customer profile to the current published service revision, a trimmed 2,000-character
 summary, an optional future request window of at most 366 days, and a caller-selected
-match limit from 1 through 20.
+match limit from 1 through 20. The limit is snapshotted as part of the idempotent request.
 
 The injected matcher must return at most 1,000 active, eligible, tenant-bound candidates
 for the current service revision. Candidate provider and recipient identifiers must be
