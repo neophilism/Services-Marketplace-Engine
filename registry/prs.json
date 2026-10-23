@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T21:14:43Z",
+  "observedAt": "2026-10-23T21:28:49Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1007,19 +1007,23 @@
       "id": "SME-033",
       "title": "Change orders milestone acceptance",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        34
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
         "SME-032"
       ],
       "scope": [
-        "Change orders milestone acceptance"
+        "Create immutable change orders against the active Job Room's exact approved estimate and currency.",
+        "Define bounded ordered milestones with explicit acceptance criteria, due dates and safe signed minor-unit deltas.",
+        "Accept milestones in order through exact-customer, revision-fenced atomic updates with immutable actor evidence and exact replay."
       ],
       "acceptanceCriteria": "Complete change orders milestone acceptance functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Creation tests cover tenant authorization, active provider and room binding, approved-estimate currency, milestone validation, derived totals and exact replay.",
+        "Acceptance tests cover exact customer binding, ordered milestones, stale revisions, role and tenant denial, audit failure and atomic write failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -1966,6 +1970,12 @@
       "unitId": "SME-032",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 34,
+      "unitId": "SME-033",
+      "state": "open",
+      "merged": false
     }
   ]
 }

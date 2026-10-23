@@ -1,0 +1,7 @@
+# Change orders and milestone acceptance
+
+SME-033 adds tenant-bound scope changes to an active Job Room. An active provider member may propose an immutable change order only against the room's approved estimate and exact currency. Each proposal records a bounded reason and an ordered, uniquely identified milestone list with explicit acceptance criteria, due dates, and signed minor-unit deltas. Totals are derived by the contract with safe-integer bounds; zero-value milestones support scope-only changes.
+
+The exact customer subject named by the room accepts milestones in order. Every acceptance names the expected change-order revision, advances that revision once, appends immutable actor evidence, and moves the order from `proposed` through `partially_accepted` to `accepted`. The store must compare-and-set the prior revision and persist the updated order and acceptance as one atomic operation.
+
+Request keys are tenant-scoped and replay only when every material field and current binding still match. Cross-tenant access, inactive or rebound membership, closed rooms, superseded estimates, currency mismatch, skipped milestones, stale revisions, contaminated stored values, audit failure, and partial writes fail closed. Acceptance authorizes the recorded scope milestone only; scheduling, technician evidence, payments, deposits, invoicing, reversals, and subcontractor delegation remain governed by their own plan units.
