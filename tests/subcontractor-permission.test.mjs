@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {authorizeSubcontractorPermission, grantSubcontractorPermissions, revokeSubcontractorPermissions} from '../packages/contracts/src/subcontractor-permission.ts';
+import {authorizeSubcontractorPermission, grantSubcontractorPermissions, revokeSubcontractorPermissions} from '../packages/contracts/dist/subcontractor-permission.js';
 
 const state={organizations:[{organizationId:'org-1',status:'active'}],memberships:[{subjectId:'provider-1',organizationId:'org-1',status:'active',roleIds:['provider']}],roles:[{roleId:'provider',organizationId:'org-1',permissions:['job-rooms:subcontractors:manage']}]};
 const auth={subjectId:'provider-1',organizationId:'org-1',resourceOrganizationId:'org-1',requiredPermission:'job-rooms:subcontractors:manage'};
