@@ -66,3 +66,4 @@ export * from './job-room-chat.js';
 export * from './job-room-media.js';
 export * from './job-room-estimate.js';
 export * from './esign.js';
+export * from './scheduling.js';

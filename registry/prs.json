@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T20:06:00Z",
+  "observedAt": "2026-10-23T20:44:11Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -910,7 +910,9 @@
       "id": "SME-030",
       "title": "Scheduling holds conflicts ICS",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        31
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -921,12 +923,13 @@
       ],
       "acceptanceCriteria": "Complete scheduling holds conflicts ics functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Hold tests cover provider-room authorization, exact signed-contract binding, bounded expiry, exact replay, changed replay rejection and atomic overlap conflicts.",
+        "Confirmation and ICS tests cover exact membership rebinding, expiry/start and compare-and-set failures, deterministic UTC output, line folding and privacy-minimized fields."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "open"
     },
     {
       "id": "SME-031",
@@ -1917,6 +1920,12 @@
       "unitId": "SME-029",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 31,
+      "unitId": "SME-030",
+      "state": "open",
+      "merged": false
     }
   ]
 }
