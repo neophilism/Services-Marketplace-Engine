@@ -78,3 +78,4 @@ export * from './accessible-offline-draft.js';
 export * from './payment.js';
 export * from './pricing.js';
 export * from './milestone-charge.js';
+export * from './external-payment-record.js';
