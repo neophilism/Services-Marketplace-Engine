@@ -1073,7 +1073,9 @@
       "id": "SME-035",
       "title": "Completion warranties follow-up",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        36
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -2000,6 +2002,12 @@
       "unitId": "SME-034",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 36,
+      "unitId": "SME-035",
+      "state": "open",
+      "merged": false
     }
   ]
 }
