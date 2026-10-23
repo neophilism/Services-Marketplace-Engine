@@ -61,3 +61,4 @@ export * from './lead.js';
 export * from './lead-workflow.js';
 export * from './review-dispute.js';
 export * from './saved-provider.js';
+export * from './job-room.js';
