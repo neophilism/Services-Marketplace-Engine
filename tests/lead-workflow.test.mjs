@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createLeadQuote, triageMatchedLead} from './lead-workflow.ts';
+import {createLeadQuote, triageMatchedLead} from '../packages/contracts/dist/lead-workflow.js';
 
 const state = {
   organizations: [{organizationId: 'org-1', status: 'active'}],
