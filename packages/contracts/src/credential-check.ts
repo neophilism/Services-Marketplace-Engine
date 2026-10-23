@@ -113,7 +113,8 @@ function validText(value: string, maximum: number): boolean {
 function boundProvider(value: CredentialCheckProvider | null, organizationId: string,
   providerOrganizationId: string): value is CredentialCheckProvider {
   return value?.organizationId === organizationId &&
-    value.providerOrganizationId === providerOrganizationId;
+    value.providerOrganizationId === providerOrganizationId &&
+    ['active', 'suspended'].includes(value.status);
 }
 
 function validAttachment(value: CredentialCheckAttachment | null, organizationId: string,
@@ -126,7 +127,7 @@ function boundRecord(value: CredentialCheckRecord | null, organizationId: string
   credentialCheckId: string): value is CredentialCheckRecord {
   return Boolean(value?.organizationId === organizationId &&
     value.credentialCheckId === credentialCheckId && IDENTIFIER.test(value.providerOrganizationId) &&
-    validText(value.subjectReference, 200) && CODE.test(value.credentialType) &&
+    IDENTIFIER.test(value.subjectReference) && CODE.test(value.credentialType) &&
     IDENTIFIER.test(value.attachmentId) && SHA256.test(value.attachmentSha256) &&
     CODE.test(value.purposeCode) && validTimestamp(value.consentedAt) &&
     IDENTIFIER.test(value.requestedBySubjectId) && validText(value.adapterName, 100) &&
@@ -134,8 +135,10 @@ function boundRecord(value: CredentialCheckRecord | null, organizationId: string
     ['verified', 'review', 'rejected'].includes(value.outcome) &&
     validTimestamp(value.checkedAt) && validTimestamp(value.createdAt) &&
     value.consentedAt <= value.checkedAt && value.checkedAt <= value.createdAt &&
-    (value.validUntil === undefined ||
-      (validTimestamp(value.validUntil) && value.validUntil > value.checkedAt)));
+    (value.outcome === 'verified'
+      ? value.validUntil === undefined ||
+        (validTimestamp(value.validUntil) && value.validUntil > value.checkedAt)
+      : value.validUntil === undefined));
 }
 
 function projectExpiry(value: CredentialCheckRecord, now: number): CredentialCheckRecord {
@@ -165,7 +168,7 @@ export async function runProviderCredentialCheck(
   const maximumConsentAgeMs = options.maximumConsentAgeMs ?? DEFAULT_MAXIMUM_CONSENT_AGE_MS;
   if (!authorization || contractVersion !== CREDENTIAL_CHECK_CONTRACT_VERSION ||
     !IDENTIFIER.test(credentialCheckId) || !IDENTIFIER.test(input.providerOrganizationId) ||
-    !validText(input.subjectReference, 200) || !CODE.test(input.credentialType) ||
+    !IDENTIFIER.test(input.subjectReference) || !CODE.test(input.credentialType) ||
     !IDENTIFIER.test(input.attachmentId) || !CODE.test(input.purposeCode) ||
     !validTimestamp(input.consentedAt) || !validTimestamp(now) || input.consentedAt > now ||
     !Number.isSafeInteger(maximumConsentAgeMs) || maximumConsentAgeMs < 1 ||
@@ -196,7 +199,8 @@ export async function runProviderCredentialCheck(
       !validTimestamp(result.checkedAt) || result.checkedAt < input.consentedAt ||
       result.checkedAt > now ||
       (result.validUntil !== undefined &&
-        (!validTimestamp(result.validUntil) || result.validUntil <= result.checkedAt))) return rejected();
+        (result.outcome !== 'verified' || !validTimestamp(result.validUntil) ||
+          result.validUntil <= result.checkedAt))) return rejected();
     const record = Object.freeze({...adapterRequest,
       attachmentId: input.attachmentId, requestedBySubjectId: authorization.subjectId,
       adapterName: result.adapterName, adapterReference: result.adapterReference,
