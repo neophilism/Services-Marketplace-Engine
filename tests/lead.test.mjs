@@ -102,6 +102,11 @@ test('rejects unauthorized, malformed, expired and mismatched replay requests', 
   const created = await create(replay);
   replay.setExisting({...created.value.lead, summary: 'Different request'});
   assert.deepEqual(await create(replay), {accepted: false, code: 'lead_rejected'});
+  const matchLimit = fixture();
+  const limited = await create(matchLimit);
+  matchLimit.setExisting(limited.value.lead);
+  assert.deepEqual(await create(matchLimit, {...input, maximumMatches: 3}),
+    {accepted: false, code: 'lead_rejected'});
 });
 
 test('requires active tenant-bound canonical customer and published service revision', async () => {
@@ -162,4 +167,7 @@ test('accepts no matches and fails closed on audit, matcher and transaction fail
   const transaction = fixture();
   transaction.options.store.createLead = async () => false;
   assert.deepEqual(await create(transaction), {accepted: false, code: 'lead_rejected'});
+  const duplicateIds = fixture();
+  duplicateIds.options.createOpaqueId = () => 'same-id';
+  assert.deepEqual(await create(duplicateIds), {accepted: false, code: 'lead_rejected'});
 });
