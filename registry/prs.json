@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-22T20:16:19Z",
+  "observedAt": "2026-10-23T17:59:39Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -507,7 +507,9 @@
       "id": "SME-017",
       "title": "Credential evidence background check adapter",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        18
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -518,8 +520,8 @@
       ],
       "acceptanceCriteria": "Complete credential evidence background check adapter functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Exact tenant permission, active-provider state, recent consent, clean attachment digest and adapter response binding are enforced before immutable persistence.",
+        "Focused tests deny wrong permissions, stale or future consent, suspended providers, unscanned evidence, cross-tenant or mismatched adapter output, duplicate listings and unavailable audit, adapter or persistence boundaries."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -1722,6 +1724,12 @@
       "unitId": "SME-016",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 18,
+      "unitId": "SME-017",
+      "state": "open",
+      "merged": false
     }
   ]
 }
