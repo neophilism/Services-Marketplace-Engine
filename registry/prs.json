@@ -1238,19 +1238,23 @@
       "id": "SME-040",
       "title": "Deposits milestone charges",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        41
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-039"
       ],
       "scope": [
-        "Deposits milestone charges"
+        "Capture an immutable ordered charge schedule bound to the exact Job Room, price quote and authorized payment intent.",
+        "Require a sequence-zero deposit and accepted non-reversed milestones in order, with schedule totals equal to the quote and intent.",
+        "Atomically claim each sequence before the processor call and compare-and-set complete the validated idempotent capture."
       ],
       "acceptanceCriteria": "Complete deposits milestone charges functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Charge tests cover deposit capture, exact replay, ordered milestone acceptance and schedule total binding.",
+        "Authorization-negative tests cover tenant and customer rebound, processor mismatch, claim conflict, audit failure and completion failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2085,6 +2089,12 @@
       "unitId": "SME-039",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 41,
+      "unitId": "SME-040",
+      "state": "open",
+      "merged": false
     }
   ]
 }
