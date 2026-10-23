@@ -55,3 +55,4 @@ export * from './provider-onboarding.js';
 export * from './insurance.js';
 export * from './credential-check.js';
 export * from './territory.js';
+export * from './search.js';
