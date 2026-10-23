@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T19:58:00Z",
+  "observedAt": "2026-10-23T19:59:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -724,7 +724,9 @@
       "id": "SME-024",
       "title": "Saved providers and repeat requests",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        25
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -741,7 +743,7 @@
       "contributingPrs": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
-      "status": "in_progress"
+      "status": "in_review"
     },
     {
       "id": "SME-025",
@@ -1828,6 +1830,12 @@
       "unitId": "SME-023",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 25,
+      "unitId": "SME-024",
+      "state": "open",
+      "merged": false
     }
   ]
 }
