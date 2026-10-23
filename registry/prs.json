@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T20:03:00Z",
+  "observedAt": "2026-10-23T20:04:10Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -755,7 +755,9 @@
       "id": "SME-025",
       "title": "Job Room membership and invitations",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        26
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -772,7 +774,7 @@
       "contributingPrs": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
-      "status": "in_progress"
+      "status": "in_review"
     },
     {
       "id": "SME-026",
@@ -1843,6 +1845,12 @@
       "unitId": "SME-024",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 26,
+      "unitId": "SME-025",
+      "state": "open",
+      "merged": false
     }
   ]
 }
