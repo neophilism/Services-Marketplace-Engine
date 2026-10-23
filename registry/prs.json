@@ -1271,19 +1271,23 @@
       "id": "SME-041",
       "title": "External payment records",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        42
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-040"
       ],
       "scope": [
-        "External payment records"
+        "Record immutable idempotent evidence for payments reported outside the engine, without claiming processor confirmation or settlement.",
+        "Bind each record to the exact tenant, Job Room, customer, provider, active reporting participant, bounded money fields, paid time and clean room evidence.",
+        "Reject tenant, participant, provider and evidence rebound while reserving refunds, disputes, payouts and reconciliation for SME-042."
       ],
       "acceptanceCriteria": "Complete external payment records functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover exact customer/provider reporting, immutable creation and same-input replay.",
+        "Authorization-negative tests cover tenant, participant, provider and evidence rebound, future timestamps, audit failure, replay conflict and persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2102,6 +2106,12 @@
       "unitId": "SME-040",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 42,
+      "unitId": "SME-041",
+      "state": "open",
+      "merged": false
     }
   ]
 }
