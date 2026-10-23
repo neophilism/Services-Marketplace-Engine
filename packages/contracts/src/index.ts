@@ -28,10 +28,18 @@ export function authorizeTenantAccess(
   const membership = context.memberships.find(
     candidate => candidate.organizationId === context.organizationId,
   );
-  if (membership?.status !== 'active' || !membership.permissions.includes(requiredPermission)) {
+  if (
+    membership?.status !== 'active' ||
+    !membership.permissions.includes(requiredPermission)
+  ) {
     return {authorized: false, code: AUTHORIZATION_DENIED};
   }
-  return {authorized: true, organizationId: context.organizationId, subjectId: context.subjectId};
+
+  return {
+    authorized: true,
+    organizationId: context.organizationId,
+    subjectId: context.subjectId,
+  };
 }
 
 export * from './identity.js';
