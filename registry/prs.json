@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T21:32:34Z",
+  "observedAt": "2026-10-23T21:47:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1049,16 +1049,25 @@
         "SME-033"
       ],
       "scope": [
-        "Subcontractor permissions"
+        "Grant an exact active subcontractor member a sorted least-privilege subset of four operational Job Room capabilities for at most 90 days.",
+        "Recheck tenant, active room, current subcontractor membership, delegation status, expiry and exact capability on every authorization decision.",
+        "Require the exact active provider membership and revision-fenced atomic persistence for revocation with immutable evidence and exact replay."
       ],
       "acceptanceCriteria": "Complete subcontractor permissions functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Grant and authorization tests cover exact replay, capability allowlisting, expiry, tenant and room binding, active role membership and current-state denial.",
+        "Revocation tests cover exact provider binding, optimistic revision control, replay, privilege escalation denial, audit failure and atomic write failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "6ea7028cc0a5e462686c3d17b3997e9a4eca4887",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 40028884020 passed for 717d11ec55a6b7f3b322c29e08567c32a2500a5c.",
+        "Merged-main Registry validation run 40029028195 passed for 6ea7028cc0a5e462686c3d17b3997e9a4eca4887.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/35"
+      ]
     },
     {
       "id": "SME-035",
@@ -1989,8 +1998,8 @@
     {
       "number": 35,
       "unitId": "SME-034",
-      "state": "open",
-      "merged": false
+      "state": "closed",
+      "merged": true
     }
   ]
 }
