@@ -879,7 +879,9 @@
       "id": "SME-029",
       "title": "Contracts e-sign adapter",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        30
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -890,12 +892,13 @@
       ],
       "acceptanceCriteria": "Complete contracts e-sign adapter functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Envelope tests cover provider-room authorization, exact approved-estimate/version/digest binding, one envelope per approval, replay conflicts and adapter/write failures.",
+        "Event tests cover verified provider evidence, exact provider-envelope and digest matching, pending-status comparison, stale/non-signed rejection and atomic completion."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-030",
@@ -1902,6 +1905,12 @@
       "unitId": "SME-028",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 30,
+      "unitId": "SME-029",
+      "state": "open",
+      "merged": false
     }
   ]
 }
