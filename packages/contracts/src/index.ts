@@ -56,3 +56,4 @@ export * from './insurance.js';
 export * from './credential-check.js';
 export * from './territory.js';
 export * from './search.js';
+export * from './availability.js';

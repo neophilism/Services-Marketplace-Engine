@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T18:15:45Z",
+  "observedAt": "2026-10-23T18:29:40Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -600,7 +600,9 @@
       "id": "SME-020",
       "title": "Availability and appointment slots",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        21
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -611,12 +613,13 @@
       ],
       "acceptanceCriteria": "Complete availability and appointment slots functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tenant-authorized optimistic schedule writes bind finite normalized UTC windows to an active provider and the current published service revision with bounded duration, notice and horizon controls.",
+        "Focused tests cover exact authorization, malformed or overlapping windows, inactive parents, stale writes, deterministic slot projection, notice/horizon boundaries, busy exclusions, tenant contamination, duplicate records, audit and persistence failures."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-021",
@@ -1767,6 +1770,12 @@
       "unitId": "SME-019",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 21,
+      "unitId": "SME-020",
+      "state": "open",
+      "merged": false
     }
   ]
 }
