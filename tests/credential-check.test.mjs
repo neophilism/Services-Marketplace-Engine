@@ -79,6 +79,7 @@ test('requires exact authorization, recent consent, an active provider and clean
     [input, 2, auth('credentials:check')],
     [input, 1, auth('credentials:read')],
     [{...input, consentedAt: 1_001}, 1, auth('credentials:check')],
+    [{...input, subjectReference: 'Person Name'}, 1, auth('credentials:check')],
     [{...input, credentialType: 'Not Valid'}, 1, auth('credentials:check')],
   ]) {
     assert.deepEqual(await run(fixture(), changedInput, version, authorization), {
@@ -108,6 +109,7 @@ test('rejects adapter results that do not match the request boundary', async () 
     {attachmentSha256: 'b'.repeat(64)},
     {checkedAt: 1_001},
     {validUntil: 950},
+    {outcome: 'rejected'},
   ]) {
     const value = fixture();
     value.options.adapter.check = async request => ({...request, adapterName: 'example-checks',
