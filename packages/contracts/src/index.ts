@@ -60,3 +60,4 @@ export * from './availability.js';
 export * from './lead.js';
 export * from './lead-workflow.js';
 export * from './review-dispute.js';
+export * from './saved-provider.js';
