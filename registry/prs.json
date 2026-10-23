@@ -1040,7 +1040,9 @@
       "id": "SME-034",
       "title": "Subcontractor permissions",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        35
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -1983,6 +1985,12 @@
       "unitId": "SME-033",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 35,
+      "unitId": "SME-034",
+      "state": "open",
+      "merged": false
     }
   ]
 }

@@ -71,3 +71,4 @@ export * from './technician-task.js';
 export * from './work-record.js';
 export * from './change-order.js';
 
+export * from './subcontractor-permission.js';
