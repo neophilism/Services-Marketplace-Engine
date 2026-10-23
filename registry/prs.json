@@ -786,7 +786,9 @@
       "id": "SME-026",
       "title": "Realtime chat receipts notifications",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        27
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -797,12 +799,13 @@
       ],
       "acceptanceCriteria": "Complete realtime chat receipts notifications functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Chat tests cover current-member authorization, immutable exact replay, bounded message bodies, metadata-only notification fan-out, roster contamination and atomic write failure.",
+        "Receipt tests cover recipient-only delivered-to-read advancement, exact replay, sender/cross-room rejection, downgrade/conflict rejection, audit outages and compare-prior write failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-027",
@@ -1857,6 +1860,12 @@
       "unitId": "SME-025",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 27,
+      "unitId": "SME-026",
+      "state": "open",
+      "merged": false
     }
   ]
 }
