@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T21:01:38Z",
+  "observedAt": "2026-10-23T21:12:15Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -974,23 +974,28 @@
       "id": "SME-032",
       "title": "Timesheets materials inventory",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        33
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
         "SME-031"
       ],
       "scope": [
-        "Timesheets materials inventory"
+        "Record bounded non-overlapping technician work intervals against the exact assigned Job Room task.",
+        "Consume ordered material quantities only from active assignment-bound inventory at exact expected revisions.",
+        "Atomically append immutable work evidence and decrement all inventory with exact idempotent replay."
       ],
       "acceptanceCriteria": "Complete timesheets materials inventory functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tests cover tenant authorization, active-room task assignment, derived duration, overlap rejection and exact replay.",
+        "Tests cover duplicate material lines, stale and insufficient inventory, membership rebinding, contaminated stored state and atomic write failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "open"
     },
     {
       "id": "SME-033",
@@ -1949,6 +1954,12 @@
       "unitId": "SME-031",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 33,
+      "unitId": "SME-032",
+      "state": "open",
+      "merged": false
     }
   ]
 }
