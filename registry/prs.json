@@ -848,7 +848,9 @@
       "id": "SME-028",
       "title": "Immutable estimate versions approval",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        29
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -859,12 +861,13 @@
       ],
       "acceptanceCriteria": "Complete immutable estimate versions approval functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Estimate tests cover provider-role authorization, safe minor-unit totals, bounded validity, immutable version chaining, exact replay, conflicts and post-approval rejection.",
+        "Approval tests cover named current customer authorization, latest unexpired version binding, terminal room approval, exact replay, role/version/expiry negatives, audit outages and failed writes."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-029",
@@ -1887,6 +1890,12 @@
       "unitId": "SME-027",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 29,
+      "unitId": "SME-028",
+      "state": "open",
+      "merged": false
     }
   ]
 }
