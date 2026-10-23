@@ -54,6 +54,7 @@ export interface Lead {
   readonly summary: string;
   readonly requestedStartAt: number | null;
   readonly requestedEndAt: number | null;
+  readonly maximumMatches: number;
   readonly matches: readonly LeadMatch[];
   readonly status: 'open';
   readonly createdAt: number;
@@ -146,7 +147,8 @@ function boundLead(value: Lead | null, organizationId: string, input: LeadInput,
     value.customerProfileId !== input.customerProfileId || value.serviceKey !== input.serviceKey ||
     value.serviceRevision !== service.revision || value.summary !== input.summary ||
     value.requestedStartAt !== input.requestedStartAt ||
-    value.requestedEndAt !== input.requestedEndAt || value.status !== 'open' ||
+    value.requestedEndAt !== input.requestedEndAt ||
+    value.maximumMatches !== input.maximumMatches || value.status !== 'open' ||
     !IDENTIFIER.test(value.leadId) || !timestamp(value.createdAt) ||
     value.matches.length > input.maximumMatches) return false;
   if (new Set(value.matches.map(match => match.providerOrganizationId)).size !==
@@ -213,7 +215,7 @@ export async function createMatchedLead(contractVersion: number,
       customerProfileId: customer.customerProfileId, serviceKey: service.serviceKey,
       serviceRevision: service.revision, summary: input.summary,
       requestedStartAt: input.requestedStartAt, requestedEndAt: input.requestedEndAt,
-      matches, status: 'open' as const, createdAt: now,
+      maximumMatches: input.maximumMatches, matches, status: 'open' as const, createdAt: now,
     });
     const notifications: LeadNotification[] = [];
     for (const candidate of selected) {
@@ -227,6 +229,8 @@ export async function createMatchedLead(contractVersion: number,
       }));
     }
     const frozenNotifications = Object.freeze(notifications);
+    if (new Set([leadId, ...notifications.map(value => value.notificationId)]).size !==
+      notifications.length + 1) return rejected();
     if (!await options.store.createLead(lead, frozenNotifications)) return rejected();
     return {accepted: true, value: Object.freeze({
       lead, notifications: frozenNotifications, replayed: false,
