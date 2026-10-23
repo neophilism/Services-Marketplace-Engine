@@ -1106,19 +1106,23 @@
       "id": "SME-036",
       "title": "Disputes reversals human oversight",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        37
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
         "SME-035"
       ],
       "scope": [
-        "Disputes reversals human oversight"
+        "Allow either exact active party to a completed Job Room to open an immutable, evidence-backed dispute.",
+        "Require a separately authorized, active, human-verified nonparty reviewer for revision-fenced resolution.",
+        "Persist the resolution and exact reversal directive atomically without granting payment or prior-evidence mutation authority."
       ],
       "acceptanceCriteria": "Complete disputes reversals human oversight functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Dispute tests cover exact party and room binding, bounded evidence, immutability and exact replay.",
+        "Oversight tests cover human nonparty review, tenant and permission denial, revision conflicts, malformed policy, audit failure and atomic persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2017,6 +2021,12 @@
       "unitId": "SME-035",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 37,
+      "unitId": "SME-036",
+      "state": "open",
+      "merged": false
     }
   ]
 }

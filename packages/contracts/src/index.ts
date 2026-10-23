@@ -73,3 +73,4 @@ export * from './change-order.js';
 
 export * from './subcontractor-permission.js';
 export * from './completion-warranty.js';
+export * from './dispute-oversight.js';
