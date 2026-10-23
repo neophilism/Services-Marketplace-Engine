@@ -1139,19 +1139,23 @@
       "id": "SME-037",
       "title": "Accessibility offline drafts",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        38
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
         "SME-036"
       ],
       "scope": [
-        "Accessibility offline drafts"
+        "Synchronize bounded ordered labeled plain-text Job Room draft fields with explicit language metadata.",
+        "Bind each draft to its exact active room membership and preserve immutable client edit identity.",
+        "Use revision-fenced atomic draft and receipt persistence so replay is exact and offline conflicts fail closed."
       ],
       "acceptanceCriteria": "Complete accessibility offline drafts functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Draft tests cover labeled plain-text fields, language metadata, immutability, exact replay and sequential revision updates.",
+        "Authorization-negative tests cover tenant and membership rebound, closed rooms, stale revisions, malformed fields, audit failure and atomic persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2034,6 +2038,12 @@
       "unitId": "SME-036",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 38,
+      "unitId": "SME-037",
+      "state": "open",
+      "merged": false
     }
   ]
 }
