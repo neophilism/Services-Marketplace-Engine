@@ -693,7 +693,9 @@
       "id": "SME-023",
       "title": "Reviews dispute responses",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        24
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -704,8 +706,8 @@
       ],
       "acceptanceCriteria": "Complete reviews dispute responses functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Completed-engagement review tests cover exact customer identity, one immutable rating/comment, bounded input, exact request replay and duplicate/conflicting rejection.",
+        "Provider response and dispute tests cover tenant/provider/operator binding, verified customer or provider standing, unique bounded evidence references, contaminated reads, audit outages and failed writes."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -1812,6 +1814,12 @@
       "unitId": "SME-022",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 24,
+      "unitId": "SME-023",
+      "state": "open",
+      "merged": false
     }
   ]
 }
