@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T20:44:11Z",
+  "observedAt": "2026-10-23T20:48:06Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -929,7 +929,13 @@
       "contributingPrs": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
-      "status": "open"
+      "status": "merged",
+      "mergedCommit": "9b3588c1549574267682cc5b8b358acd677c0f3c",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 40021521603 passed for a4b4c15880da5c04819593ef1451edfb1f805bf9.",
+        "Merged-main Registry validation run 40021787257 passed for 9b3588c1549574267682cc5b8b358acd677c0f3c.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/31"
+      ]
     },
     {
       "id": "SME-031",
@@ -1924,8 +1930,8 @@
     {
       "number": 31,
       "unitId": "SME-030",
-      "state": "open",
-      "merged": false
+      "state": "closed",
+      "merged": true
     }
   ]
 }
