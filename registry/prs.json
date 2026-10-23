@@ -817,7 +817,9 @@
       "id": "SME-027",
       "title": "Attachment sharing private media",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        28
+      ],
       "priority": "P1",
       "phase": "Job Room",
       "dependsOn": [
@@ -828,12 +830,13 @@
       ],
       "acceptanceCriteria": "Complete attachment sharing private media functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Share tests cover current membership, clean verified media, exact replay, bounded captions, tenant contamination, quarantine and failed writes.",
+        "Download tests cover active-room/current-membership revalidation, subject-bound private URLs, revoked access, cross-tenant media, audit and object-store failures."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-028",
@@ -1872,6 +1875,12 @@
       "unitId": "SME-026",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 28,
+      "unitId": "SME-027",
+      "state": "open",
+      "merged": false
     }
   ]
 }
