@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T21:47:00Z",
+  "observedAt": "2026-10-23T21:52:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1082,16 +1082,25 @@
         "SME-034"
       ],
       "scope": [
-        "Completion warranties follow-up"
+        "Bind bounded immutable provider warranty terms to an accepted completion in one completed Job Room.",
+        "Permit only the room's exact active customer to record covered routine follow-up or warranty-claim evidence.",
+        "Keep claim adjudication, payment, reversal and completion mutation outside this evidence contract."
       ],
       "acceptanceCriteria": "Complete completion warranties follow-up functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Warranty tests cover exact provider/completion binding, completed-room state, bounded coverage and exact replay.",
+        "Follow-up tests cover exact customer and active coverage, tenant/role denial, contaminated evidence, audit failure and write failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "e7c334285318a4104a798915674030e83cc36d5d",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 40029517793 passed for ac64e8a46b71f027e5467277e2b7b5179eea82c5.",
+        "Merged-main Registry validation run 40029659955 passed for e7c334285318a4104a798915674030e83cc36d5d.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/36"
+      ]
     },
     {
       "id": "SME-036",
@@ -2006,8 +2015,8 @@
     {
       "number": 36,
       "unitId": "SME-035",
-      "state": "open",
-      "merged": false
+      "state": "closed",
+      "merged": true
     }
   ]
 }
