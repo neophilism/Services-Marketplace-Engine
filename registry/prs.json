@@ -1172,19 +1172,23 @@
       "id": "SME-038",
       "title": "Payment abstraction Stripe Connect",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        39
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-037"
       ],
       "scope": [
-        "Payment abstraction Stripe Connect"
+        "Create tenant-bound payment intents through a narrow Stripe Connect adapter using positive bounded minor-unit amounts.",
+        "Bind the exact active Job Room customer, provider organization and connected account before any processor call.",
+        "Require processor idempotency, exact response validation and durable same-input request-key replay."
       ],
       "acceptanceCriteria": "Complete payment abstraction stripe connect functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Payment tests cover exact processor request binding, stable local intent identity and same-input replay without a second adapter call.",
+        "Authorization-negative tests cover tenant, customer, room, provider and connected-account rebound plus malformed money, processor mismatch, audit failure and persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2051,6 +2055,12 @@
       "unitId": "SME-037",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 39,
+      "unitId": "SME-038",
+      "state": "open",
+      "merged": false
     }
   ]
 }
