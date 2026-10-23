@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T18:32:26Z",
+  "observedAt": "2026-10-23T18:44:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -631,7 +631,9 @@
       "id": "SME-021",
       "title": "Lead creation matching notifications",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        22
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -642,12 +644,13 @@
       ],
       "acceptanceCriteria": "Complete lead creation matching notifications functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tenant-authorized idempotent lead creation binds an active customer profile to the current published service revision, deterministically ranks bounded eligible providers, and atomically persists immutable match snapshots with metadata-only notification intents.",
+        "Focused tests cover stable ties and limits, exact replay without duplicate notifications, authorization and input failures, inactive or cross-tenant parents, stale/duplicate/oversized matcher output, no-match creation, and audit/matcher/transaction failures."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-022",
@@ -1782,6 +1785,12 @@
       "unitId": "SME-020",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 22,
+      "unitId": "SME-021",
+      "state": "open",
+      "merged": false
     }
   ]
 }
