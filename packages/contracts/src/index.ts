@@ -53,3 +53,4 @@ export * from './provider-employee.js';
 export * from './service-taxonomy.js';
 export * from './provider-onboarding.js';
 export * from './insurance.js';
+export * from './credential-check.js';
