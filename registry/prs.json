@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T18:28:46Z",
+  "observedAt": "2026-10-23T18:29:40Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1770,6 +1770,12 @@
       "unitId": "SME-019",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 21,
+      "unitId": "SME-020",
+      "state": "open",
+      "merged": false
     }
   ]
 }
