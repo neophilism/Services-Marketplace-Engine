@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T18:02:43Z",
+  "observedAt": "2026-10-23T18:06:35Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -538,7 +538,9 @@
       "id": "SME-018",
       "title": "Geospatial territories and travel rules",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        19
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -549,8 +551,8 @@
       ],
       "acceptanceCriteria": "Complete geospatial territories and travel rules functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Tenant-bound circular territories require active providers, active mobile-capable locations, bounded integer coordinates and travel rules, and optimistic immutable-parent updates.",
+        "Focused tests cover exact authorization, malformed geometry and fees, inactive parents, deterministic eligible and ineligible quotes, stale and reparenting writes, suspended-provider continuity, adapter contamination and failure boundaries."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -1737,6 +1739,12 @@
       "unitId": "SME-017",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 19,
+      "unitId": "SME-018",
+      "state": "open",
+      "merged": false
     }
   ]
 }
