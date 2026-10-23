@@ -1205,19 +1205,23 @@
       "id": "SME-039",
       "title": "Pricing fee caps",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        40
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-038"
       ],
       "scope": [
-        "Pricing fee caps"
+        "Create immutable tenant-bound price quotes from versioned provider pricing policies using integer minor-unit money.",
+        "Calculate customer and provider fees independently with bounded basis-point rates and explicit minor-unit caps.",
+        "Bind the exact Job Room customer, provider, policy revision, currency and subtotal with same-input request-key replay."
       ],
       "acceptanceCriteria": "Complete pricing fee caps functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Pricing tests cover integer rounding, independent caps, derived totals and exact replay.",
+        "Authorization-negative tests cover tenant, customer, provider and policy-revision rebound plus malformed money, excessive rates, audit failure and persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2068,6 +2072,12 @@
       "unitId": "SME-038",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 40,
+      "unitId": "SME-039",
+      "state": "open",
+      "merged": false
     }
   ]
 }

@@ -76,3 +76,4 @@ export * from './completion-warranty.js';
 export * from './dispute-oversight.js';
 export * from './accessible-offline-draft.js';
 export * from './payment.js';
+export * from './pricing.js';
