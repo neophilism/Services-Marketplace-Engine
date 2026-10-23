@@ -72,3 +72,4 @@ export * from './work-record.js';
 export * from './change-order.js';
 
 export * from './subcontractor-permission.js';
+export * from './completion-warranty.js';
