@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T19:21:25Z",
+  "observedAt": "2026-10-23T19:59:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -724,7 +724,9 @@
       "id": "SME-024",
       "title": "Saved providers and repeat requests",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        25
+      ],
       "priority": "P1",
       "phase": "Marketplace",
       "dependsOn": [
@@ -735,12 +737,13 @@
       ],
       "acceptanceCriteria": "Complete saved providers and repeat requests functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Saved-provider tests cover exact customer identity, active provider binding, one immutable relationship, exact request replay, duplicate/conflicting rejection and tenant contamination.",
+        "Repeat-request tests cover completed engagement provenance, current published service revision, bounded scheduling, exact replay, identity/history contamination, audit outages and failed writes."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_review"
     },
     {
       "id": "SME-025",
@@ -1827,6 +1830,12 @@
       "unitId": "SME-023",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 25,
+      "unitId": "SME-024",
+      "state": "open",
+      "merged": false
     }
   ]
 }
