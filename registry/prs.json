@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T20:00:15Z",
+  "observedAt": "2026-10-23T20:03:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -766,12 +766,13 @@
       ],
       "acceptanceCriteria": "Complete job room membership and invitations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Invitation tests cover active inviting membership, explicit invite authority, bounded expiry, exact replay, existing-member/pending-invitation rejection and tenant contamination.",
+        "Acceptance tests cover named-subject authorization, provider-operator standing, immutable membership, atomic acceptance, exact replay, expiry, audit outages and failed writes."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-026",
