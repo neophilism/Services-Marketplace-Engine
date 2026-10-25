@@ -1469,7 +1469,9 @@
       "id": "SME-047",
       "title": "Gift cards loyalty credits",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        48
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
@@ -2206,6 +2208,12 @@
       "unitId": "SME-046",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 48,
+      "unitId": "SME-047",
+      "state": "open",
+      "merged": false
     }
   ]
 }
