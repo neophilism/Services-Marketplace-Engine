@@ -1634,23 +1634,28 @@
       "id": "SME-052",
       "title": "Admin RBAC moderation support",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        53
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-051"
       ],
       "scope": [
-        "Admin RBAC moderation support"
+        "Record tenant-scoped administrative moderation cases under explicit organization RBAC and active operator grants.",
+        "Atomically append immutable privacy-minimized actions and advance optimistic case snapshots through bounded state transitions.",
+        "Enforce exact request replay, target binding and opaque evidence references without content storage, automated enforcement, cross-tenant administration, appeals policy or notification delivery."
       ],
       "acceptanceCriteria": "Complete admin rbac moderation support functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover case opening, restriction, optimistic versions, immutable actions, normalized evidence references and exact replay.",
+        "Authorization-negative tests cover cross-tenant access, inactive memberships and operators, missing grants, invalid transitions, stale versions, unsafe evidence references, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-053",
@@ -2289,6 +2294,12 @@
       "unitId": "SME-051",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 53,
+      "unitId": "SME-052",
+      "state": "open",
+      "merged": false
     }
   ]
 }
