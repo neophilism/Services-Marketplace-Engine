@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T07:35:00Z",
+  "observedAt": "2026-10-25T07:39:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1502,19 +1502,23 @@
       "id": "SME-048",
       "title": "Subscriptions dunning",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        49
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-047"
       ],
       "scope": [
-        "Subscriptions dunning"
+        "Record verified scheduled-charge failures into one tenant-owned revision-fenced subscription dunning case.",
+        "Bind exact subscription, customer, billing amount, currency, scheduled charge, unique provider event and active policy revision while computing bounded retry and fixed grace timing.",
+        "Atomically enforce provider-event, request-key and case-revision controls without charging, messaging, canceling subscriptions, revoking entitlements or making collection decisions."
       ],
       "acceptanceCriteria": "Complete subscriptions dunning functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover first and subsequent failures, exact replay, fixed grace boundaries, increasing bounded retry delays, exhaustion and immutable provider evidence.",
+        "Authorization-negative tests cover cross-tenant and wrong-customer records, stale subscription/policy/case revisions, canceled subscriptions, unverified or mismatched failures, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2221,6 +2225,12 @@
       "unitId": "SME-047",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 49,
+      "unitId": "SME-048",
+      "state": "open",
+      "merged": false
     }
   ]
 }
