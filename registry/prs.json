@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T07:44:00Z",
+  "observedAt": "2026-10-25T07:48:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1535,19 +1535,23 @@
       "id": "SME-049",
       "title": "Invoices tax accounting exports",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        50
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-048"
       ],
       "scope": [
-        "Invoices tax accounting exports"
+        "Issue one immutable tenant-owned invoice and balanced accounting export from an exact finalized commerce-source revision.",
+        "Bind verified tax evidence, jurisdiction, customer, provider, job room, currency, subtotal, discount, tax and total using integer minor units.",
+        "Atomically enforce source/tax snapshot and request-key controls without calculating or filing tax, collecting payment, issuing refunds, mutating a ledger or transmitting to an accounting provider."
       ],
       "acceptanceCriteria": "Complete invoices tax accounting exports functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover deterministic totals, discounts, verified zero-tax treatment, balanced journal entries, immutability and exact replay.",
+        "Authorization-negative tests cover cross-tenant access, stale or void sources, mismatched or future tax evidence, arithmetic overflow, audit failure, invalid identifiers and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2238,6 +2242,12 @@
       "unitId": "SME-048",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 50,
+      "unitId": "SME-049",
+      "state": "open",
+      "merged": false
     }
   ]
 }
