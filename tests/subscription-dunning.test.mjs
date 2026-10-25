@@ -155,6 +155,40 @@ test('advances a revision-fenced case and exhausts retries at the grace boundary
   assert.equal(second.dunningCase.nextRetryAt, null);
 });
 
+
+test('records the failure after the final configured retry as exhausted', async () => {
+  const f = fixture();
+  f.policy.retryDelaysMs = [10, 20, 30, 40, 50];
+  f.policy.gracePeriodMs = 1000;
+  assert.equal((await recordSubscriptionFailure(1, auth, state, command(), f.options)).accepted, true);
+
+  let result;
+  for (let failureNumber = 2; failureNumber <= 6; failureNumber += 1) {
+    f.setFailure({
+      ...f.failure(),
+      failureId: `failure-${failureNumber}`,
+      providerEventReference: `event-${failureNumber}`,
+      failedAt: 1000 + failureNumber,
+    });
+    result = await recordSubscriptionFailure(
+      1,
+      auth,
+      state,
+      command({
+        requestKey: `request-${failureNumber}`,
+        expectedCaseRevision: failureNumber - 1,
+        failureId: `failure-${failureNumber}`,
+      }),
+      f.options,
+    );
+    assert.equal(result.accepted, true);
+  }
+
+  assert.equal(result.dunningCase.failureNumber, 6);
+  assert.equal(result.dunningCase.status, 'exhausted');
+  assert.equal(result.dunningCase.nextRetryAt, null);
+});
+
 test('rejects unverified, mismatched, stale, and cross-tenant evidence', async () => {
   const unverified = fixture();
   unverified.setFailure({...unverified.failure(), verified: false});
