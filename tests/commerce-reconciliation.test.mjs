@@ -24,6 +24,7 @@ test('records a bounded refund and exactly replays its immutable result',async()
   assert.equal(first.accepted,true);assert.equal(first.value.refundedMinor,2000);assert.equal(first.value.revision,1);
   const replay=await recordReconciliationEvent(1,auth,state,request,f.options);
   assert.equal(replay.accepted,true);assert.equal(replay.replayed,true);assert.deepEqual(replay.value,first.value);
+  assert.equal((await recordReconciliationEvent(1,auth,state,{...request,requestKey:'request-2',expectedRevision:1},f.options)).accepted,false);
   assert.equal((await recordReconciliationEvent(1,auth,state,{...request,eventReference:'refund-2'},f.options)).accepted,false);
 });
 
