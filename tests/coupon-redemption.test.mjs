@@ -95,12 +95,14 @@ function fixture() {
     options,
     coupon: () => coupon,
     quote,
+    replaceCoupon: changes => { coupon = {...coupon, ...changes}; },
     fail: () => { options.store.redeemCoupon = async () => false; },
   };
 }
 
 test('atomically redeems an exact quote and replays the result', async () => {
   const fixtureValue = fixture();
+  fixtureValue.replaceCoupon({maxRedemptionsPerCustomer: 2});
   const command = input();
   const first = await redeemCoupon(1, auth, state, command, fixtureValue.options);
   assert.equal(first.accepted, true);
@@ -112,6 +114,16 @@ test('atomically redeems an exact quote and replays the result', async () => {
   assert.equal(replay.replayed, true);
   assert.equal((await redeemCoupon(1, auth, state, input({priceQuoteId: 'quote-2'}), fixtureValue.options)).accepted, false);
   assert.equal((await redeemCoupon(1, auth, state, input({requestKey: 'request-2'}), fixtureValue.options)).accepted, false);
+  const fixed = fixture();
+  fixed.replaceCoupon({
+    discountKind: 'fixed_minor',
+    discountValue: 6000,
+    maxDiscountMinor: 6000,
+  });
+  const fixedResult = await redeemCoupon(1, auth, state, input(), fixed.options);
+  assert.equal(fixedResult.accepted, true);
+  assert.equal(fixedResult.redemption.discountMinor, 5000);
+  assert.equal(fixedResult.redemption.discountedSubtotalMinor, 0);
 });
 
 test('enforces customer, currency, revision, digest, time, and redemption limits', async () => {
