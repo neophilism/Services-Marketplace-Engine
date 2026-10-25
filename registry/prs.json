@@ -1667,23 +1667,28 @@
       "id": "SME-053",
       "title": "Feature flags configuration",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        54
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-052"
       ],
       "scope": [
-        "Feature flags configuration"
+        "Record tenant-scoped feature flag revisions under explicit organization RBAC and active operator grants.",
+        "Bind normalized flag and variant identifiers to one explicit environment with optimistic revisions and deterministic evaluation.",
+        "Enforce exact request replay and atomic persistence without user targeting, percentage rollout, experimentation analytics, secret values, remote code, cross-tenant defaults or notification delivery."
       ],
       "acceptanceCriteria": "Complete feature flags configuration functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover immutable configuration revisions, explicit environments, optimistic updates, deterministic evaluation and exact replay.",
+        "Authorization-negative tests cover cross-tenant access, inactive memberships and operators, missing grants, stale revisions, unsafe identifiers, corrupted replay, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-054",
@@ -2306,6 +2311,12 @@
       "unitId": "SME-052",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 54,
+      "unitId": "SME-053",
+      "state": "open",
+      "merged": false
     }
   ]
 }
