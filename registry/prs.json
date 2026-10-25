@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T06:40:00Z",
+  "observedAt": "2026-10-25T07:17:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1403,19 +1403,23 @@
       "id": "SME-045",
       "title": "Coupons redemption control",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        46
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-044"
       ],
       "scope": [
-        "Coupons redemption control"
+        "Redeem a tenant-owned immutable coupon policy snapshot against one exact customer price quote using a SHA-256 code digest rather than a plaintext code.",
+        "Calculate bounded fixed-minor or floor-rounded basis-point discounts with exact revision, currency, subtotal, cap, and inclusive-start/exclusive-end controls.",
+        "Atomically enforce global, per-customer, request-key, and one-coupon-per-quote limits with customer-bound exact replay and fail-closed authorization."
       ],
       "acceptanceCriteria": "Complete coupons redemption control functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover exact quote binding, deterministic discounts, policy revisions, digests, currency, validity windows, replay, and global/per-customer atomic limits.",
+        "Authorization-negative tests cover cross-tenant and contaminated records, wrong customers, paused policies, stale revisions, digest mismatches, audit failure, and failed compare-and-set persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2170,6 +2174,12 @@
       "unitId": "SME-044",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 46,
+      "unitId": "SME-045",
+      "state": "open",
+      "merged": false
     }
   ]
 }
