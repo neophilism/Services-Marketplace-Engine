@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T07:40:00Z",
+  "observedAt": "2026-10-25T07:39:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1502,7 +1502,9 @@
       "id": "SME-048",
       "title": "Subscriptions dunning",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        49
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
@@ -2223,6 +2225,12 @@
       "unitId": "SME-047",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 49,
+      "unitId": "SME-048",
+      "state": "open",
+      "merged": false
     }
   ]
 }
