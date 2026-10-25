@@ -62,7 +62,8 @@ function fixture() {
     store: {
       getSource: async () => source,
       getTaxDetermination: async () => tax,
-      getByRequestKey: async () => saved,
+      getByRequestKey: async (_organizationId, key) => saved?.requestKey === key ? saved : null,
+      getBySource: async () => saved,
       createExport: async (_source, _tax, value) => {
         if (saved !== null) return false;
         saved = value;
@@ -101,6 +102,13 @@ test('issues a balanced immutable invoice export and exactly replays it', async 
     auth,
     state,
     {...input, expectedSourceRevision: 2},
+    f.options,
+  )).accepted, false);
+  assert.equal((await createInvoiceAccountingExport(
+    1,
+    auth,
+    state,
+    {...input, requestKey: 'request-2'},
     f.options,
   )).accepted, false);
 });
