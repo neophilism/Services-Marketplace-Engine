@@ -1379,16 +1379,25 @@
         "SME-043"
       ],
       "scope": [
-        "Ad inventory and sponsors"
+        "Reserve tenant-owned advertising inventory atomically against an exact slot revision for one active sponsor campaign.",
+        "Bind each placement to exact active sponsor and campaign standing, clean creative evidence, matching formats, bounded availability, and an HTTPS destination.",
+        "Revalidate tenant, slot, sponsor, campaign, creative and inclusive-start/exclusive-end boundaries before display without targeting, billing, auction, impression or analytics claims."
       ],
       "acceptanceCriteria": "Complete ad inventory and sponsors functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover atomic reservation, exact replay, inventory revision advancement, clean creative snapshots, bounded placement windows, and exact delivery projection.",
+        "Authorization-negative tests cover cross-tenant records, stale inventory, format mismatch, unclean creative, changed replay, sponsor suspension, creative replacement, audit failure, and atomic reservation failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "9f5aa711db8020cb495bd3f9722ff3f2cd99af76",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation push/PR runs 40171647763 and 40171650680 passed for 9235cd3e53969beecad0f524068e4a8a9a2a05b3.",
+        "Merged-main Registry validation run 40171779664 passed for 9f5aa711db8020cb495bd3f9722ff3f2cd99af76.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/45"
+      ]
     },
     {
       "id": "SME-045",
@@ -2159,8 +2168,8 @@
     {
       "number": 45,
       "unitId": "SME-044",
-      "state": "open",
-      "merged": false
+      "state": "closed",
+      "merged": true
     }
   ]
 }
