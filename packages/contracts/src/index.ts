@@ -88,3 +88,4 @@ export * from './stored-credit-application.js';
 export * from './subscription-dunning.js';
 export * from './invoice-accounting-export.js';
 export * from './provider-crm.js';
+export * from './funnel-attribution.js';
