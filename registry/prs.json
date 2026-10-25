@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T07:53:00Z",
+  "observedAt": "2026-10-25T08:00:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1575,12 +1575,14 @@
         "SME-049"
       ],
       "scope": [
-        "Provider CRM"
+        "Maintain one tenant-bound operational CRM record per active provider/customer relationship with optimistic version control.",
+        "Record stage, optional active provider-operator ownership and bounded normalized tags alongside an immutable activity event.",
+        "Atomically enforce provider/customer uniqueness, exact request replay and tenant/provider/operator binding without analytics, outbound messaging, campaigns or free-form sensitive notes."
       ],
-      "acceptanceCriteria": "Complete provider crm functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
+      "acceptanceCriteria": "Complete provider CRM relationship-state functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover creation, immutable activity history, normalized tags, exact replay and optimistic stage/assignee updates.",
+        "Authorization-negative tests cover cross-tenant records, inactive providers, operator contamination, stale writes, reused request keys, invalid input, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
