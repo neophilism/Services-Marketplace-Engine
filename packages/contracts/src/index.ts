@@ -80,3 +80,4 @@ export * from './pricing.js';
 export * from './milestone-charge.js';
 export * from './external-payment-record.js';
 export * from './commerce-reconciliation.js';
+export * from './plan-entitlement.js';
