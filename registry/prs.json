@@ -1337,7 +1337,9 @@
       "id": "SME-043",
       "title": "Plans entitlements",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        44
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
@@ -2136,6 +2138,12 @@
       "unitId": "SME-042",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 44,
+      "unitId": "SME-043",
+      "state": "open",
+      "merged": false
     }
   ]
 }
