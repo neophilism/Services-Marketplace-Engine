@@ -1733,23 +1733,28 @@
       "id": "SME-055",
       "title": "Knowledge base content CMS",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        56
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-054"
       ],
       "scope": [
-        "Knowledge base content CMS"
+        "Manage tenant-scoped immutable knowledge-base article revisions by normalized article key and locale.",
+        "Enforce draft, published and archived lifecycle transitions with optimistic concurrency, exact request replay and publication-only reads.",
+        "Bind opaque content references to SHA-256 digests while excluding raw body storage, rendering, media, search indexing, localization workflow, scheduled publishing, analytics and AI ingestion."
       ],
       "acceptanceCriteria": "Complete knowledge base content cms functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover immutable drafts, publication, archival, monotonic revisions, exact replay and publication-only resolution.",
+        "Authorization-negative tests cover cross-tenant access, inactive memberships and operators, missing grants, malformed metadata, unsafe transitions, stale writes, replay contamination, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-056",
@@ -2340,6 +2345,12 @@
       "unitId": "SME-054",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 56,
+      "unitId": "SME-055",
+      "state": "open",
+      "merged": false
     }
   ]
 }
