@@ -82,3 +82,4 @@ export * from './external-payment-record.js';
 export * from './commerce-reconciliation.js';
 export * from './plan-entitlement.js';
 export * from './ad-inventory.js';
+export * from './coupon-redemption.js';
