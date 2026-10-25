@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T08:05:00Z",
+  "observedAt": "2026-10-25T08:06:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1601,7 +1601,9 @@
       "id": "SME-051",
       "title": "Funnel analytics attribution",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        52
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
@@ -2274,6 +2276,12 @@
       "unitId": "SME-050",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 52,
+      "unitId": "SME-051",
+      "state": "open",
+      "merged": false
     }
   ]
 }
