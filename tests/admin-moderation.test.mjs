@@ -76,6 +76,18 @@ test('accepts only exact request-key replay', async () => {
   {accepted: false, code: 'admin_moderation_rejected'});
 });
 
+test('rejects a stored replay with an impossible action and case state', async () => {
+  const {state, options} = fixture();
+  const created = await recordAdminModerationAction(1, authRequest, authState, input, options);
+  assert.equal(created.accepted, true);
+  state.mutations.set(input.requestKey, {
+    ...created.value,
+    moderationCase: {...created.value.moderationCase, status: 'resolved'},
+  });
+  assert.deepEqual(await recordAdminModerationAction(1, authRequest, authState, input, options),
+    {accepted: false, code: 'admin_moderation_rejected'});
+});
+
 test('rejects authorization, tenant, and operator failures', async t => {
   const cases = [
     ['wrong permission', {...authRequest, requiredPermission: 'admin:read'}, authState, null],
