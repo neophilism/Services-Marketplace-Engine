@@ -108,6 +108,7 @@ test('atomically applies gift-card value and exactly replays', async () => {
   assert.equal(replay.accepted, true);
   assert.equal(replay.replayed, true);
   assert.equal((await applyStoredCredit(1, auth, state, command({amountMinor: 1100}), f.options)).accepted, false);
+  assert.equal((await applyStoredCredit(1, auth, state, command({claimDigest: 'd'.repeat(64)}), f.options)).accepted, false);
 });
 
 test('applies only customer-bound loyalty credit without a claim digest', async () => {
