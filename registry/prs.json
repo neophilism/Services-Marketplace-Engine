@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-23T21:52:00Z",
+  "observedAt": "2026-10-25T06:32:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1304,19 +1304,23 @@
       "id": "SME-042",
       "title": "Refund disputes payout reconciliation",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        43
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-041"
       ],
       "scope": [
-        "Refund disputes payout reconciliation"
+        "Reconcile verified refunds, dispute opens and outcomes, and provider payouts against one exact scheduled charge or reported external payment.",
+        "Require unique provider events, exact source and currency binding, optimistic revisions, bounded totals, and active payout destinations.",
+        "Atomically append immutable reconciliation evidence without initiating money movement, adjudicating disputes, or posting accounting entries."
       ],
       "acceptanceCriteria": "Complete refund disputes payout reconciliation functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover bounded refunds, exact replay, dispute fencing and exact outcomes, provider-bound payouts, and ordered revision advancement.",
+        "Authorization-negative tests cover tenant and source rebound, duplicate events, stale revisions, over-refunds, over-payouts, destination mismatch, audit failure, verifier failure and atomic write failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
