@@ -1346,16 +1346,25 @@
         "SME-042"
       ],
       "scope": [
-        "Plans entitlements"
+        "Assign immutable published plan revisions to exact active customer or provider-organization subjects with bounded entitlement snapshots.",
+        "Require tenant authorization, unique request keys, optimistic assignment versions, exact subject and plan binding, and atomic assignment plus command evidence.",
+        "Evaluate entitlement keys deterministically across effective and exclusive-expiry boundaries without asserting subscription, payment, renewal, dunning, or advertising state."
       ],
       "acceptanceCriteria": "Complete plans entitlements functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover canonical entitlement snapshots, exact replay, assignment revocation, version fencing, and effective and expiry boundary projection.",
+        "Authorization-negative tests cover cross-tenant subjects, retired assignment plans, duplicate entitlement keys, changed replay, stale versions, audit failure, and atomic persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "6b76b5a550b77fbe582c99c87e194389cab12524",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 40171167703 passed for e20a5354620c243f6f9425c49560909b8642e6df.",
+        "Merged-main Registry validation run 40171311311 passed for 6b76b5a550b77fbe582c99c87e194389cab12524.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/44"
+      ]
     },
     {
       "id": "SME-044",
@@ -2142,8 +2151,8 @@
     {
       "number": 44,
       "unitId": "SME-043",
-      "state": "open",
-      "merged": false
+      "state": "closed",
+      "merged": true
     }
   ]
 }
