@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T08:03:00Z",
+  "observedAt": "2026-10-25T08:06:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1601,19 +1601,23 @@
       "id": "SME-051",
       "title": "Funnel analytics attribution",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        52
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-050"
       ],
       "scope": [
-        "Funnel analytics attribution"
+        "Append privacy-minimized tenant-bound funnel events for active provider CRM relationships.",
+        "Maintain deterministic first-touch, last-touch and monotonic stage snapshots with optimistic versions.",
+        "Atomically enforce event ordering and exact request replay without cross-tenant aggregation, campaign management, message delivery or CRM mutation."
       ],
       "acceptanceCriteria": "Complete funnel analytics attribution functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover immutable events, first/last-touch attribution, monotonic stages, exact replay and optimistic snapshot updates.",
+        "Authorization-negative tests cover cross-tenant relationships, provider-operator contamination, stale or future events, stage regression, reused keys, invalid attribution, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2272,6 +2276,12 @@
       "unitId": "SME-050",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 52,
+      "unitId": "SME-051",
+      "state": "open",
+      "merged": false
     }
   ]
 }
