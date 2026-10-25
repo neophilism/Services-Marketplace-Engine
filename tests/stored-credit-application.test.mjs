@@ -123,6 +123,7 @@ test('applies only customer-bound loyalty credit without a claim digest', async 
     customerSubjectId: 'customer-1',
     expiresAt: null,
   });
+  f.options.store.apply = async () => true;
   assert.equal((await applyStoredCredit(
     1,
     auth,
