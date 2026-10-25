@@ -84,6 +84,12 @@ export interface InvoiceAccountingExportStore {
     organizationId: string,
     requestKey: string,
   ): Promise<InvoiceAccountingExport | null>;
+  getBySource(
+    organizationId: string,
+    sourceType: InvoiceSourceType,
+    sourceId: string,
+    sourceRevision: number,
+  ): Promise<InvoiceAccountingExport | null>;
   createExport(
     source: FinalizedInvoiceSource,
     tax: VerifiedTaxDetermination,
@@ -243,17 +249,29 @@ export async function createInvoiceAccountingExport(
   ) return rejected();
 
   try {
-    const [source, tax, replay] = await Promise.all([
+    const [source, tax, replay, existingSource] = await Promise.all([
       options.store.getSource(auth.organizationId, input.sourceType, input.sourceId),
       options.store.getTaxDetermination(auth.organizationId, input.taxDeterminationId),
       options.store.getByRequestKey(auth.organizationId, input.requestKey),
+      options.store.getBySource(
+        auth.organizationId,
+        input.sourceType,
+        input.sourceId,
+        input.expectedSourceRevision,
+      ),
     ]);
     if (replay !== null) {
-      return validExport(replay, auth.organizationId) && exactReplay(replay, input)
+      return validExport(replay, auth.organizationId) &&
+        exactReplay(replay, input) &&
+        validExport(existingSource, auth.organizationId) &&
+        existingSource.invoiceId === replay.invoiceId &&
+        existingSource.accountingExportId === replay.accountingExportId
         ? {accepted: true, value: replay, replayed: true}
         : rejected();
     }
     if (
+      existingSource !== null ||
+
       !validSource(source, auth.organizationId) ||
       source.sourceType !== input.sourceType ||
       source.sourceId !== input.sourceId ||
