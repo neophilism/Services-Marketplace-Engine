@@ -273,7 +273,10 @@ export async function recordSubscriptionFailure(
         ? input.expectedCaseRevision !== 0
         : !validCase(currentCase, auth.organizationId) ||
           currentCase.subscriptionId !== subscription.subscriptionId ||
+          currentCase.subscriptionRevision !== subscription.revision ||
           currentCase.customerSubjectId !== auth.subjectId ||
+          currentCase.policyId !== policy.policyId ||
+          currentCase.policyRevision !== policy.revision ||
           currentCase.caseRevision !== input.expectedCaseRevision ||
           currentCase.status === 'exhausted')
     ) {
