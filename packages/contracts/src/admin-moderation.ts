@@ -115,6 +115,21 @@ function validCase(value: ModerationCase | null, organizationId: string): value 
     integer(value.openedAt, 0, DATE) && integer(value.updatedAt, value.openedAt, DATE);
 }
 
+function actionMatchesCase(action: ModerationAction, moderationCase: ModerationCase): boolean {
+  if (action.action === 'open') {
+    return moderationCase.version === 1 && moderationCase.status === 'open' &&
+      moderationCase.openedAt === moderationCase.updatedAt;
+  }
+  if (moderationCase.version <= 1) return false;
+  if (action.action === 'note') {
+    return moderationCase.status === 'open' || moderationCase.status === 'restricted';
+  }
+  if (action.action === 'restrict') return moderationCase.status === 'restricted';
+  if (action.action === 'restore') return moderationCase.status === 'open';
+  if (action.action === 'resolve') return moderationCase.status === 'resolved';
+  return action.action === 'dismiss' && moderationCase.status === 'dismissed';
+}
+
 function validMutation(value: AdminModerationMutation | null, organizationId: string):
   value is AdminModerationMutation {
   if (!value || !validCase(value.moderationCase, organizationId)) return false;
@@ -125,6 +140,7 @@ function validMutation(value: AdminModerationMutation | null, organizationId: st
     action.targetId === value.moderationCase.targetId && ACTIONS.has(action.action) &&
     REASONS.has(action.reason) && normalizedEvidence(action.evidenceRefs) !== null &&
     action.caseVersion === value.moderationCase.version &&
+    actionMatchesCase(action, value.moderationCase) &&
     action.occurredAt === value.moderationCase.updatedAt;
 }
 
