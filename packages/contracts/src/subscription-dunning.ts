@@ -114,7 +114,8 @@ const CURRENCY = /^[A-Z]{3}$/;
 const DATE = 8_640_000_000_000_000;
 const MAX_MONEY = 9_999_999_999;
 const MAX_DELAY = 2_592_000_000;
-const MAX_FAILURES = 5;
+const MAX_RETRIES = 5;
+const MAX_FAILURES = MAX_RETRIES + 1;
 const integer = (value: number, min: number, max: number): boolean =>
   Number.isSafeInteger(value) && value >= min && value <= max;
 const rejected = (): RecordSubscriptionFailureResult => ({
@@ -142,7 +143,7 @@ function validPolicy(value: DunningPolicy | null, organizationId: string): value
     integer(value.revision, 1, Number.MAX_SAFE_INTEGER) &&
     ['active', 'paused', 'retired'].includes(value.status) &&
     value.retryDelaysMs.length >= 1 &&
-    value.retryDelaysMs.length <= MAX_FAILURES &&
+    value.retryDelaysMs.length <= MAX_RETRIES &&
     value.retryDelaysMs.every(delay => integer(delay, 1, MAX_DELAY)) &&
     value.retryDelaysMs.every((delay, index) => index === 0 || delay > value.retryDelaysMs[index - 1]!) &&
     integer(value.gracePeriodMs, 1, MAX_DELAY);
