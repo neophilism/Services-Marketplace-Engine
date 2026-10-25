@@ -1655,7 +1655,13 @@
       "contributingPrs": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
-      "status": "in_progress"
+      "status": "merged",
+      "mergedCommit": "9f538e5ff8a8e7bbbd8b625d1d0fbb8b1d74032c",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 40176024132 passed for 8e4ee1caec648552144552b1537bbad8c806e048.",
+        "Merged-main Registry validation run 40176132645 passed for 9f538e5ff8a8e7bbbd8b625d1d0fbb8b1d74032c.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/53"
+      ]
     },
     {
       "id": "SME-053",
@@ -2298,8 +2304,8 @@
     {
       "number": 53,
       "unitId": "SME-052",
-      "state": "open",
-      "merged": false
+      "state": "closed",
+      "merged": true
     }
   ]
 }
