@@ -137,6 +137,7 @@ test('advances a revision-fenced case and exhausts retries at the grace boundary
     providerEventReference: 'event-2',
     failedAt: 1300,
   });
+  f.options.now = () => 1400;
   const second = await recordSubscriptionFailure(
     1,
     auth,
