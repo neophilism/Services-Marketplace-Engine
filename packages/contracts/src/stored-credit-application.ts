@@ -44,6 +44,7 @@ export interface StoredCreditApplication {
   readonly sourceKind: StoredCreditSource['kind'];
   readonly sourceId: string;
   readonly sourceRevision: number;
+  readonly claimDigest: string | null;
   readonly customerSubjectId: string;
   readonly priceQuoteId: string;
   readonly providerOrganizationId: string;
@@ -142,6 +143,7 @@ function validApplication(
     (value.sourceKind === 'gift_card' || value.sourceKind === 'loyalty_credit') &&
     ID.test(value.sourceId) &&
     integer(value.sourceRevision, 1, Number.MAX_SAFE_INTEGER) &&
+    (value.sourceKind === 'gift_card' ? DIGEST.test(value.claimDigest ?? '') : value.claimDigest === null) &&
     ID.test(value.customerSubjectId) &&
     ID.test(value.priceQuoteId) &&
     ID.test(value.providerOrganizationId) &&
@@ -161,6 +163,7 @@ function sameReplay(
   return value.requestKey === input.requestKey &&
     value.sourceId === input.sourceId &&
     value.sourceRevision === input.expectedSourceRevision &&
+    value.claimDigest === (input.claimDigest ?? null) &&
     value.priceQuoteId === input.priceQuoteId &&
     value.appliedMinor === input.amountMinor &&
     value.customerSubjectId === customerSubjectId;
@@ -233,6 +236,7 @@ export async function applyStoredCredit(
       sourceKind: source.kind,
       sourceId: source.sourceId,
       sourceRevision: source.revision,
+      claimDigest: source.kind === 'gift_card' ? source.claimDigest : null,
       customerSubjectId: auth.subjectId,
       priceQuoteId: quote.priceQuoteId,
       providerOrganizationId: quote.providerOrganizationId,
