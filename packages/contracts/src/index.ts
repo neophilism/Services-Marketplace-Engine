@@ -92,3 +92,4 @@ export * from './funnel-attribution.js';
 export * from './admin-moderation.js';
 export * from './feature-flag.js';
 export * from './notification-adapter.js';
+export * from './knowledge-base.js';
