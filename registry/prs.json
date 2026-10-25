@@ -1546,11 +1546,11 @@
       "scope": [
         "Issue one immutable tenant-owned invoice and balanced accounting export from an exact finalized commerce-source revision.",
         "Bind verified tax evidence, jurisdiction, customer, provider, job room, currency, subtotal, discount, tax and total using integer minor units.",
-        "Atomically enforce source/tax snapshot and request-key controls without calculating or filing tax, collecting payment, issuing refunds, mutating a ledger or transmitting to an accounting provider."
+        "Atomically enforce source/tax snapshot, request-key and one-invoice-per-source controls without calculating or filing tax, collecting payment, issuing refunds, mutating a ledger or transmitting to an accounting provider."
       ],
       "acceptanceCriteria": "Complete invoices tax accounting exports functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Contract tests cover deterministic totals, discounts, verified zero-tax treatment, balanced journal entries, immutability and exact replay.",
+        "Contract tests cover deterministic totals, discounts, verified zero-tax treatment, balanced journal entries, one-invoice-per-source uniqueness, immutability and exact replay.",
         "Authorization-negative tests cover cross-tenant access, stale or void sources, mismatched or future tax evidence, arithmetic overflow, audit failure, invalid identifiers and failed atomic persistence."
       ],
       "contributingPrs": [],
