@@ -1700,23 +1700,28 @@
       "id": "SME-054",
       "title": "Email push SMS adapters",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        55
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-053"
       ],
       "scope": [
-        "Email push SMS adapters"
+        "Dispatch pre-authorized tenant-bound metadata-only intents through explicit email, push and SMS adapters.",
+        "Atomically record immutable provider receipts and enforce exact request replay without duplicate provider calls.",
+        "Validate intent status and bounded delivery windows without raw destinations, message bodies, credentials, retries, template rendering, opt-out policy or webhook reconciliation."
       ],
       "acceptanceCriteria": "Complete email push sms adapters functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover all three channel adapters, metadata-only commands, immutable receipts, delivery windows and exact replay without repeated provider calls.",
+        "Authorization-negative tests cover cross-tenant access, inactive memberships and operators, missing grants, cancelled or contaminated intents, unavailable adapters, provider failures, invalid receipts, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "in_progress"
     },
     {
       "id": "SME-055",
@@ -2323,6 +2328,12 @@
       "unitId": "SME-053",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 55,
+      "unitId": "SME-054",
+      "state": "open",
+      "merged": false
     }
   ]
 }
