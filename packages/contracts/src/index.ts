@@ -85,3 +85,4 @@ export * from './ad-inventory.js';
 export * from './coupon-redemption.js';
 export * from './referral-attribution.js';
 export * from './stored-credit-application.js';
+export * from './subscription-dunning.js';
