@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T08:00:00Z",
+  "observedAt": "2026-10-25T08:01:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1568,7 +1568,9 @@
       "id": "SME-050",
       "title": "Provider CRM",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        51
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
@@ -2257,6 +2259,12 @@
       "unitId": "SME-049",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 51,
+      "unitId": "SME-050",
+      "state": "open",
+      "merged": false
     }
   ]
 }
