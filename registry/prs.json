@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T07:21:00Z",
+  "observedAt": "2026-10-25T07:24:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1436,19 +1436,23 @@
       "id": "SME-046",
       "title": "Referrals affiliate fraud controls",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        47
+      ],
       "priority": "P1",
       "phase": "Commerce",
       "dependsOn": [
         "SME-045"
       ],
       "scope": [
-        "Referrals affiliate fraud controls"
+        "Record one held referral attribution for an exact immutable customer price quote using a one-time SHA-256 token digest bound to an active affiliate and referred customer.",
+        "Reject self-referrals and stale, inactive, expired, consumed, mismatched or cross-tenant records while calculating bounded floor-rounded commission and a review hold.",
+        "Atomically enforce unique request, token, referred-customer and quote attribution without granting payout, balance, reversal, stored-value or tax authority."
       ],
       "acceptanceCriteria": "Complete referrals affiliate fraud controls functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover exact customer, affiliate, token, quote, program revision, currency, subtotal, commission ceiling, hold and replay binding.",
+        "Authorization-negative and fraud-control tests cover self-referral, wrong customers, stale programs, expired tokens, suspended affiliates, cross-tenant records, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2187,6 +2191,12 @@
       "unitId": "SME-045",
       "state": "closed",
       "merged": true
+    },
+    {
+      "number": 47,
+      "unitId": "SME-046",
+      "state": "open",
+      "merged": false
     }
   ]
 }

@@ -83,3 +83,4 @@ export * from './commerce-reconciliation.js';
 export * from './plan-entitlement.js';
 export * from './ad-inventory.js';
 export * from './coupon-redemption.js';
+export * from './referral-attribution.js';
