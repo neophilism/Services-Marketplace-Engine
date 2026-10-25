@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-10-25T07:26:00Z",
+  "observedAt": "2026-10-25T07:30:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1476,12 +1476,14 @@
         "SME-046"
       ],
       "scope": [
-        "Gift cards loyalty credits"
+        "Apply one tenant-owned gift card or customer-bound loyalty-credit source to one exact immutable customer price quote.",
+        "Require exact active source revision, currency, lifetime, customer or SHA-256 gift-card claim binding, and integer minor-unit amounts within both source balance and quote subtotal.",
+        "Atomically enforce source balance, request-key and one-application-per-quote controls without granting settlement, funding, refund, stored-value issuance or tax authority."
       ],
       "acceptanceCriteria": "Complete gift cards loyalty credits functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover gift-card claims, customer-bound loyalty credits, exact quote and source-revision binding, deterministic balances, expiry and exact replay.",
+        "Authorization-negative tests cover cross-tenant and wrong-customer records, stale or frozen sources, claim mismatches, overdrafts, quote reuse, audit failure and failed atomic persistence."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
