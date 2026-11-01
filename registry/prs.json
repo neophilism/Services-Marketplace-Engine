@@ -2029,10 +2029,12 @@
   ],
   "pullRequests": [
     {
-      "id": 4925459774,
       "number": 1,
-      "title": "SME-001: establish engine architecture and canonical roadmap",
+      "unitId": "SME-001",
       "state": "closed",
+      "merged": true,
+      "id": 4925459774,
+      "title": "SME-001: establish engine architecture and canonical roadmap",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/1",
       "createdAt": "2026-10-19T18:23:15Z",
       "updatedAt": "2026-10-20T09:28:10Z",
@@ -2041,10 +2043,12 @@
       "draft": false
     },
     {
-      "id": 4971621592,
       "number": 3,
-      "title": "SME-002: Bootstrap TypeScript API and worker workspaces",
+      "unitId": "SME-002",
       "state": "closed",
+      "merged": true,
+      "id": 4971621592,
+      "title": "SME-002: Bootstrap TypeScript API and worker workspaces",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/3",
       "createdAt": "2026-10-22T17:42:19Z",
       "updatedAt": "2026-10-22T17:48:01Z",
@@ -2053,10 +2057,12 @@
       "draft": false
     },
     {
-      "id": 4971746750,
       "number": 4,
-      "title": "SME-003: Enforce CI static and registry checks",
+      "unitId": "SME-003",
       "state": "closed",
+      "merged": true,
+      "id": 4971746750,
+      "title": "SME-003: Enforce CI static and registry checks",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/4",
       "createdAt": "2026-10-22T17:52:22Z",
       "updatedAt": "2026-10-22T17:54:50Z",
@@ -2065,10 +2071,12 @@
       "draft": false
     },
     {
-      "id": 4971844509,
       "number": 5,
-      "title": "SME-004: Add PostgreSQL migrations and rollback",
+      "unitId": "SME-004",
       "state": "closed",
+      "merged": true,
+      "id": 4971844509,
+      "title": "SME-004: Add PostgreSQL migrations and rollback",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/5",
       "createdAt": "2026-10-22T18:00:10Z",
       "updatedAt": "2026-10-22T18:02:55Z",
@@ -2077,10 +2085,12 @@
       "draft": false
     },
     {
-      "id": 4972026678,
       "number": 6,
-      "title": "SME-005: Add OpenAPI contract and generated SDK",
+      "unitId": "SME-005",
       "state": "closed",
+      "merged": true,
+      "id": 4972026678,
+      "title": "SME-005: Add OpenAPI contract and generated SDK",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/6",
       "createdAt": "2026-10-22T18:14:20Z",
       "updatedAt": "2026-10-22T18:16:47Z",
@@ -2089,10 +2099,12 @@
       "draft": false
     },
     {
-      "id": 4972104571,
       "number": 7,
-      "title": "SME-006: Add passkey MFA identity sessions",
+      "unitId": "SME-006",
       "state": "closed",
+      "merged": true,
+      "id": 4972104571,
+      "title": "SME-006: Add passkey MFA identity sessions",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/7",
       "createdAt": "2026-10-22T18:20:47Z",
       "updatedAt": "2026-10-22T18:22:24Z",
@@ -2101,10 +2113,12 @@
       "draft": false
     },
     {
-      "id": 4972216113,
       "number": 8,
-      "title": "SME-007: Add organization membership RBAC",
+      "unitId": "SME-007",
       "state": "closed",
+      "merged": true,
+      "id": 4972216113,
+      "title": "SME-007: Add organization membership RBAC",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/8",
       "createdAt": "2026-10-22T18:29:37Z",
       "updatedAt": "2026-10-22T18:31:35Z",
@@ -2113,10 +2127,12 @@
       "draft": false
     },
     {
-      "id": 4972284860,
       "number": 9,
-      "title": "SME-008: Add tenancy boundary audit logs",
+      "unitId": "SME-008",
       "state": "closed",
+      "merged": true,
+      "id": 4972284860,
+      "title": "SME-008: Add tenancy boundary audit logs",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/9",
       "createdAt": "2026-10-22T18:35:01Z",
       "updatedAt": "2026-10-22T18:36:46Z",
@@ -2125,10 +2141,12 @@
       "draft": false
     },
     {
-      "id": 4972385168,
       "number": 10,
-      "title": "SME-009: Tenant-scoped outbox queues and idempotency",
+      "unitId": "SME-009",
       "state": "closed",
+      "merged": true,
+      "id": 4972385168,
+      "title": "SME-009: Tenant-scoped outbox queues and idempotency",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/10",
       "createdAt": "2026-10-22T18:42:39Z",
       "updatedAt": "2026-10-22T18:47:20Z",
@@ -2137,10 +2155,12 @@
       "draft": false
     },
     {
-      "id": 4972486389,
       "number": 11,
-      "title": "SME-010: Quarantined object storage attachment scanning",
+      "unitId": "SME-010",
       "state": "closed",
+      "merged": true,
+      "id": 4972486389,
+      "title": "SME-010: Quarantined object storage attachment scanning",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/11",
       "createdAt": "2026-10-22T18:50:20Z",
       "updatedAt": "2026-10-22T18:51:48Z",
@@ -2149,10 +2169,12 @@
       "draft": false
     },
     {
-      "id": 4972598261,
       "number": 12,
-      "title": "SME-011: Add customer profiles and saved assets",
+      "unitId": "SME-011",
       "state": "closed",
+      "merged": true,
+      "id": 4972598261,
+      "title": "SME-011: Add customer profiles and saved assets",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/12",
       "createdAt": "2026-10-22T18:59:25Z",
       "updatedAt": "2026-10-22T19:03:53Z",
@@ -2161,10 +2183,12 @@
       "draft": false
     },
     {
-      "id": 4972711802,
       "number": 13,
-      "title": "SME-012: Add provider organizations and locations",
+      "unitId": "SME-012",
       "state": "closed",
+      "merged": true,
+      "id": 4972711802,
+      "title": "SME-012: Add provider organizations and locations",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/13",
       "createdAt": "2026-10-22T19:08:32Z",
       "updatedAt": "2026-10-22T19:23:26Z",
@@ -2173,10 +2197,12 @@
       "draft": false
     },
     {
-      "id": 4972828635,
       "number": 14,
-      "title": "SME-013: Add provider employees and permissions",
+      "unitId": "SME-013",
       "state": "closed",
+      "merged": true,
+      "id": 4972828635,
+      "title": "SME-013: Add provider employees and permissions",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/14",
       "createdAt": "2026-10-22T19:17:49Z",
       "updatedAt": "2026-10-22T19:22:07Z",
@@ -2185,10 +2211,12 @@
       "draft": false
     },
     {
-      "id": 4972953188,
       "number": 15,
-      "title": "SME-014: Add service taxonomy and dynamic intake schemas",
+      "unitId": "SME-014",
       "state": "closed",
+      "merged": true,
+      "id": 4972953188,
+      "title": "SME-014: Add service taxonomy and dynamic intake schemas",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/15",
       "createdAt": "2026-10-22T19:27:59Z",
       "updatedAt": "2026-10-22T19:30:50Z",
@@ -2197,10 +2225,12 @@
       "draft": false
     },
     {
-      "id": 4973179034,
       "number": 16,
-      "title": "SME-015: Add provider onboarding and attestation",
+      "unitId": "SME-015",
       "state": "closed",
+      "merged": true,
+      "id": 4973179034,
+      "title": "SME-015: Add provider onboarding and attestation",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/16",
       "createdAt": "2026-10-22T19:46:55Z",
       "updatedAt": "2026-10-22T19:52:53Z",
@@ -2209,10 +2239,12 @@
       "draft": false
     },
     {
-      "id": 4973502797,
       "number": 17,
-      "title": "SME-016: Add provider insurance evidence review and expiration",
+      "unitId": "SME-016",
       "state": "closed",
+      "merged": true,
+      "id": 4973502797,
+      "title": "SME-016: Add provider insurance evidence review and expiration",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/17",
       "createdAt": "2026-10-22T20:13:57Z",
       "updatedAt": "2026-10-22T20:15:34Z",
@@ -2221,10 +2253,12 @@
       "draft": false
     },
     {
-      "id": 4987113966,
       "number": 18,
-      "title": "SME-017: Credential evidence background check adapter",
+      "unitId": "SME-017",
       "state": "closed",
+      "merged": true,
+      "id": 4987113966,
+      "title": "SME-017: Credential evidence background check adapter",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/18",
       "createdAt": "2026-10-23T17:59:39Z",
       "updatedAt": "2026-10-23T18:02:14Z",
@@ -2233,10 +2267,12 @@
       "draft": false
     },
     {
-      "id": 4987198631,
       "number": 19,
-      "title": "SME-018: Geospatial territories and travel rules",
+      "unitId": "SME-018",
       "state": "closed",
+      "merged": true,
+      "id": 4987198631,
+      "title": "SME-018: Geospatial territories and travel rules",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/19",
       "createdAt": "2026-10-23T18:06:35Z",
       "updatedAt": "2026-10-23T18:08:00Z",
@@ -2245,10 +2281,12 @@
       "draft": false
     },
     {
-      "id": 4987278087,
       "number": 20,
-      "title": "SME-019: Add tenant-bound search indexes and deterministic ranking",
+      "unitId": "SME-019",
       "state": "closed",
+      "merged": true,
+      "id": 4987278087,
+      "title": "SME-019: Add tenant-bound search indexes and deterministic ranking",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/20",
       "createdAt": "2026-10-23T18:13:11Z",
       "updatedAt": "2026-10-23T18:14:56Z",
@@ -2257,10 +2295,12 @@
       "draft": false
     },
     {
-      "id": 4987477776,
       "number": 21,
-      "title": "SME-020: Availability and appointment slots",
+      "unitId": "SME-020",
       "state": "closed",
+      "merged": true,
+      "id": 4987477776,
+      "title": "SME-020: Availability and appointment slots",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/21",
       "createdAt": "2026-10-23T18:28:24Z",
       "updatedAt": "2026-10-23T18:31:22Z",
@@ -2269,10 +2309,12 @@
       "draft": false
     },
     {
-      "id": 4987668811,
       "number": 22,
-      "title": "Implement SME-021 lead creation and matching notifications",
+      "unitId": "SME-021",
       "state": "closed",
+      "merged": true,
+      "id": 4987668811,
+      "title": "Implement SME-021 lead creation and matching notifications",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/22",
       "createdAt": "2026-10-23T18:44:00Z",
       "updatedAt": "2026-10-23T19:10:25Z",
@@ -2281,10 +2323,12 @@
       "draft": false
     },
     {
-      "id": 4988063818,
       "number": 23,
-      "title": "Implement SME-022 lead triage and quotes",
+      "unitId": "SME-022",
       "state": "closed",
+      "merged": true,
+      "id": 4988063818,
+      "title": "Implement SME-022 lead triage and quotes",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/23",
       "createdAt": "2026-10-23T19:18:19Z",
       "updatedAt": "2026-10-23T19:21:25Z",
@@ -2293,10 +2337,12 @@
       "draft": false
     },
     {
-      "id": 4988349661,
       "number": 24,
-      "title": "SME-023: Reviews, provider responses, and dispute intake",
+      "unitId": "SME-023",
       "state": "closed",
+      "merged": true,
+      "id": 4988349661,
+      "title": "SME-023: Reviews, provider responses, and dispute intake",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/24",
       "createdAt": "2026-10-23T19:43:47Z",
       "updatedAt": "2026-10-23T19:45:30Z",
@@ -2305,10 +2351,12 @@
       "draft": false
     },
     {
-      "id": 4988510643,
       "number": 25,
-      "title": "SME-024: Saved providers and repeat requests",
+      "unitId": "SME-024",
       "state": "closed",
+      "merged": true,
+      "id": 4988510643,
+      "title": "SME-024: Saved providers and repeat requests",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/25",
       "createdAt": "2026-10-23T19:58:17Z",
       "updatedAt": "2026-10-23T19:59:49Z",
@@ -2317,10 +2365,12 @@
       "draft": false
     },
     {
-      "id": 4988573287,
       "number": 26,
-      "title": "SME-025: Job Room membership and invitations",
+      "unitId": "SME-025",
       "state": "closed",
+      "merged": true,
+      "id": 4988573287,
+      "title": "SME-025: Job Room membership and invitations",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/26",
       "createdAt": "2026-10-23T20:04:00Z",
       "updatedAt": "2026-10-23T20:05:14Z",
@@ -2329,10 +2379,12 @@
       "draft": false
     },
     {
-      "id": 4988667844,
       "number": 27,
-      "title": "SME-026: Realtime chat, receipts, and notifications",
+      "unitId": "SME-026",
       "state": "closed",
+      "merged": true,
+      "id": 4988667844,
+      "title": "SME-026: Realtime chat, receipts, and notifications",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/27",
       "createdAt": "2026-10-23T20:12:38Z",
       "updatedAt": "2026-10-23T20:14:15Z",
@@ -2341,10 +2393,12 @@
       "draft": false
     },
     {
-      "id": 4988728655,
       "number": 28,
-      "title": "SME-027: Attachment sharing and private media",
+      "unitId": "SME-027",
       "state": "closed",
+      "merged": true,
+      "id": 4988728655,
+      "title": "SME-027: Attachment sharing and private media",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/28",
       "createdAt": "2026-10-23T20:18:09Z",
       "updatedAt": "2026-10-23T20:19:35Z",
@@ -2353,10 +2407,12 @@
       "draft": false
     },
     {
-      "id": 4988778869,
       "number": 29,
-      "title": "SME-028: Immutable estimate versions and approval",
+      "unitId": "SME-028",
       "state": "closed",
+      "merged": true,
+      "id": 4988778869,
+      "title": "SME-028: Immutable estimate versions and approval",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/29",
       "createdAt": "2026-10-23T20:22:44Z",
       "updatedAt": "2026-10-23T20:24:19Z",
@@ -2365,10 +2421,12 @@
       "draft": false
     },
     {
-      "id": 4988838257,
       "number": 30,
-      "title": "SME-029: Contracts e-sign adapter",
+      "unitId": "SME-029",
       "state": "closed",
+      "merged": true,
+      "id": 4988838257,
+      "title": "SME-029: Contracts e-sign adapter",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/30",
       "createdAt": "2026-10-23T20:27:54Z",
       "updatedAt": "2026-10-23T20:29:21Z",
@@ -2377,10 +2435,12 @@
       "draft": false
     },
     {
-      "id": 4989022277,
       "number": 31,
-      "title": "SME-030: Scheduling holds, conflict safety, and ICS",
+      "unitId": "SME-030",
       "state": "closed",
+      "merged": true,
+      "id": 4989022277,
+      "title": "SME-030: Scheduling holds, conflict safety, and ICS",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/31",
       "createdAt": "2026-10-23T20:43:58Z",
       "updatedAt": "2026-10-23T20:46:19Z",
@@ -2389,10 +2449,12 @@
       "draft": false
     },
     {
-      "id": 4989182779,
       "number": 32,
-      "title": "SME-031: Technician tasks and checklists",
+      "unitId": "SME-031",
       "state": "closed",
+      "merged": true,
+      "id": 4989182779,
+      "title": "SME-031: Technician tasks and checklists",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/32",
       "createdAt": "2026-10-23T20:58:51Z",
       "updatedAt": "2026-10-23T21:00:39Z",
@@ -2401,10 +2463,12 @@
       "draft": false
     },
     {
-      "id": 4989318065,
       "number": 33,
-      "title": "SME-032: Timesheets, materials, and inventory",
+      "unitId": "SME-032",
       "state": "closed",
+      "merged": true,
+      "id": 4989318065,
+      "title": "SME-032: Timesheets, materials, and inventory",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/33",
       "createdAt": "2026-10-23T21:12:15Z",
       "updatedAt": "2026-10-23T21:14:06Z",
@@ -2413,10 +2477,12 @@
       "draft": false
     },
     {
-      "id": 4989474054,
       "number": 34,
-      "title": "SME-033: Change orders and milestone acceptance",
+      "unitId": "SME-033",
       "state": "closed",
+      "merged": true,
+      "id": 4989474054,
+      "title": "SME-033: Change orders and milestone acceptance",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/34",
       "createdAt": "2026-10-23T21:28:19Z",
       "updatedAt": "2026-10-23T21:31:44Z",
@@ -2425,10 +2491,12 @@
       "draft": false
     },
     {
-      "id": 4989615009,
       "number": 35,
-      "title": "SME-034: Subcontractor permissions",
+      "unitId": "SME-034",
       "state": "closed",
+      "merged": true,
+      "id": 4989615009,
+      "title": "SME-034: Subcontractor permissions",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/35",
       "createdAt": "2026-10-23T21:42:14Z",
       "updatedAt": "2026-10-23T21:45:07Z",
@@ -2437,10 +2505,12 @@
       "draft": false
     },
     {
-      "id": 4989681882,
       "number": 36,
-      "title": "SME-035: Completion warranties and follow-up",
+      "unitId": "SME-035",
       "state": "closed",
+      "merged": true,
+      "id": 4989681882,
+      "title": "SME-035: Completion warranties and follow-up",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/36",
       "createdAt": "2026-10-23T21:48:48Z",
       "updatedAt": "2026-10-23T21:50:40Z",
@@ -2449,10 +2519,12 @@
       "draft": false
     },
     {
-      "id": 4989756910,
       "number": 37,
-      "title": "SME-036: Disputes, reversals, and human oversight",
+      "unitId": "SME-036",
       "state": "closed",
+      "merged": true,
+      "id": 4989756910,
+      "title": "SME-036: Disputes, reversals, and human oversight",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/37",
       "createdAt": "2026-10-23T21:57:02Z",
       "updatedAt": "2026-10-23T21:58:38Z",
@@ -2461,10 +2533,12 @@
       "draft": false
     },
     {
-      "id": 4989797486,
       "number": 38,
-      "title": "SME-037: Accessible offline drafts",
+      "unitId": "SME-037",
       "state": "closed",
+      "merged": true,
+      "id": 4989797486,
+      "title": "SME-037: Accessible offline drafts",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/38",
       "createdAt": "2026-10-23T22:01:40Z",
       "updatedAt": "2026-10-23T22:02:59Z",
@@ -2473,10 +2547,12 @@
       "draft": false
     },
     {
-      "id": 4989891882,
       "number": 39,
-      "title": "SME-038: Payment abstraction and Stripe Connect",
+      "unitId": "SME-038",
       "state": "closed",
+      "merged": true,
+      "id": 4989891882,
+      "title": "SME-038: Payment abstraction and Stripe Connect",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/39",
       "createdAt": "2026-10-23T22:12:08Z",
       "updatedAt": "2026-10-23T22:14:10Z",
@@ -2485,10 +2561,12 @@
       "draft": false
     },
     {
-      "id": 4989939728,
       "number": 40,
-      "title": "SME-039: Pricing and fee caps",
+      "unitId": "SME-039",
       "state": "closed",
+      "merged": true,
+      "id": 4989939728,
+      "title": "SME-039: Pricing and fee caps",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/40",
       "createdAt": "2026-10-23T22:17:38Z",
       "updatedAt": "2026-10-23T22:19:26Z",
@@ -2497,10 +2575,12 @@
       "draft": false
     },
     {
-      "id": 4989990485,
       "number": 41,
-      "title": "SME-040: Deposits and milestone charges",
+      "unitId": "SME-040",
       "state": "closed",
+      "merged": true,
+      "id": 4989990485,
+      "title": "SME-040: Deposits and milestone charges",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/41",
       "createdAt": "2026-10-23T22:23:40Z",
       "updatedAt": "2026-10-23T22:25:54Z",
@@ -2509,10 +2589,12 @@
       "draft": false
     },
     {
-      "id": 4990042545,
       "number": 42,
-      "title": "SME-041: External payment records",
+      "unitId": "SME-041",
       "state": "closed",
+      "merged": true,
+      "id": 4990042545,
+      "title": "SME-041: External payment records",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/42",
       "createdAt": "2026-10-23T22:29:48Z",
       "updatedAt": "2026-10-23T22:31:30Z",
@@ -2521,10 +2603,12 @@
       "draft": false
     },
     {
-      "id": 5002417786,
       "number": 43,
-      "title": "SME-042: Refund, dispute, payout reconciliation",
+      "unitId": "SME-042",
       "state": "closed",
+      "merged": true,
+      "id": 5002417786,
+      "title": "SME-042: Refund, dispute, payout reconciliation",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/43",
       "createdAt": "2026-10-25T06:31:34Z",
       "updatedAt": "2026-10-25T06:38:43Z",
@@ -2533,10 +2617,12 @@
       "draft": false
     },
     {
-      "id": 5002585418,
       "number": 44,
-      "title": "Implement SME-043 plan entitlements",
+      "unitId": "SME-043",
       "state": "closed",
+      "merged": true,
+      "id": 5002585418,
+      "title": "Implement SME-043 plan entitlements",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/44",
       "createdAt": "2026-10-25T07:00:15Z",
       "updatedAt": "2026-10-25T07:02:51Z",
@@ -2545,10 +2631,12 @@
       "draft": false
     },
     {
-      "id": 5002634756,
       "number": 45,
-      "title": "Implement SME-044 ad inventory and sponsors",
+      "unitId": "SME-044",
       "state": "closed",
+      "merged": true,
+      "id": 5002634756,
+      "title": "Implement SME-044 ad inventory and sponsors",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/45",
       "createdAt": "2026-10-25T07:08:02Z",
       "updatedAt": "2026-10-25T07:10:21Z",
@@ -2557,10 +2645,12 @@
       "draft": false
     },
     {
-      "id": 5002689279,
       "number": 46,
-      "title": "Implement SME-045 coupon redemption control",
+      "unitId": "SME-045",
       "state": "closed",
+      "merged": true,
+      "id": 5002689279,
+      "title": "Implement SME-045 coupon redemption control",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/46",
       "createdAt": "2026-10-25T07:16:52Z",
       "updatedAt": "2026-10-25T07:20:26Z",
@@ -2569,10 +2659,12 @@
       "draft": false
     },
     {
-      "id": 5002729742,
       "number": 47,
-      "title": "Implement SME-046 referral affiliate fraud controls",
+      "unitId": "SME-046",
       "state": "closed",
+      "merged": true,
+      "id": 5002729742,
+      "title": "Implement SME-046 referral affiliate fraud controls",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/47",
       "createdAt": "2026-10-25T07:23:59Z",
       "updatedAt": "2026-10-25T07:25:47Z",
@@ -2581,10 +2673,12 @@
       "draft": false
     },
     {
-      "id": 5002761909,
       "number": 48,
-      "title": "Implement SME-047 gift cards and loyalty credits",
+      "unitId": "SME-047",
       "state": "closed",
+      "merged": true,
+      "id": 5002761909,
+      "title": "Implement SME-047 gift cards and loyalty credits",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/48",
       "createdAt": "2026-10-25T07:30:06Z",
       "updatedAt": "2026-10-25T07:34:21Z",
@@ -2593,10 +2687,12 @@
       "draft": false
     },
     {
-      "id": 5002807274,
       "number": 49,
-      "title": "Implement SME-048 subscription dunning",
+      "unitId": "SME-048",
       "state": "closed",
+      "merged": true,
+      "id": 5002807274,
+      "title": "Implement SME-048 subscription dunning",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/49",
       "createdAt": "2026-10-25T07:38:35Z",
       "updatedAt": "2026-10-25T07:45:08Z",
@@ -2605,10 +2701,12 @@
       "draft": false
     },
     {
-      "id": 5002863222,
       "number": 50,
-      "title": "Implement SME-049 invoice accounting exports",
+      "unitId": "SME-049",
       "state": "closed",
+      "merged": true,
+      "id": 5002863222,
+      "title": "Implement SME-049 invoice accounting exports",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/50",
       "createdAt": "2026-10-25T07:48:16Z",
       "updatedAt": "2026-10-25T07:54:47Z",
@@ -2617,10 +2715,12 @@
       "draft": false
     },
     {
-      "id": 5002930140,
       "number": 51,
-      "title": "Implement SME-050 provider CRM",
+      "unitId": "SME-050",
       "state": "closed",
+      "merged": true,
+      "id": 5002930140,
+      "title": "Implement SME-050 provider CRM",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/51",
       "createdAt": "2026-10-25T07:59:09Z",
       "updatedAt": "2026-10-25T08:02:22Z",
@@ -2629,10 +2729,12 @@
       "draft": false
     },
     {
-      "id": 5002969512,
       "number": 52,
-      "title": "Implement SME-051 funnel analytics attribution",
+      "unitId": "SME-051",
       "state": "closed",
+      "merged": true,
+      "id": 5002969512,
+      "title": "Implement SME-051 funnel analytics attribution",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/52",
       "createdAt": "2026-10-25T08:05:58Z",
       "updatedAt": "2026-10-25T08:07:56Z",
@@ -2641,10 +2743,12 @@
       "draft": false
     },
     {
-      "id": 5003023514,
       "number": 53,
-      "title": "Implement SME-052 admin RBAC moderation support",
+      "unitId": "SME-052",
       "state": "closed",
+      "merged": true,
+      "id": 5003023514,
+      "title": "Implement SME-052 admin RBAC moderation support",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/53",
       "createdAt": "2026-10-25T08:15:00Z",
       "updatedAt": "2026-10-25T08:19:03Z",
@@ -2653,10 +2757,12 @@
       "draft": false
     },
     {
-      "id": 5003101785,
       "number": 54,
-      "title": "Implement SME-053 feature flags configuration",
+      "unitId": "SME-053",
       "state": "closed",
+      "merged": true,
+      "id": 5003101785,
+      "title": "Implement SME-053 feature flags configuration",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/54",
       "createdAt": "2026-10-25T08:27:21Z",
       "updatedAt": "2026-10-25T08:29:11Z",
@@ -2665,10 +2771,12 @@
       "draft": false
     },
     {
-      "id": 5003137426,
       "number": 55,
-      "title": "Implement SME-054 email push SMS adapters",
+      "unitId": "SME-054",
       "state": "closed",
+      "merged": true,
+      "id": 5003137426,
+      "title": "Implement SME-054 email push SMS adapters",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/55",
       "createdAt": "2026-10-25T08:32:32Z",
       "updatedAt": "2026-10-25T08:33:46Z",
@@ -2677,10 +2785,12 @@
       "draft": false
     },
     {
-      "id": 5003204485,
       "number": 56,
-      "title": "SME-055: Knowledge base content CMS",
+      "unitId": "SME-055",
       "state": "closed",
+      "merged": true,
+      "id": 5003204485,
+      "title": "SME-055: Knowledge base content CMS",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/56",
       "createdAt": "2026-10-25T08:43:31Z",
       "updatedAt": "2026-10-25T08:46:06Z",
