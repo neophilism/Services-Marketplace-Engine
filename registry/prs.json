@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:08:00Z",
+  "observedAt": "2026-11-04T23:12:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1775,16 +1775,26 @@
         "SME-055"
       ],
       "scope": [
-        "AI gateway quotas tools"
+        "Reserve tenant-scoped AI invocation capacity under current organization RBAC and an active operator grant.",
+        "Enforce exact quota periods, aggregate and per-request request/token ceilings, allowlisted models and canonical ordered tool sets with atomic reservation receipts and exact replay.",
+        "Exclude model and tool execution, prompt/output storage, provider credentials, billing, actual-usage reconciliation and tool-side-effect authorization."
       ],
       "acceptanceCriteria": "Complete ai gateway quotas tools functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover bounded quota reservation, immutable receipts, safe accounting, exact replay, period and aggregate exhaustion, model/tool allowlists and atomic persistence.",
+        "Authorization-negative tests cover wrong permission, cross-tenant access, revoked membership, inactive or underprivileged operators, malformed durable state, replay contamination and audit failure.",
+        "Exact-head Registry validation run 41931210395 and merged-main run 41931492320 passed build, complete tests, plan/static/SDK validation and PostgreSQL migration apply/verify/rollback."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "f372dc5ca71d0d0822e3d6a899d2f39c162bd307",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 41931210395 passed for 40c40c42c952b9be84565613e66862d94604b2b3.",
+        "Merged-main Registry validation run 41931492320 passed for f372dc5ca71d0d0822e3d6a899d2f39c162bd307.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/58"
+      ]
     },
     {
       "id": "SME-057",
@@ -2803,16 +2813,16 @@
     {
       "number": 58,
       "unitId": "SME-056",
-      "state": "open",
-      "merged": false,
+      "state": "closed",
+      "merged": true,
       "id": 5163080195,
       "title": "SME-056: Add bounded AI gateway quota reservations",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/58",
       "createdAt": "2026-11-04T23:07:17Z",
-      "updatedAt": "2026-11-04T23:07:17Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "draft": true
+      "updatedAt": "2026-11-04T23:09:58Z",
+      "mergedAt": "2026-11-04T23:09:57Z",
+      "closedAt": "2026-11-04T23:09:57Z",
+      "draft": false
     }
   ]
 }
