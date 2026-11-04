@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:19:00Z",
+  "observedAt": "2026-11-04T23:25:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1767,7 +1767,8 @@
       "title": "AI gateway quotas tools",
       "origin": "original",
       "prs": [
-        58
+        58,
+        61
       ],
       "priority": "P1",
       "phase": "Operations",
@@ -1785,13 +1786,14 @@
       "contributingPrs": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
-      "status": "merged",
+      "status": "active",
       "mergedCommit": "f372dc5ca71d0d0822e3d6a899d2f39c162bd307",
       "acceptanceEvidence": [
         "Exact-head Registry validation run 41931210395 passed for 40c40c42c952b9be84565613e66862d94604b2b3.",
         "Merged-main Registry validation run 41931492320 passed for f372dc5ca71d0d0822e3d6a899d2f39c162bd307.",
         "Focused Node 24 type-stripped execution passed 14/14 tests.",
-        "https://github.com/neophilism/Services-Marketplace-Engine/pull/58"
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/58",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/61"
       ]
     },
     {
@@ -2846,6 +2848,20 @@
       "mergedAt": "2026-11-04T23:17:53Z",
       "closedAt": "2026-11-04T23:17:53Z",
       "draft": false
+    },
+    {
+      "number": 61,
+      "unitId": "SME-056",
+      "state": "open",
+      "merged": false,
+      "id": 5163222148,
+      "title": "SME-056: Fail closed on AI gateway boundary exceptions",
+      "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/61",
+      "createdAt": "2026-11-04T23:19:45Z",
+      "updatedAt": "2026-11-04T23:20:45Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "draft": true
     }
   ]
 }

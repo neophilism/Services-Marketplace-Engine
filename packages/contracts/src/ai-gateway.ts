@@ -129,7 +129,8 @@ function exactReplay(value: AIInvocationReservation,
 export async function reserveAIInvocation(contractVersion: number,
   request: OrganizationAuthorizationRequest, state: OrganizationAuthorizationState,
   input: ReserveAIInvocationInput, options: AIGatewayOptions): Promise<AIGatewayResult> {
-  const authorization = await authorizeAndAuditOrganizationAction(
+  try {
+    const authorization = await authorizeAndAuditOrganizationAction(
     request, state, 'ai-gateway.reserve', options.audit);
   const now = options.now();
   if (!authorization.authorized || request.requiredPermission !== 'ai-gateway:invoke' ||
@@ -140,7 +141,6 @@ export async function reserveAIInvocation(contractVersion: number,
     !integer(input.maximumOutputTokens, 1, TOKEN_LIMIT) ||
     !integer(now, 0, DATE)) return rejected();
 
-  try {
     const [operator, quota, replay] = await Promise.all([
       options.store.getOperator(authorization.organizationId, authorization.subjectId),
       options.store.getQuota(authorization.organizationId, input.quotaKey),
