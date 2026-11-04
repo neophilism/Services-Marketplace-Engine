@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:16:00Z",
+  "observedAt": "2026-11-04T23:19:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1818,7 +1818,14 @@
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "5801b2d177dcbf267402b832d63ea4271bb76533",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 41932416884 passed for 8fe7fde741cbbc71b23e31162fce011039df45f2.",
+        "Merged-main Registry validation run 41932592033 passed for 5801b2d177dcbf267402b832d63ea4271bb76533.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/60"
+      ]
     },
     {
       "id": "SME-058",
@@ -2829,16 +2836,16 @@
     {
       "number": 60,
       "unitId": "SME-057",
-      "state": "open",
-      "merged": false,
+      "state": "closed",
+      "merged": true,
       "id": 5163192836,
       "title": "SME-057: Add tenant assistant configuration registry",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/60",
       "createdAt": "2026-11-04T23:16:12Z",
-      "updatedAt": "2026-11-04T23:16:12Z",
-      "mergedAt": null,
-      "closedAt": null,
-      "draft": true
+      "updatedAt": "2026-11-04T23:17:53Z",
+      "mergedAt": "2026-11-04T23:17:53Z",
+      "closedAt": "2026-11-04T23:17:53Z",
+      "draft": false
     }
   ]
 }
