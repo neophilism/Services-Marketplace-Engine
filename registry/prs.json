@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:12:00Z",
+  "observedAt": "2026-11-04T23:16:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1798,19 +1798,23 @@
       "id": "SME-057",
       "title": "Assistant registry configurations",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        60
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-056"
       ],
       "scope": [
-        "Assistant registry configurations"
+        "Tenant-scoped, revisioned assistant configuration metadata.",
+        "Organization RBAC plus active operator grants, exact replay, optimistic atomic commits and active-only detached resolution.",
+        "Model, ordered tool, external instruction-template and knowledge-source references without prompts, secrets, execution or side-effect authorization."
       ],
       "acceptanceCriteria": "Complete assistant registry configurations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover create, revise, disable, active resolution, immutable values and exact replay.",
+        "Authorization-negative tests cover wrong permission, cross-tenant access, revoked membership, inactive or underprivileged operators, malformed stored state, stale revisions, ambiguous keys, audit failure and atomic persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
@@ -2821,6 +2825,20 @@
       "mergedAt": "2026-11-04T23:09:57Z",
       "closedAt": "2026-11-04T23:09:57Z",
       "draft": false
+    },
+    {
+      "number": 60,
+      "unitId": "SME-057",
+      "state": "open",
+      "merged": false,
+      "id": 5163192836,
+      "title": "SME-057: Add tenant assistant configuration registry",
+      "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/60",
+      "createdAt": "2026-11-04T23:16:12Z",
+      "updatedAt": "2026-11-04T23:16:12Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "draft": true
     }
   ]
 }
