@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:23:00Z",
+  "observedAt": "2026-11-04T23:25:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1786,7 +1786,7 @@
       "contributingPrs": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
-      "status": "merged",
+      "status": "active",
       "mergedCommit": "f372dc5ca71d0d0822e3d6a899d2f39c162bd307",
       "acceptanceEvidence": [
         "Exact-head Registry validation run 41931210395 passed for 40c40c42c952b9be84565613e66862d94604b2b3.",
