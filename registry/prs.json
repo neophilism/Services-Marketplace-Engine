@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-01T20:30:00Z",
+  "observedAt": "2026-11-04T23:08:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1766,7 +1766,9 @@
       "id": "SME-056",
       "title": "AI gateway quotas tools",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        58
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
@@ -2797,6 +2799,20 @@
       "mergedAt": "2026-10-25T08:46:05Z",
       "closedAt": "2026-10-25T08:46:05Z",
       "draft": false
+    },
+    {
+      "number": 58,
+      "unitId": "SME-056",
+      "state": "open",
+      "merged": false,
+      "id": 5163080195,
+      "title": "SME-056: Add bounded AI gateway quota reservations",
+      "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/58",
+      "createdAt": "2026-11-04T23:07:17Z",
+      "updatedAt": "2026-11-04T23:07:17Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "draft": true
     }
   ]
 }
