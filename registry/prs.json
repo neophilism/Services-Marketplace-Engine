@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:12:00Z",
+  "observedAt": "2026-11-04T23:20:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1767,7 +1767,8 @@
       "title": "AI gateway quotas tools",
       "origin": "original",
       "prs": [
-        58
+        58,
+        61
       ],
       "priority": "P1",
       "phase": "Operations",
@@ -2821,6 +2822,20 @@
       "mergedAt": "2026-11-04T23:09:57Z",
       "closedAt": "2026-11-04T23:09:57Z",
       "draft": false
+    },
+    {
+      "number": 61,
+      "unitId": "SME-056",
+      "state": "open",
+      "merged": false,
+      "id": 5163145643,
+      "title": "SME-056: Fail closed on AI gateway boundary exceptions",
+      "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/61",
+      "createdAt": "2026-11-04T23:19:45Z",
+      "updatedAt": "2026-11-04T23:19:46Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "draft": true
     }
   ]
 }
