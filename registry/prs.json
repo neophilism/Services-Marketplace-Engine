@@ -5,7 +5,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 67,
-  "observedAt": "2026-11-04T23:20:00Z",
+  "observedAt": "2026-11-04T23:23:00Z",
   "sourceFiles": [
     "docs/DEVELOPMENT_PLAN.md",
     "AGENTS.md",
@@ -1792,30 +1792,42 @@
         "Exact-head Registry validation run 41931210395 passed for 40c40c42c952b9be84565613e66862d94604b2b3.",
         "Merged-main Registry validation run 41931492320 passed for f372dc5ca71d0d0822e3d6a899d2f39c162bd307.",
         "Focused Node 24 type-stripped execution passed 14/14 tests.",
-        "https://github.com/neophilism/Services-Marketplace-Engine/pull/58"
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/58",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/61"
       ]
     },
     {
       "id": "SME-057",
       "title": "Assistant registry configurations",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        60
+      ],
       "priority": "P1",
       "phase": "Operations",
       "dependsOn": [
         "SME-056"
       ],
       "scope": [
-        "Assistant registry configurations"
+        "Tenant-scoped, revisioned assistant configuration metadata.",
+        "Organization RBAC plus active operator grants, exact replay, optimistic atomic commits and active-only detached resolution.",
+        "Model, ordered tool, external instruction-template and knowledge-source references without prompts, secrets, execution or side-effect authorization."
       ],
       "acceptanceCriteria": "Complete assistant registry configurations functionality, contract and authorization-negative tests, documentation, and recorded acceptance evidence.",
       "verification": [
-        "Automated tests and acceptance evidence",
-        "Regression tests"
+        "Contract tests cover create, revise, disable, active resolution, immutable values and exact replay.",
+        "Authorization-negative tests cover wrong permission, cross-tenant access, revoked membership, inactive or underprivileged operators, malformed stored state, stale revisions, ambiguous keys, audit failure and atomic persistence failure."
       ],
       "contributingPrs": [],
       "externalDependencies": [],
-      "externalPrerequisites": []
+      "externalPrerequisites": [],
+      "status": "merged",
+      "mergedCommit": "5801b2d177dcbf267402b832d63ea4271bb76533",
+      "acceptanceEvidence": [
+        "Exact-head Registry validation run 41932416884 passed for 8fe7fde741cbbc71b23e31162fce011039df45f2.",
+        "Merged-main Registry validation run 41932592033 passed for 5801b2d177dcbf267402b832d63ea4271bb76533.",
+        "https://github.com/neophilism/Services-Marketplace-Engine/pull/60"
+      ]
     },
     {
       "id": "SME-058",
@@ -2824,6 +2836,20 @@
       "draft": false
     },
     {
+      "number": 60,
+      "unitId": "SME-057",
+      "state": "closed",
+      "merged": true,
+      "id": 5163192836,
+      "title": "SME-057: Add tenant assistant configuration registry",
+      "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/60",
+      "createdAt": "2026-11-04T23:16:12Z",
+      "updatedAt": "2026-11-04T23:17:53Z",
+      "mergedAt": "2026-11-04T23:17:53Z",
+      "closedAt": "2026-11-04T23:17:53Z",
+      "draft": false
+    },
+    {
       "number": 61,
       "unitId": "SME-056",
       "state": "open",
@@ -2832,7 +2858,7 @@
       "title": "SME-056: Fail closed on AI gateway boundary exceptions",
       "url": "https://github.com/neophilism/Services-Marketplace-Engine/pull/61",
       "createdAt": "2026-11-04T23:19:45Z",
-      "updatedAt": "2026-11-04T23:20:23Z",
+      "updatedAt": "2026-11-04T23:20:45Z",
       "mergedAt": null,
       "closedAt": null,
       "draft": true
