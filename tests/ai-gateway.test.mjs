@@ -110,4 +110,13 @@ test('fails closed when audit or atomic persistence fails', async () => {
   const commit = fixture(); commit.options.store.commit = async () => false;
   assert.deepEqual(await reserveAIInvocation(1, request, authState, input, commit.options),
     {accepted: false, code: 'ai_gateway_rejected'});
+  const clock = fixture(); clock.options.now = () => { throw new Error('clock offline'); };
+  assert.deepEqual(await reserveAIInvocation(1, request, authState, input, clock.options),
+    {accepted: false, code: 'ai_gateway_rejected'});
+  const auditId = fixture(); auditId.options.audit.createOpaqueId = () => { throw new Error('id offline'); };
+  assert.deepEqual(await reserveAIInvocation(1, request, authState, input, auditId.options),
+    {accepted: false, code: 'ai_gateway_rejected'});
+  const malformed = fixture();
+  assert.deepEqual(await reserveAIInvocation(1, request, authState, null, malformed.options),
+    {accepted: false, code: 'ai_gateway_rejected'});
 });
